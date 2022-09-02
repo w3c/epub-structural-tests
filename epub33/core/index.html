@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>EPUB 3.3</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="./biblio.js" class="remove"></script>
+		<script src="../common/js/css-inline.js" class="remove"></script>
+		<script src="../common/js/add-caution-hd.js" class="remove"></script>
+		<script src="../common/js/data-test-display.js" class="remove"></script>
+		<script class="remove">
+			//<![CDATA[
+            var respecConfig = {
+                group: "epub",
+                wgPublicList: "public-epub-wg",
+                specStatus: "ED",
+                shortName: "epub-33",
+                edDraftURI: "https://w3c.github.io/epub-specs/epub33/core/",
+                implementationReportURI: "https://w3c.github.io/epub-specs/epub33/reports/",
+                crEnd: "2022-10-30",
+                previousPublishDate: "2021-07-12",
+                previousMaturity: "WD",
+                copyrightStart: "1999",
+                editors:[
+                {
+                    name: "Matt Garrish",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org",
+					w3cid: 51655
+                },
+				{
+					name: "Ivan Herman",
+					url: "https://www.w3.org/People/Ivan/",
+					company: "W3C",
+					w3cid: 7382,
+					orcid: "0000-0003-0782-2704",
+					companyURL: "https://www.w3.org",
+				},
+				{
+					name: "Dave Cramer",
+					company: "Invited Expert",
+					w3cid: 65283
+				}],
+                formerEditors: [
+                {
+                    name: "Garth Conboy",
+                    company: "Google",
+                    companyURL: "https://www.google.com",
+					w3cid: 92141
+                },
+                {
+                    name: "Marisa DeMeglio",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org",
+					w3cid: 35713
+                },                {
+                    name: "Daniel Weck",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org",
+					w3cid: 45653
+                }],
+                includePermalinks: true,
+                permalinkEdge: true,
+                permalinkHide: false,
+                github: {
+                    repoURL: "https://github.com/w3c/epub-specs",
+                    branch: "main"
+                },
+                preProcess:[inlineCustomCSS],
+                postProcess:[addCautionHeaders, data_test_display],
+                testSuiteURI: "https://w3c.github.io/epub-tests/index.html",
+                lint: {
+                     "wpt-tests-exist": true,
+				},
+				xref: {
+					profile: "web-platform",
+					specs: ["epub-rs-33"]
+				}
+            };//]]>
+		</script>
+		<style>
+			pre {
+				white-space: break-spaces !important;
+			}</style>
+	</head>
+	<body>
+		<section id="abstract">
+			<p>EPUB® 3 defines a distribution and interchange format for digital publications and documents. The EPUB
+				format provides a means of representing, packaging, and encoding structured and semantically enhanced
+				web content — including HTML, CSS, SVG, and other resources — for distribution in a single-file
+				container.</p>
+			<p>This specification defines the authoring requirements for EPUB publications and represents the third
+				major revision of the standard.</p>
+		</section>
+		<section id="sotd"></section>
+		<section id="sec-publication-resources">
+			<h2>Publication resources</h2>
+
+			<section id="sec-core-media-types">
+				<h3>Core media types</h3>
+
+				<table id="tbl-core-media-types">
+					<thead>
+						<tr>
+							<th id="tbl-cmt-string">Media Type</th>
+							<th id="tbl-cmt-def">Content Type Definition</th>
+							<th id="tbl-cmt-appl">Applies to</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th colspan="3" id="cmt-grp-image" class="tbl-group">Images</th>
+						</tr>
+						<tr>
+							<td id="cmt-gif" data-tests="#pub-cmt-gif">
+								<code>image/gif</code>
+							</td>
+							<td> [[gif]] </td>
+							<td>GIF Images</td>
+						</tr>
+						<tr>
+							<td id="cmt-jpeg" data-tests="#pub-cmt-jpeg">
+								<code>image/jpeg</code>
+							</td>
+							<td> [[jpeg]] </td>
+							<td>JPEG Images</td>
+						</tr>
+						<tr>
+							<td id="cmt-png" data-tests="#pub-cmt-png">
+								<code>image/png</code>
+							</td>
+							<td> [[png]] </td>
+							<td>PNG Images</td>
+						</tr>
+						<tr>
+							<td id="cmt-svg" data-tests="#pub-cmt-svg,#cnt-svg-support">
+								<code>image/svg+xml</code>
+							</td>
+							<td>
+								<a href="#sec-svg">SVG content documents</a>
+							</td>
+							<td>SVG documents</td>
+						</tr>
+						<tr>
+							<td id="cmt-webp" data-tests="#pub-cmt-webp">
+								<code>image/webp</code>
+							</td>
+							<td> [[webp-container]], [[webp-lb]] </td>
+							<td>WebP Images</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-audio" class="tbl-group">Audio</th>
+						</tr>
+						<tr>
+							<td id="cmt-mp3" data-tests="#pub-cmt-mp3">
+								<code>audio/mpeg</code>
+							</td>
+							<td> [[mp3]] </td>
+							<td>MP3 audio</td>
+						</tr>
+						<tr>
+							<td id="cmt-mp4-aac" data-tests="#pub-cmt-mp4">
+								<code>audio/mp4</code>
+							</td>
+							<td> [[mpeg4-audio]], [[mp4]] </td>
+							<td>AAC LC audio using MP4 container</td>
+						</tr>
+						<tr>
+							<td id="cmt-ogg-opus" data-tests="#pub-cmt-opus">
+								<code>audio/opus</code>
+							</td>
+							<td> [[rfc7845]] </td>
+							<td>OPUS audio using OGG container</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-text" class="tbl-group">Style</th>
+						</tr>
+						<tr>
+							<td id="cmt-css">
+								<code>text/css</code>
+							</td>
+							<td>
+								<a href="#sec-css">CSS Style Sheets</a>
+							</td>
+							<td>CSS Style Sheets.</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-font" class="tbl-group">Fonts</th>
+						</tr>
+						<tr>
+							<td id="cmt-sfnt">
+								<ol class="cmt">
+									<li><code>font/ttf</code></li>
+									<li><code>application/font-sfnt</code></li>
+								</ol>
+							</td>
+							<td>[[truetype]] </td>
+							<td>TrueType fonts</td>
+						</tr>
+						<tr>
+							<td id="cmt-otf">
+								<ol class="cmt">
+									<li><code>font/otf</code></li>
+									<li><code>application/font-sfnt</code></li>
+									<li><code>application/vnd.ms-opentype</code></li>
+								</ol>
+							</td>
+							<td>[[opentype]]</td>
+							<td>OpenType fonts</td>
+						</tr>
+						<tr>
+							<td id="cmt-woff">
+								<ol class="cmt">
+									<li><code>font/woff</code></li>
+									<li><code>application/font-woff</code></li>
+								</ol>
+							</td>
+							<td> [[woff]] </td>
+							<td>WOFF fonts</td>
+						</tr>
+						<tr>
+							<td id="cmt-woff2">
+								<code>font/woff2</code>
+							</td>
+							<td> [[woff2]] </td>
+							<td>WOFF2 fonts</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-other" class="tbl-group">Other</th>
+						</tr>
+						<tr>
+							<td id="cmt-xhtml">
+								<code>application/xhtml+xml</code>
+							</td>
+							<td>
+								<a href="#sec-xhtml">XHTML content documents</a>
+							</td>
+							<td>HTML documents that use the <a data-cite="html#the-xhtml-syntax">XML syntax</a>
+								[[html]].</td>
+						</tr>
+						<tr>
+							<td id="cmt-js">
+								<ol class="cmt">
+									<li><code>application/javascript</code></li>
+									<li><code>application/ecmascript</code></li>
+									<li><code>text/javascript</code></li>
+								</ol>
+							</td>
+							<td> [[rfc4329]] </td>
+							<td>Scripts.</td>
+						</tr>
+						<tr>
+							<td id="cmt-ncx">
+								<code>application/x-dtbncx+xml</code>
+							</td>
+							<td> [[opf-201]] </td>
+							<td>The <a href="#legacy">legacy</a> NCX.</td>
+						</tr>
+						<tr>
+							<td id="cmt-smil">
+								<code>application/smil+xml</code>
+							</td>
+							<td>
+								<a href="#sec-media-overlays">Media overlays</a>
+							</td>
+							<td>EPUB media overlay documents</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section id="sec-resource-fallbacks">
+				<h4>Resource fallbacks</h4>
+
+				<section id="sec-manifest-fallbacks">
+					<h5>Manifest fallbacks</h5>
+
+					<p>Manifest fallbacks are a feature of the [=package document=] that create a <dfn class="export"
+							>manifest fallback chain</dfn> for a [=publication resource=], allowing reading systems to
+						select an alternative format they can render.</p>
+
+					<p>Fallback chains are created using the <a href="#attrdef-item-fallback"><code>fallback</code>
+							attribute</a> on manifest [^item^] elements. This attribute references the ID [[xml]] of
+						another manifest <code>item</code> that is a fallback for the current <code>item</code>. The
+						ordered list of all the references that a reading system can reach, starting from a given
+							<code>item</code>'s <code>fallback</code> attribute, represents the full fallback chain for
+						that <code>item</code>. This chain also represents the EPUB creator's preferred fallback
+						order.</p>
+
+					<p>There are two cases for manifest fallbacks:</p>
+
+					<dl>
+						<dt id="spine-fallbacks">Spine fallbacks</dt>
+						<dd>
+							<p>EPUB creators MUST specify a fallback chain for a [=foreign content document=] to ensure
+								that reading systems can always render the [=EPUB spine | spine=] item. In this case,
+								the chain MUST contain at least one <a>EPUB content document</a>.</p>
+							<p>EPUB creators MAY provide fallbacks for EPUB content documents (e.g., to provide a <a
+									href="#confreq-cd-scripted-flbk">fallback for scripted content</a>).</p>
+							<p>When a fallback chain includes more than one EPUB content document, EPUB creators can use
+								the <a href="#attrdef-properties"><code>properties</code> attribute</a> to differentiate
+								the purpose of each.</p>
+						</dd>
+
+						<dt id="content-fallbacks">Content fallbacks</dt>
+						<dd>
+							<div class="note">
+								<p>The original purpose for content fallbacks was to specify fallback images for the
+									[[html]] <a data-lt="img"><code>img</code> element</a>. As HTML now has intrinsic
+									fallback mechanism for images, the use of content fallbacks is strongly discouraged.
+									EPUB creators should always use the intrinsic fallback capabilities of [[html]] and
+									[[svg]] to provide fallback content.</p>
+							</div>
+							<p>EPUB creators MUST provide a content fallback for [=foreign resources=] when the elements
+								that reference them do not have intrinsic fallback capabilities. In this case, the
+								fallback chain MUST contain at least one [=core media type resource=].</p>
+							<p>EPUB creators MAY also provide manifest fallbacks for [=core media type resources=]
+								(e.g., to allow reading systems to select from more than one image format).</p>
+						</dd>
+					</dl>
+
+					<p>Regardless of the type of manifest fallback specified, fallback chains MUST NOT contain
+						self-references or circular references to <code>item</code> elements in the chain.</p>
+
+					<div class="note">
+						<p>As it is not possible to use manifest fallbacks for resources represented in <a
+								href="#sec-data-urls">data URLs</a>, EPUB creators can only represent foreign resources
+							as data URLs where an intrinsic fallback mechanism is available.</p>
+					</div>
+				</section>
+
+				<section id="sec-intrinsic-fallbacks">
+					<h4>Intrinsic fallbacks</h4>
+
+					<p>The following sections provide additional clarifications about the intrinsic fallback
+						requirements of specific elements.</p>
+
+					<section id="sec-fallbacks-audio">
+						<h5>HTML <code>audio</code> fallbacks</h5>
+
+						<p id="confreq-resources-cd-fallback-media">EPUB creators MUST NOT use embedded [[html]] <a>flow
+								content</a> within the [^audio^] element as an intrinsic fallback for foreign resources.
+							Only child [^source^] elements [[html]] provide intrinsic fallback capabilities.</p>
+
+						<p>Only older reading systems that do not recognize the <code>audio</code> element (e.g., EPUB 2
+							reading systems) will render the embedded content. When reading systems support the
+								<code>audio</code> element but not the available audio formats, they do not render the
+							embedded content for the user.</p>
+
+						<div class="note">
+							<p>As video resources are [=exempt resources=], this requirement does not apply to the
+									<code>video</code> element. EPUB creators may also include flow content in the
+									<code>video</code> element for reading systems that do not support the element,
+								however.</p>
+						</div>
+					</section>
+
+					<section id="sec-fallbacks-img">
+						<h5>HTML <code>img</code> fallbacks</h5>
+
+						<p id="confreq-resources-cd-fallback-img">Due to the variety of sources that EPUB creators can
+							specify in the [[html]] <a data-lt="img"><code>img</code> element</a>, the following
+							fallback conditions apply to its use:</p>
+
+						<ul>
+							<li>
+								<p>If it is the child of a <a data-lt="picture"><code>picture</code> element</a>:</p>
+								<ul>
+									<li>it MUST reference core media type resources from its <code>src</code> and
+											<code>srcset</code> attributes, when EPUB creators specify those attributes;
+										and</li>
+									<li>each sibling <a data-lt="source"><code>source</code> element</a> MUST reference
+										a core media type resource from its <code>[^source/src^]</code> and
+											<code>[^source/srcset^]</code> attributes unless it specifies the MIME media
+										type [[rfc2046]] of a foreign resource in its <code>[^source/type^]</code>
+										attribute.</li>
+								</ul>
+							</li>
+
+							<li>Otherwise, it MAY reference foreign resources in its <code>[^img/src^]</code> and
+									<code>[^img/srcset^]</code> attributes provided EPUB creators define a <a
+									href="#sec-manifest-fallbacks">manifest fallback</a>.</li>
+						</ul>
+					</section>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>
