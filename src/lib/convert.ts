@@ -39,6 +39,18 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
     // just as a shortcut...
     const document = dom.window.document;
 
+    // Get the list of all id-s in the document to help in sorting at the end
+
+    const ids: string[] = []
+    {
+        const list = document.getElementsByTagName('section');
+        for (let i = 0; i < list.length; i++) {
+            const section = list.item(i);
+            const id = section?.id;
+            if (id) ids.push(id);
+        }    
+    }
+
     // Find the section title based on the ID; the assumption is that
     // the content of the first header element is the section header
     const section_title = (id: string): string|null => {
@@ -106,14 +118,19 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
         }
     }
 
-    // Removing the key and producing just the section-tests pairs that is required for the output
-    return Object.keys(idSectionMapping).map( (id: string): SectionTests => {
-        const idMapping = idSectionMapping[id];
-        return {
-            section : idMapping.section,
-            tests   : idMapping.tests
-        }
+    const keys = Object.keys(idSectionMapping);
+    // Before creating the output, the keys must be reordered into document order...
+    keys.sort( (id1: string, id2: string) :number => {
+        const id1_ = ids.indexOf(id1);
+        const id2_ = ids.indexOf(id2);
+        if ( id1_ < id2_ ) return -1;
+        else if (id1_ > id2_) return 1;
+        else return 0;
     });
+    
+    // Removing the key and producing just the section-tests pairs that is required for the output
+    // Due to the previous ordering steps, the values are in the right order.
+    return keys.map( (id: string): SectionTests => idSectionMapping[id] );    
 }
 
 
@@ -177,16 +194,12 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
  * * add a `data-epubcheck=true` attribute
  * * add a `data-tests` attribute (defined by respec) with the absolute URL-s of the tests
  * 
+ * @param dom the DOM of the specification file, used to extract the section headers
  * @param spec reference to the specification file
  * @param section_tests list of test descriptions, by sections
  * @returns the modified (HTML) text of the specification
  */
-export async function modify_spec(spec: string, section_tests: TestDescription): Promise<string> {
-    const src_txt: string = await fs.readFile(spec,'utf-8');
-    const dom = new JSDOM(src_txt);
-    if (dom === null) {
-        throw (`${spec} could not be parsed`);
-    }
+export function modify_spec(dom: JSDOM, spec: string, section_tests: TestDescription): string {
     const document = dom.window.document;
 
     for (const section_data of section_tests) {

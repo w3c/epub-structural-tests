@@ -4,7 +4,8 @@
   "description": "Reporting of epubcheck tests as EPUB CR tests",
   "main": "main.js",
   "scripts": {
-    "generate": "./node_modules/.bin/ts-node src/main.ts"
+    "generate": "./node_modules/.bin/ts-node src/main.ts",
+    "test": "./node_modules/.bin/ts-node src/order.ts"
   },
   "author": "Ivan Herman",
   "license": "W3C-20150513",

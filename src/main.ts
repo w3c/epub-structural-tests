@@ -1,5 +1,7 @@
 import { Constants, TestSuite, TestDescription }          from './lib/common';
 import { convert_input, create_test_tables, modify_spec } from './lib/convert';
+import { JSDOM }                                          from "jsdom";
+
 import * as fs_old_school from "fs";
 const fs = fs_old_school.promises;
 
@@ -15,10 +17,17 @@ async function main(): Promise<void> {
     const inp_data = await fs.readFile(Constants.TEST_DATA, 'utf-8');
     const data: TestSuite = JSON.parse(inp_data) as TestSuite;
 
-    const sections: TestDescription = convert_input(data);
+    const spec = Constants.SPEC;
+    const src_txt: string = await fs.readFile(spec,'utf-8');
+    const dom = new JSDOM(src_txt);
+    if (dom === null) {
+        throw (`${spec} could not be parsed`);
+    }
+
+    const sections: TestDescription = convert_input(dom, data);
     const html_fragment: string = create_test_tables(sections);
 
-    const modified_spec: string = await modify_spec(Constants.SPEC,sections);
+    const modified_spec: string = await modify_spec(dom, Constants.SPEC,sections);
 
     await Promise.all([
         fs.writeFile(Constants.TABLE_FRAGMENT, html_fragment),
