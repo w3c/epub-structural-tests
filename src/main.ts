@@ -25,14 +25,18 @@ async function main(): Promise<void> {
     }
 
     const sections: TestDescription = convert_input(dom, data);
-    const html_fragment: string = create_test_tables(sections);
 
-    const modified_spec: string = await modify_spec(dom, Constants.SPEC,sections);
+    console.log(JSON.stringify(sections, null, 4));
 
-    await Promise.all([
-        fs.writeFile(Constants.TABLE_FRAGMENT, html_fragment),
-        fs.writeFile(Constants.SPEC_TMP, modified_spec)
-    ]);
+
+    // const html_fragment: string = create_test_tables(sections);
+
+    // const modified_spec: string = await modify_spec(dom, Constants.SPEC,sections);
+
+    // await Promise.all([
+    //     fs.writeFile(Constants.TABLE_FRAGMENT, html_fragment),
+    //     fs.writeFile(Constants.SPEC_TMP, modified_spec)
+    // ]);
 }
 
 main();
