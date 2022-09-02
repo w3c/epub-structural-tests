@@ -1,5 +1,5 @@
-import { Constants, TestSuite, Test, TestDescription } from './common';
-import { JSDOM }                                       from "jsdom";
+import { Constants, TestSuite, Test, TestReference, TestDescription, Section, SectionTests } from './common';
+import { JSDOM }                                                                             from "jsdom";
 
 import * as fs_old_school from "fs";
 const fs = fs_old_school.promises;
@@ -21,56 +21,100 @@ const fs = fs_old_school.promises;
     return new_element;
 }
 
+
 /**
  * Convert the information as described in the input JSON file into a format more easily usable
  * to generate HTML tables for the tests, one for each specification sections.
  *  
+ * @param dom the DOM of the specification file, used to extract the section headers
  * @param inp information on the tests as described in the input JSON file
  * @returns consolidated tests, grouped by section information
  */
-export function convert_input(inp: TestSuite): TestDescription {
-    // This will become the output
-    const outp: TestDescription = [];
+export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
+    interface IdSectionMapping {
+        [index: string]: SectionTests
+    }
+    const idSectionMapping: IdSectionMapping = {};
 
-    // The data set may not be in section order, e.g., if a feature file contains
-    // tests for different sections. Ordering them here. Incidentally, the
-    // full array is ordered in section text (ie, section number) order.
-    inp = inp.sort( (a: Test, b: Test): number => {
-        if (a.section < b.section) return -1;
-        else if (a.section > b.section) return 1;
-        else return 0;
-    });
+    // just as a shortcut...
+    const document = dom.window.document;
 
-    // This will act as a "switch" to start a new SectionTest structure.
-    let current_section_name = ''
-    for (const test of inp) {
-        // See if a new SectionTest structure should be added:
-        if (current_section_name !== test.section) {
-            // The extra conversions is to pacify Typescript, which otherwise
-            // complains that, e.g., test.id may be undefined. We know it is
-            // not the case due to normalization above, but that goes
-            // beyond what TS can handle...
-            outp.push({
-                section: {
-                    id: test.id,
-                    title: test.section,
-                    title_no_number : test.section.split(' ').slice(1).join(' '),
-                    url: `${Constants.SPEC_URL}#${test.id}`
-                },
-                tests: []
-            })
-            current_section_name = `${test.section}`;
+    // Find the section title based on the ID; the assumption is that
+    // the content of the first header element is the section header
+    const section_title = (id: string): string|null => {
+        const section = document.getElementById(id);
+        if (section) {
+            const header = section.querySelector('h1, h2, h3, h4, h5, h6');
+            if (header !== null) {
+                return header.innerHTML
+            } else {
+                return null
+            }
+        } else {
+            // invalid id?
+            return null
         }
+    }
+
+    // Create a full section structure using the id value
+    const create_Section = (id: string): Section|null => {
+        const title = section_title(id);
+        if (title) {
+            return {
+                title: title,
+                id: id,
+                url: `${Constants.SPEC_URL}#${id}`
+            }
+        } else {
+            return null
+        }
+    }
+
+    // Create an Internal Test structure using the incoming data
+    const create_TestReference = (test: Test): TestReference => {
         const id = `${test.file}_L${test.line}`;
-        outp[outp.length-1].tests.push({
+        return {
             id,
             url: `${Constants.FEATURE_DIR_URL}/${test.file}#L${test.line}`,
             url_table_row : `${Constants.TEST_REPORT_URL}#${id}`,
             test_scenario: test.scenario,
-        });
+        }
+
     }
-    return outp;
-} 
+
+    // Main loop: creating an object, keyed with the section id, and containing
+    // the tests descriptions and the section data 
+    for (const test of inp) {
+        const test_reference = create_TestReference(test);
+        // Loop through the ID values
+        for (const id of test.xref) {
+            // Check if the id is already collected in the section mapping;
+            // if not, add it
+            if (!(id in idSectionMapping)) {
+                const section = create_Section(id);
+                if (section !== null) {
+                    idSectionMapping[id] = {
+                        section,
+                        tests: [test_reference]
+                    }
+                }
+            } else {
+                // the section has already been identified, just push
+                // the new test to the list
+                idSectionMapping[id].tests.push(test_reference)
+            }
+        }
+    }
+
+    // Removing the key and producing just the section-tests pairs that is required for the output
+    return Object.keys(idSectionMapping).map( (id: string): SectionTests => {
+        const idMapping = idSectionMapping[id];
+        return {
+            section : idMapping.section,
+            tests   : idMapping.tests
+        }
+    });
+}
 
 
 /**
