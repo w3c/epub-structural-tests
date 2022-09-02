@@ -1,19 +1,21 @@
 [
-    {
-      "scenario" : "Verify a minimal EPUB",
+   {
       "xref" : [
          "sec-metadata-elem",
          "sec-opf-dcidentifier",
          "sec-opf-dclanguage",
          "sec-opf-dcmes-optional-def"
       ],
+      "line" : 12,
       "file" : "00-minimal/minimal.feature",
-      "line" : 12
+      "scenario" : "Verify a minimal EPUB"
    },
    {
+      "xref" : [
+         "sec-epub-conf"
+      ],
+      "file" : "00-minimal/minimal.feature",
       "line" : 17,
-      "xref" : ["sec-epub-conf"],
-      "scenario" : "Verify a minimal packaged EPUB",
-      "file" : "00-minimal/minimal.feature"
+      "scenario" : "Verify a minimal packaged EPUB"
    }
 ]
