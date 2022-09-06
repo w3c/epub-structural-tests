@@ -1,37 +1,29 @@
 [
-    {
-        "section": "1.1 Something here",
-        "id": "sec-fallbacks-img",
-        "file": "first.feature",
-        "line": 33,
-        "scenario": "lorem ipsum"
-    },
-    {
-        "section": "1.1 Something here",
-        "id": "sec-fallbacks-img",
-        "file": "second.feature",
-        "line": 11,
-        "scenario": "dolor sit amet"
-    },
-    {
-        "section": "1.2 Something else",
-        "id": "sec-manifest-fallbacks",
-        "file": "first.feature",
-        "line": 220,
-        "scenario": "consectetur adipiscing elit"
-    },
-    {
-        "section": "1.3 Something anywhere",
-        "id": "sec-fallbacks-audio",
-        "file": "third.feature",
-        "line": 44,
-        "scenario": "eiusmod tempor incididunt"
-    },
-    {
-        "section": "1.2 Something else",
-        "id": "sec-manifest-fallbacks",
-        "file": "third.feature",
-        "line": 54,
-        "scenario": "eiusmod tempor incididunt"
-    }
+   {
+      "xref" : [
+         "sec-metadata-elem",
+         "sec-opf-dcidentifier",
+         "sec-opf-dclanguage",
+         "sec-opf-dcmes-optional-def"
+      ],
+      "line" : 12,
+      "file" : "00-minimal/minimal.feature",
+      "scenario" : "Verify a minimal EPUB"
+   },
+   {
+      "xref" : [
+         "sec-epub-conf"
+      ],
+      "file" : "00-minimal/minimal.feature",
+      "line" : 17,
+      "scenario" : "Verify a minimal packaged EPUB"
+   },
+   {
+      "xref" : [
+         "phonyid"
+      ],
+      "file" : "Phony/zzz.feature",
+      "line" : 32,
+      "scenario" : "Just to say something, really"
+   }
 ]

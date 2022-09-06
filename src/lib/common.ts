@@ -28,11 +28,8 @@ export namespace Constants {
 
 /** Data corresponding to one single test */
 export interface Test {
-    /** Title of the corresponding section in the spec */
-    section:  string;
-
     /** `id` of the corresponding section in the spec */
-    id:       string;
+    xref:       string[];
 
     /** 
      * The "feature" file that contains the test. If the
@@ -61,9 +58,6 @@ export type TestSuite = Test[];
 export interface Section {
     /** Section title */
     title: string;
-
-    /** Section title without section numbers */
-    title_no_number: string;
 
     /** Id value for the HTML element, to be used when the spec is manipulated */
     id: string;
