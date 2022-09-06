@@ -14,17 +14,18 @@ function data_test_display() {
         }
     }
     
-    /*
     // 2. step: find the sections that have tests associated to them; those are epubcheck tests. 
     // the child details element must be moved ahead (respec puts these at the very end of the element)
     const epubcheck_references = document.querySelectorAll('section[data-epubcheck="true"]');
     for (const section of epubcheck_references) {
         // This is the details element that must be moved
         const details = section.querySelector('details.respec-tests-details');
-        // This is the element that surrounds the header in the generated code 
-        const div_hx = section.firstChild;
+
+        // The header is wrapped into a 'div' element with class 'header-wrapper'. The test reports should come
+        // right after this, so we have to find it:
+        const div_hx = section.querySelector('div.header-wrapper');
+        
         // Move the details element ahead, right after the section header
-        section.insertBefore(details,div_hx.nextSibling);
+        section.insertBefore(details, div_hx.nextSibling);
     }
-    */
 }
