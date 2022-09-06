@@ -14,7 +14,7 @@ const fs = fs_old_school.promises;
  * 
  * @internal
  */
- export function add_child(parent: HTMLElement, element: string, content: string|undefined = undefined): HTMLElement {
+function add_child(parent: HTMLElement, element: string, content: string|undefined = undefined): HTMLElement {
     const new_element = parent.ownerDocument.createElement(element);
     parent.appendChild(new_element);
     if (content !== undefined) new_element.innerHTML = content;
@@ -31,22 +31,19 @@ const fs = fs_old_school.promises;
  * @returns consolidated tests, grouped by section information
  */
 export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
+    const document = dom.window.document;
     interface IdSectionMapping {
         [index: string]: SectionTests
     }
     const idSectionMapping: IdSectionMapping = {};
 
-    // just as a shortcut...
-    const document = dom.window.document;
-
-    // Get the list of all id-s in the document to help in sorting at the end
-
+    // Get the list of all id-s in the document to help sorting at the end
     const ids: string[] = []
     {
         const list = document.getElementsByTagName('section');
         for (let i = 0; i < list.length; i++) {
             const section = list.item(i);
-            const id = section?.id;
+            const id = section?.id || null;
             if (id) ids.push(id);
         }    
     }
@@ -57,11 +54,7 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
         const section = document.getElementById(id);
         if (section) {
             const header = section.querySelector('h1, h2, h3, h4, h5, h6');
-            if (header !== null) {
-                return header.innerHTML
-            } else {
-                return null
-            }
+            return header?.innerHTML || null;
         } else {
             // invalid id?
             return null
@@ -118,8 +111,8 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
         }
     }
 
-    const keys = Object.keys(idSectionMapping);
     // Before creating the output, the keys must be reordered into document order...
+    const keys = Object.keys(idSectionMapping);
     keys.sort( (id1: string, id2: string) :number => {
         const id1_ = ids.indexOf(id1);
         const id2_ = ids.indexOf(id2);
@@ -127,9 +120,9 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
         else if (id1_ > id2_) return 1;
         else return 0;
     });
-    
+
     // Removing the key and producing just the section-tests pairs that is required for the output
-    // Due to the previous ordering steps, the values are in the right order.
+    // Due to the previous ordering step, the values are in the right order.
     return keys.map( (id: string): SectionTests => idSectionMapping[id] );    
 }
 
@@ -153,7 +146,7 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
     for (const table of data) {
         // This is one section...
         const table_section = add_child(full_section, 'section');
-        const h3 = add_child(table_section, 'h3', ` Tests for <a href="${table.section.url}">§${table.section.title}</a>`);
+        const h3 = add_child(table_section, 'h3', ` Tests for the section “<a href="${table.section.url}">${table.section.title}</a>”`);
         h3.id = table.section.id;
 
         const test_table = add_child(table_section, 'table');
@@ -201,15 +194,27 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
  */
 export function modify_spec(dom: JSDOM, spec: string, section_tests: TestDescription): string {
     const document = dom.window.document;
-
     for (const section_data of section_tests) {
         const section = document.querySelector(`section#${section_data.section.id}`);
         if (section === null) {
             console.log(`Could not find section element with id "${section_data.section.id}"`);
         } else {
             section.setAttribute('data-epubcheck', "true");
+
+            // We have to check whether previous runs have already added test references. If so, entries should be added.
             const urls = section_data.tests.map((test) => test.url_table_row);
-            section.setAttribute('data-tests', `${urls}`);
+            const current_test_references = section.getAttribute('data-tests');
+            if (current_test_references === null ) {
+                section.setAttribute('data-tests', `${urls}`);
+            } else {
+                // Using sets makes it sure that no repeated references are added
+                //console.log(`Got here with ${section_data.section.id}`)
+                const current_tests = new Set(current_test_references.split(','));
+                for (let ref of urls) {
+                    current_tests.add(ref);
+                }
+                section.setAttribute('data-tests', `${[...current_tests]}`);
+            }
         }
     }
 

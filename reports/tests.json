@@ -17,5 +17,13 @@
       "file" : "00-minimal/minimal.feature",
       "line" : 17,
       "scenario" : "Verify a minimal packaged EPUB"
+   },
+   {
+      "xref" : [
+         "phonyid"
+      ],
+      "file" : "Phony/zzz.feature",
+      "line" : 32,
+      "scenario" : "Just to say something, really"
    }
 ]

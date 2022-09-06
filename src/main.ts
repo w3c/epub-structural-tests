@@ -23,20 +23,16 @@ async function main(): Promise<void> {
     if (dom === null) {
         throw (`${spec} could not be parsed`);
     }
-
     const sections: TestDescription = convert_input(dom, data);
 
-    console.log(JSON.stringify(sections, null, 4));
+    const html_fragment: string = create_test_tables(sections);
 
+    const modified_spec: string = await modify_spec(dom, Constants.SPEC,sections);
 
-    // const html_fragment: string = create_test_tables(sections);
-
-    // const modified_spec: string = await modify_spec(dom, Constants.SPEC,sections);
-
-    // await Promise.all([
-    //     fs.writeFile(Constants.TABLE_FRAGMENT, html_fragment),
-    //     fs.writeFile(Constants.SPEC_TMP, modified_spec)
-    // ]);
+    await Promise.all([
+        fs.writeFile(Constants.TABLE_FRAGMENT, html_fragment),
+        fs.writeFile(Constants.SPEC_TMP, modified_spec)
+    ]);
 }
 
 main();
