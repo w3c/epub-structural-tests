@@ -4,12 +4,17 @@ function data_test_display() {
     for( const a of test_references ) {
         const href = a.href;
         // This is a bit of a hack, and fragile at that. It is based on the structure of the
-        // epubcheck URL-s, which would be somethings like .../XXX.feature#LXX
-        const path = href.split('/');
-        const fname = path[path.length - 1];
-        a.textContent = fname.match('.feature#') !== null ? fname : fname.split('#')[1];
+        const test_reference = href.split('#')[1];
+        // if the string contains a '.feature' then this is an epubcheck test reference
+        if (test_reference.match(".feature")) {
+            // Can be split further:
+            a.textContent = test_reference.split('/')[1];
+        } else {
+            a.textContent = test_reference;
+        }
     }
     
+    /*
     // 2. step: find the sections that have tests associated to them; those are epubcheck tests. 
     // the child details element must be moved ahead (respec puts these at the very end of the element)
     const epubcheck_references = document.querySelectorAll('section[data-epubcheck="true"]');
@@ -21,4 +26,5 @@ function data_test_display() {
         // Move the details element ahead, right after the section header
         section.insertBefore(details,div_hx.nextSibling);
     }
+    */
 }
