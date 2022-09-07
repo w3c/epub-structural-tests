@@ -6,33 +6,55 @@ import * as fs_old_school from "fs";
 const fs = fs_old_school.promises;
 
 /**
+ * Handle the tests for one specification
+ * 
+ * 1. create a document fragment, to be imported by a respec shell, to display the tests in a table, with suitable links
+ * 2. modify the specification tests by adding the test references following what respec requires
+ */
+
+async function handleOneSpec(fname: string, data: TestSuite): Promise<void> {
+    const fname_path: string[] = fname.split('/');
+    if (fname_path.length != 0) {
+        const base_name: string | undefined = fname_path.pop();   //fname_path[fname_path.length];
+        const table_fragment_name: string = `${Constants.TABLE_FRAGMENTS}${base_name}`;
+        const modified_base_name = `gen-${base_name}`;
+        const modified_fname = `${fname_path.join('/')}/${modified_base_name}`;
+
+        // Get the spec as a DOM
+        const src_text: string = await fs.readFile(fname, 'utf-8');
+        const dom = new JSDOM(src_text);
+        if (dom === null) {
+            console.error(`${fname} could not be parsed`);
+            return;
+        }
+
+        // Convert the relevant input data to the format used in subsequent steps
+        const sections: TestDescription = convert_input(dom, data);
+
+        // Create the HTML fragment for the test tables (as a serialized HTML fragment; 
+        // this will be an input to the final report)
+        const html_fragment: string = create_test_tables(sections);
+
+        // Create the modified version of the spec (as a serialized HTML fragment)
+        const modified_spec: string = modify_spec(dom, sections)
+
+        await Promise.all([
+            fs.writeFile(table_fragment_name, html_fragment),
+            fs.writeFile(modified_fname, modified_spec),
+        ]);
+    }
+} 
+
+/**
  * Master of ceremonies...
  * 
  * 1. read the test data, as extracted from the epubcheck tests
- * 2. convert the test data to a more suitable internal representation (essentially, group the tests by sections)
- * 3. create a document fragment, to be imported by a respec shell, to display the tests in a table, with suitable links
- * 4. modify the specification tests by adding the test references following what respec requires
+ * 2. for each document to be modified and checked run `handleOneSpec` 
  */
 async function main(): Promise<void> {
     const inp_data = await fs.readFile(Constants.TEST_DATA, 'utf-8');
     const data: TestSuite = JSON.parse(inp_data) as TestSuite;
-
-    const spec = Constants.SPEC;
-    const src_txt: string = await fs.readFile(spec,'utf-8');
-    const dom = new JSDOM(src_txt);
-    if (dom === null) {
-        throw (`${spec} could not be parsed`);
-    }
-    const sections: TestDescription = convert_input(dom, data);
-
-    const html_fragment: string = create_test_tables(sections);
-
-    const modified_spec: string = await modify_spec(dom, Constants.SPEC,sections);
-
-    await Promise.all([
-        fs.writeFile(Constants.TABLE_FRAGMENT, html_fragment),
-        fs.writeFile(Constants.SPEC_TMP, modified_spec)
-    ]);
+    await Promise.all(Constants.SPECS.map( (fname) => handleOneSpec(fname, data)));
 }
 
 main();

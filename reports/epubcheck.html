@@ -121,7 +121,15 @@
 			<p>blabla</p>
 		</section>
 
-		<section data-include="fragments/tests.html" data-include-replace="true"></section>
-
+		<section id="sec-test-tables">
+			<h2>Description of the Tests</h2>
+			<div data-include="fragments/index.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+			<div data-include="fragments/meta-property.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+			<div data-include="fragments/link.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+			<div data-include="fragments/rendering.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+			<div data-include="fragments/item-properties.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+			<div data-include="fragments/itemref-properties.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+			<div data-include="fragments/overlays.html" data-oninclude="fixIncludes" data-include-replace="true"></div>
+		</section>
 	</body>
 </html>

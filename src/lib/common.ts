@@ -4,16 +4,21 @@ export namespace Constants {
     export const TEST_REPORT_URL = 'https://w3c.github.io/epub-specs/epub33/reports/epubcheck.html' ;
 
     /** Location for the final report */
-    export const DOCS_DIR: string = 'reports/';
+    export const DOCS_DIR: string = 'reports';
 
     /** Location for the specification source */
-    export const SPEC: string = 'epub33/core/index.html';
-
-    /** Location for the generated, modified specification source */
-    export const SPEC_TMP: string = 'epub33/core/tmp.html';
+    export const SPECS: string[] = [
+        'epub33/core/index.html',
+        'epub33/core/vocab/item-properties.html',
+        'epub33/core/vocab/itemref-properties.html',
+        'epub33/core/vocab/link.html',
+        'epub33/core/vocab/meta-property.html',
+        'epub33/core/vocab/rendering.html',
+        'epub33/core/vocab/overlays.html',
+    ];
 
     /** Location for the HTML fragment on implementation lists */
-    export const TABLE_FRAGMENT: string = `${DOCS_DIR}/fragments/tests.html`;
+    export const TABLE_FRAGMENTS: string = `${DOCS_DIR}/fragments/`;
 
     /** Location for the raw data for the tests */
     export const TEST_DATA: string = `${DOCS_DIR}/tests.json`;
