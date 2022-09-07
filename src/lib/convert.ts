@@ -146,7 +146,7 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
     for (const table of data) {
         // This is one section...
         const table_section = add_child(full_section, 'section');
-        const h3 = add_child(table_section, 'h3', ` Tests for the section “<a href="${table.section.url}">${table.section.title}</a>”`);
+        const h3 = add_child(table_section, 'h3', ` Section “<a href="${table.section.url}">${table.section.title}</a>”`);
         h3.id = table.section.id;
 
         const test_table = add_child(table_section, 'table');
@@ -177,7 +177,9 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
     }
 
     // This is where the object is turned into an XML serialization
-    return full_section.outerHTML;
+    // Note that the top 'div' element is removed because otherwise respec does not include the sections
+    // as part of the proper TOC values...
+    return full_section.outerHTML.replace('<div>','').replace('</div>','');
 }
 
 
