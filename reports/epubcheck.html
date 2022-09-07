@@ -93,11 +93,11 @@
 						companyURL: "https://www.w3.org",
 					},
 					{
-						name: "Dan Lazin",
-						company: "Google LLC",
-						w3cid: 130027,
-						companyURL: "https://www.google.com",
-					}
+                    name: "Matt Garrish",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org",
+					w3cid: 51655
+                	},
 				],
 				processVersion: 2020,
 				includePermalinks: true,
@@ -112,13 +112,33 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>Description of the Epubcheck tests used for EPUB 3.3.</p>
+			<p>Description of the Epubcheck tests used for the EPUB 3.3 Content specification.</p>
 		</section>
 		<section id="sotd"></section>
 
 		<section>
 			<h2>Introduction</h2>
-			<p>blabla</p>
+			<p>
+				<a href="https://www.w3.org/publishing/epubcheck/">Epubcheck</a> provides an extensive testing of EPUB instances, based on the <a href="https://www.w3.org/TR/epub-33/">EPUB 3.3</a> specification. It is widely used by the Publishing industry; it is an essential element of most existing publishing workflows.
+			</p>
+			<p>
+				The tool checks an EPUB publication for many different possible problems, including HTML or CSS validity of the content documents (using the standard HTML and CSS validating tools) but also checks the conformance of the publication for the <a href="https://www.w3.org/TR/epub-33/">EPUB 3.3</a> specification: constraints on the content documents, structure of the package file, etc. As described in the <a href="https://w3c.github.io/epub-specs/epub33/reports/exit_criteria.html#exit-criteria-core">EPUB 3.3 Testing Strategies</a>, Epubcheck constitutes an essential part of the exit criteria for the EPUB 3.3 core specification.
+			</p>
+			<p>
+				The tables below gather references to all the Epubcheck tests that are relevant for the EPUB 3.3 specification proper, i.e., which test the various requirements, constraints, etc., specified by that document. The tables do <em>not</em> include tests that are relevant to, e.g., the detailed validity of XHTML or SVG content documents. Those are indeed not specifically defined by the EPUB 3.3 specification which, instead, refers to the respective W3C specifications.
+			</p>
+
+			<p>
+				This document provides a short overview for each test, grouped into separate tables by the relevant sections of the 
+				EPUB 3.3 specification. For each test, the columns in the tables are as follows: 
+			</p>
+
+			<ol>
+				<li>The identification of the test, providing a link into the test itself on the <a href="https://github.com/w3c/epubcheck">ebupcheck repository</a>. Note that the organization of the epubcheck tests involve larger test files, containing several tests; the links provided in the table links directly to a test within those test files.</li>
+				<li>A short description for each test.</li>
+			</ol>
+
+			<p>Note that the same tests may appear in several tables, based on the relevancy of that test for different features.</p>
 		</section>
 
 		<section id="sec-test-tables">
@@ -129,7 +149,7 @@
 			<div data-include="fragments/rendering.html" data-include-replace="true"></div>
 			<div data-include="fragments/item-properties.html" data-include-replace="true"></div>
 			<div data-include="fragments/itemref-properties.html" data-include-replace="true"></div>
-			<div data-include="fragments/overlays.html"  data-include-replace="true"></div>
+			<div data-include="fragments/overlays.html" data-include-replace="true"></div>
 		</section>
 	</body>
 </html>
