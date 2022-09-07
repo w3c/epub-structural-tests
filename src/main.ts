@@ -15,10 +15,9 @@ const fs = fs_old_school.promises;
 async function handleOneSpec(fname: string, data: TestSuite): Promise<void> {
     const fname_path: string[] = fname.split('/');
     if (fname_path.length != 0) {
-        const base_name: string | undefined = fname_path.pop();   //fname_path[fname_path.length];
+        const base_name: string | undefined = fname_path.pop();
         const table_fragment_name: string = `${Constants.TABLE_FRAGMENTS}${base_name}`;
-        const modified_base_name = `gen-${base_name}`;
-        const modified_fname = `${fname_path.join('/')}/${modified_base_name}`;
+        const modified_fname =  base_name === 'index.html' ? `${Constants.SPEC_DIR}/index.html` :  `${Constants.VOCAB_DIR}/${base_name}`;
 
         // Get the spec as a DOM
         const src_text: string = await fs.readFile(fname, 'utf-8');

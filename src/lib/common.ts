@@ -6,15 +6,32 @@ export namespace Constants {
     /** Location for the final report */
     export const DOCS_DIR: string = 'reports';
 
+    /** Location for the resulting specs */
+    export const SPEC_DIR: string = 'epub33/core'
+
+    /** Location for the vocabulary specs */
+    export const VOCAB_DIR: string = 'epub33/core/vocab'
+
     /** Location for the specification source */
     export const SPECS: string[] = [
-        'epub33/core/index.html',
-        'epub33/core/vocab/item-properties.html',
-        'epub33/core/vocab/itemref-properties.html',
-        'epub33/core/vocab/link.html',
-        'epub33/core/vocab/meta-property.html',
-        'epub33/core/vocab/rendering.html',
-        'epub33/core/vocab/overlays.html',
+        'epub33-orig/core/index.html',
+        'epub33-orig/core/vocab/item-properties.html',
+        'epub33-orig/core/vocab/itemref-properties.html',
+        'epub33-orig/core/vocab/link.html',
+        'epub33-orig/core/vocab/meta-property.html',
+        'epub33-orig/core/vocab/rendering.html',
+        'epub33-orig/core/vocab/overlays.html',
+    ];
+
+    /** Location online for the specification source */
+    export const SPECS_ONLINE: string[] = [
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/index.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/item-properties.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/itemref-properties.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/link.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/meta-property.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/rendering.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/overlays.html',
     ];
 
     /** Location for the HTML fragment on implementation lists */

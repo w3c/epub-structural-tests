@@ -1,4 +1,4 @@
-<html><head></head><body><section id="app-meta-property-vocab" class="vocab">
+<section id="app-meta-property-vocab" class="vocab">
 	<h3>Meta properties vocabulary</h3>
 	
 	<p>The properties in this vocabulary are usable in the [^meta^]
@@ -6,7 +6,8 @@
 	
 	<p>Unless indicated otherwise in its "Extends" field, the properties defined in this section are used to
 		define <a href="#subexpression">subexpressions</a>: in other words, a [^meta^] element
-		carrying a property defined in this section MUST have a <code><a href="#attrdef-refines">refines</a></code> attribute referencing a resource or expression being
+		carrying a property defined in this section MUST have a <code><a
+				href="#attrdef-refines">refines</a></code> attribute referencing a resource or expression being
 		augmented.</p>
 	
 	<p>The prefix URL for <a href="#sec-default-vocab">referencing these properties</a> is
@@ -52,19 +53,19 @@
 		</table>
 		
 		<aside class="example" title="Author name expressed in English and Japanese">
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
-   &lt;dc:creator id="creator"&gt;
+   &lt;dc:creator id="creator">
       Haruki Murakami
-   &lt;/dc:creator&gt;
+   &lt;/dc:creator>
    &lt;meta
        refines="#creator"
        property="alternate-script"
-       xml:lang="ja"&gt;
+       xml:lang="ja">
       村上 春樹
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-authority">
@@ -90,7 +91,8 @@
 						<code>xsd:string</code>
 						<div class="note">
 							<p>The former <abbr title="International Digital Publishing Forum">IDPF</abbr> EPUB
-								3 Working Group maintained a <a href="https://idpf.github.io/epub-registries/authorities/">registry of
+								3 Working Group maintained a <a
+									href="https://idpf.github.io/epub-registries/authorities/">registry of
 									subject authorities</a> for use with this property. This Working Group no
 								longer maintains the registry.</p>
 						</div>
@@ -111,7 +113,7 @@
 			</tbody>
 		</table>
 		<aside class="example" title="Expressing A BISAC subject heading">
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:subject
       id="subject01"&gt;
@@ -119,11 +121,11 @@
    &lt;/dc:subject&gt;
    &lt;meta
        refines="#subject01"
-       property="authority"&gt;
+       property="authority">
       BISAC
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-belongs-to-collection">
@@ -142,14 +144,16 @@
 						<p>The <code>belongs-to-collection</code> property identifies the name of a collection
 							to which the [=EPUB publication=] belongs. An EPUB publication MAY belong to one or more
 							collections.</p>
-						<p>It is also possible to chain these properties using the <a href="#attrdef-refines"><code>refines</code> attribute</a> to indicate that one collection is
+						<p>It is also possible to chain these properties using the <a href="#attrdef-refines"
+									><code>refines</code> attribute</a> to indicate that one collection is
 							itself a member of another collection.</p>
 						<p>To allow [=reading systems=] to organize collections and avoid naming collisions (e.g.,
 							unrelated collections might share a similar name, or different editions of a
 							collection could be released), [=EPUB creators=] SHOULD provide an identifier that uniquely
 							identifies the instance of the collection. The <code>dcterms:identifier</code>
 							property must carry this identifier.</p>
-						<p>The collection MAY more precisely define its nature by attaching a <a href="#collection-type"><code>collection-type</code></a> property.</p>
+						<p>The collection MAY more precisely define its nature by attaching a <a
+								href="#collection-type"><code>collection-type</code></a> property.</p>
 						<p>The position of the EPUB publication within the collection MAY be provided by
 							attaching a <a href="#group-position"><code>group-position</code> property</a>.</p>
 					</td>
@@ -187,7 +191,7 @@
       set
    &lt;/meta&gt;
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-collection-type">
@@ -257,7 +261,7 @@
 		</table>
 		<aside class="example" title="Identifying a publication belongs to a series">
 			<p>In this example, the publication belongs to the series The New French Cuisine Masters.</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;meta
        property="belongs-to-collection"
@@ -270,7 +274,7 @@
       series
    &lt;/meta&gt;
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-display-seq">
@@ -347,19 +351,19 @@
 		</table>
 		
 		<aside class="example" title="Expressing an author name for sorting">
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:creator
-       id="creator01"&gt;
+       id="creator01">
       Lewis Carroll
-   &lt;/dc:creator&gt;
+   &lt;/dc:creator>
    &lt;meta
        refines="#creator01"
-       property="file-as"&gt;
+       property="file-as">
       Carroll, Lewis
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-group-position">
@@ -379,7 +383,8 @@
 							[=EPUB publication=] is ordered relative to other works belonging to the same group
 							(whether all EPUB publications or not).</p>
 						<p>[=EPUB creators=] can attach the <code>group-position</code> property to any metadata
-							property that establishes the group but it is typically associated with the <a href="#belongs-to-collection"><code>belongs-to-collection</code>
+							property that establishes the group but it is typically associated with the <a
+								href="#belongs-to-collection"><code>belongs-to-collection</code>
 							property</a>.</p>
 						<p>An EPUB publication can belong to more than one group.</p>
 					</td>
@@ -403,7 +408,7 @@
 		</table>
 		<aside class="example" title="Identifying a publication's position in a set">
 			<p>In this example, the publication is the second in the Lord of the Rings set of books.</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;meta property="belongs-to-collection" id="c01"&gt;
       The Lord of the Rings
@@ -419,7 +424,7 @@
       2
    &lt;/meta&gt;
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 		<aside class="example" title="Expressing a decimal-separated value for position">
 			<p>In this example, the decimal-separated value in the <code>group-position</code> attribute
@@ -428,21 +433,21 @@
    …
    &lt;meta
        property="belongs-to-collection"
-       id="cygnus-x-1"&gt;
+       id="cygnus-x-1">
       Physical Review D
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#cygnus-x-1"
-       property="collection-type"&gt;
+       property="collection-type">
       series
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#cygnus-x-1"
-       property="group-position"&gt;
+       property="group-position">
       98.4
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-identifier-type">
@@ -480,7 +485,8 @@
 				<tr>
 					<th>Extends:</th>
 					<td>
-						[^dc:identifier^], <a href="#sec-opf-dcmes-optional-def"><code>dc:source</code></a>
+						[^dc:identifier^], <a href="#sec-opf-dcmes-optional-def"
+								><code>dc:source</code></a>
 					</td>
 				</tr>
 			</tbody>
@@ -488,20 +494,20 @@
 		<aside class="example" title="Indicating an identifier is an ISBN">
 			<p>In this example, the ONIX code list 5 scheme defines the meaning of the numeric value
 					<code>15</code>.</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:identifier
-       id="isbn-id"&gt;
+       id="isbn-id">
       urn:isbn:9780101010101
-   &lt;/dc:identifier&gt;
+   &lt;/dc:identifier>
    &lt;meta
       refines="#isbn-id"
       property="identifier-type"
-      scheme="onix:codelist5"&gt;
+      scheme="onix:codelist5">
      15
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-meta-auth">
@@ -509,7 +515,8 @@
 		
 		<p id="meta-auth">Use of this property is <a href="#deprecated">deprecated</a>.</p>
 		
-		<p>Refer to the <a href="http://idpf.org/epub/30/spec/epub30-publications-20111011.html#meta-auth"><code>meta-auth</code> property definition</a> in&nbsp;[[!epubpublications-30]] for more
+		<p>Refer to the <a href="http://idpf.org/epub/30/spec/epub30-publications-20111011.html#meta-auth"
+					><code>meta-auth</code> property definition</a> in [[!epubpublications-30]] for more
 			information.</p>
 	</section>
 	<section id="sec-role">
@@ -552,7 +559,8 @@
 				<tr>
 					<th>Extends:</th>
 					<td>
-						[^dc:contributor^], [^dc:creator^], <a href="#sec-opf-dcmes-optional-def"><code>dc:publisher</code></a>
+						[^dc:contributor^], [^dc:creator^], <a
+							href="#sec-opf-dcmes-optional-def"><code>dc:publisher</code></a>
 					</td>
 				</tr>
 			</tbody>
@@ -560,54 +568,54 @@
 		<aside class="example" title="Differentiating creator roles">
 			<p>In this example, MARC Relators vocabulary values differentiate the author from the illustrator of
 				a work.</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:creator
-      id="creator01"&gt;
+      id="creator01">
      Lewis Carroll
-   &lt;/dc:creator&gt;
+   &lt;/dc:creator>
    &lt;meta
        refines="#creator01"
        property="role"
-       scheme="marc:relators"&gt;
+       scheme="marc:relators">
       aut
-   &lt;/meta&gt;
+   &lt;/meta>
 
    &lt;dc:creator
-       id="creator02"&gt;
+       id="creator02">
       John Tenniel
-   &lt;/dc:creator&gt;
+   &lt;/dc:creator>
    &lt;meta
        refines="#creator02"
        property="role"
-       scheme="marc:relators"&gt;
+       scheme="marc:relators">
       ill
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 		<aside class="example" title="Identifying a creator who has multiple roles">
 			<p>In this example, the creator is both the author and illustrator of the work.</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:creator
-       id="creator01"&gt;
+       id="creator01">
       Maurice Sendak
-   &lt;/dc:creator&gt;
+   &lt;/dc:creator>
    &lt;meta
        refines="#creator01"
        property="role"
-       scheme="marc:relators"&gt;
+       scheme="marc:relators">
       aut
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#creator01"
        property="role"
-       scheme="marc:relators"&gt;
+       scheme="marc:relators">
       ill
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-source-of">
@@ -626,7 +634,9 @@
 						<p>The <code>source-of</code> property indicates a unique aspect of an adapted source
 							resource that has been retained in the [=EPUB publication=]. </p>
 						<p>This specification defines the <code>pagination</code> value to indicate that the
-							referenced <code>dc:source</code> element is the source of the <a href="http://idpf.org/epub/vocab/structure/#pagebreak"><code>pagebreak</code> properties</a> defined in the content.</p>
+							referenced <code>dc:source</code> element is the source of the <a
+								href="http://idpf.org/epub/vocab/structure/#pagebreak"
+									><code>pagebreak</code> properties</a> defined in the content.</p>
 					</td>
 				</tr>
 				<tr>
@@ -656,36 +666,36 @@
 			navigation.</p>
 		
 		<aside class="example" title="Identifying the print pagination source of a publication">
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:identifier
-       id="isbn-id"&gt;
+       id="isbn-id">
       urn:isbn:9780101010101
-   &lt;/dc:identifier&gt;
+   &lt;/dc:identifier>
    &lt;meta
        refines="#isbn-id"
        property="identifier-type"
-       scheme="onix:codelist5"&gt;
+       scheme="onix:codelist5">
       15
-   &lt;/meta&gt;
+   &lt;/meta>
 
    &lt;dc:source
-       id="src-id"&gt;
+       id="src-id">
       urn:isbn:9780375704024
-   &lt;/dc:source&gt;
+   &lt;/dc:source>
    &lt;meta
        refines="#src-id"
        property="identifier-type"
-       scheme="onix:codelist5"&gt;
+       scheme="onix:codelist5">
       15
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#src-id"
-       property="source-of"&gt;
+       property="source-of">
       pagination
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-term">
@@ -726,7 +736,7 @@
 		</table>
 		<aside class="example" title="Expressing a BISAC code for a subject heading">
 			<p>The following example shows a BISAC code for a subject heading.</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:subject
        id="subject01"&gt;
@@ -734,16 +744,16 @@
    &lt;/dc:subject&gt;
    &lt;meta
        refines="#subject01"
-       property="authority"&gt;
+       property="authority">
       BISAC
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#subject01"
-       property="term"&gt;
+       property="term">
       FIC024000
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-title-type">
@@ -791,189 +801,188 @@
 			</tbody>
 		</table>
 		<aside class="example" title="Expressing different title types">
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
-   &lt;dc:title id="t1"&gt;
+   &lt;dc:title id="t1">
       A Dictionary of Modern English Usage
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t1"
-       property="title-type"&gt;
+       property="title-type">
       main
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="t2"&gt;
+   &lt;dc:title id="t2">
       First Edition
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t2"
-       property="title-type"&gt;
+       property="title-type">
       edition
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="t3"&gt;
+   &lt;dc:title id="t3">
       Fowler's
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t3"
-       property="title-type"&gt;
+       property="title-type">
       short
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 		
 		<aside class="example" title="Expressing complex titles">
 			<p id="cookbook-ex">This example shows how to classify the title "The Great Cookbooks of the World:
 				Mon premier guide de cuisson, un Mémoire. The New French Cuisine Masters, Volume Two. Special
 				Anniversary Edition".</p>
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
    …
    &lt;dc:title
        id="t1"
-       xml:lang="fr"&gt;
+       xml:lang="fr">
       Mon premier guide de cuisson, un Mémoire
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t1"
-       property="title-type"&gt;
+       property="title-type">
       main
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#t1"
-       property="display-seq"&gt;
+       property="display-seq">
       2
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="t2"&gt;
+   &lt;dc:title id="t2">
       The Great Cookbooks of the World
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t2"
-       property="title-type"&gt;
+       property="title-type">
       collection
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#t2"
-       property="display-seq"&gt;
+       property="display-seq">
       1
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="t3"&gt;
+   &lt;dc:title id="t3">
       The New French Cuisine Masters
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t3"
-       property="title-type"&gt;
+       property="title-type">
       collection
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#t3"
-       property="display-seq"&gt;
+       property="display-seq">
       3
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="t4"&gt;
+   &lt;dc:title id="t4">
       Special Anniversary Edition
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t4"
-       property="title-type"&gt;
+       property="title-type">
       edition
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#t4"
-       property="display-seq"&gt;
+       property="display-seq">
       4
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="t5"&gt;
+   &lt;dc:title id="t5">
       The Great Cookbooks of the World: 
       Mon premier guide de cuisson, un Mémoire. 
       The New French Cuisine Masters, Volume Two. 
       Special Anniversary Edition
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#t5"
-       property="title-type"&gt;
+       property="title-type">
       expanded
-   &lt;/meta&gt;
+   &lt;/meta>
    …
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 	<section id="sec-property-examples">
 		<h5>Examples</h5>
 		<aside class="example" title="A typical set of refines metadata in an EPUB publication">
-			<pre>&lt;metadata …&gt;
+			<pre>&lt;metadata …>
 
-   &lt;dc:identifier id="pub-id"&gt;
+   &lt;dc:identifier id="pub-id">
       urn:uuid:A1B0D67E-2E81-4DF5-9E67-A64CBE366809
-   &lt;/dc:identifier&gt;
+   &lt;/dc:identifier>
 
-   &lt;dc:identifier id="isbn-id"&gt;
+   &lt;dc:identifier id="isbn-id">
       urn:isbn:9780101010101
-   &lt;/dc:identifier&gt;
+   &lt;/dc:identifier>
    &lt;meta
        refines="#isbn-id"
        property="identifier-type"
-       scheme="onix:codelist5"&gt;
+       scheme="onix:codelist5">
       15
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:source id="src-id"&gt;
+   &lt;dc:source id="src-id">
       urn:isbn:9780375704024
-   &lt;/dc:source&gt;
+   &lt;/dc:source>
    &lt;meta
        refines="#src-id"
        property="identifier-type"
-       scheme="onix:codelist5"&gt;
+       scheme="onix:codelist5">
       15
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:title id="title"&gt;
+   &lt;dc:title id="title">
       Norwegian Wood
-   &lt;/dc:title&gt;
+   &lt;/dc:title>
    &lt;meta
        refines="#title"
-       property="title-type"&gt;
+       property="title-type">
       main
-   &lt;/meta&gt;
+   &lt;/meta>
 
-   &lt;dc:language&gt;
+   &lt;dc:language>
       en
-   &lt;/dc:language&gt;
+   &lt;/dc:language>
 
    &lt;dc:creator
-       id="creator"&gt;
+       id="creator">
       Haruki Murakami
-   &lt;/dc:creator&gt;
+   &lt;/dc:creator>
    &lt;meta
        refines="#creator"
        property="role"
        scheme="marc:relators"
-       id="role"&gt;
+       id="role">
       aut
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#creator"
        property="alternate-script"
-       xml:lang="ja"&gt;
+       xml:lang="ja">
       村上 春樹
-   &lt;/meta&gt;
+   &lt;/meta>
    &lt;meta
        refines="#creator"
-       property="file-as"&gt;
+       property="file-as">
       Murakami, Haruki
-   &lt;/meta&gt;
+   &lt;/meta>
 
    &lt;meta
-       property="dcterms:modified"&gt;
+       property="dcterms:modified">
       2011-01-01T12:00:00Z
-   &lt;/meta&gt;
+   &lt;/meta>
 
-&lt;/metadata&gt;</pre>
+&lt;/metadata></pre>
 		</aside>
 	</section>
 </section>
-</body></html>
