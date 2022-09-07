@@ -9,23 +9,35 @@ function data_test_display() {
         if (test_reference.match(".feature")) {
             // Can be split further:
             a.textContent = test_reference.split('/')[1];
+            // give a separate class name to these references if we want to give them a distinctive look
+            a.className = 'epubcheck';
         } else {
             a.textContent = test_reference;
         }
     }
     
-    // 2. step: find the sections that have tests associated to them; those are epubcheck tests. 
-    // the child details element must be moved ahead (respec puts these at the very end of the element)
+    // 2. step: find the sections that have tests associated to them (those are usually epubcheck tests). 
+    // The child details element must be moved ahead (respec puts these at the very end of the section element)
+    // right after the header of the section
     const epubcheck_references = document.querySelectorAll('section[data-epubcheck="true"]');
     for (const section of epubcheck_references) {
-        // This is the details element that must be moved
-        const details = section.querySelector('details.respec-tests-details');
-
-        // The header is wrapped into a 'div' element with class 'header-wrapper'. The test reports should come
-        // right after this, so we have to find it:
-        const div_hx = section.querySelector('div.header-wrapper');
-        
-        // Move the details element ahead, right after the section header
-        section.insertBefore(details, div_hx.nextSibling);
+        // There may be several 'details' elements in the section; we have to locate the one that
+        // has been "attached" to the section element proper. That is the one that has to be moved.
+        const all_details = section.querySelectorAll('details.respec-tests-details');
+        let details = null;
+        for (const d of all_details){
+            if (section.isEqualNode(d.parentNode)) {
+                details = d;
+                break;
+            }
+        }
+        if(details !== null) {
+            // The header is wrapped into a 'div' element with class 'header-wrapper'. The test reports should come
+            // right after this, so we have to find it:
+            const div_hx = section.querySelector('div.header-wrapper');
+            
+            // Move the details element ahead, right after the section header
+            section.insertBefore(details, div_hx.nextSibling);
+        }
     }
 }
