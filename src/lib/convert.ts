@@ -137,8 +137,8 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
  * @returns HTML fragment serialized as string
  */
  export function create_test_tables(data: TestDescription): string {
-    const dom: DocumentFragment = JSDOM.fragment('<section id="sec-test-tables"><h2>Description of the Tests</h2></section>');
-    const full_section = dom.querySelector('section');
+    const dom: DocumentFragment = JSDOM.fragment('<div></div>');
+    const full_section = dom.querySelector('div');
 
     // This should not happen, but we have to keep the TS compiler happy...
     if (full_section === null) return '';
@@ -188,11 +188,10 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
  * * add a `data-tests` attribute (defined by respec) with the absolute URL-s of the tests
  * 
  * @param dom the DOM of the specification file, used to extract the section headers
- * @param spec reference to the specification file
  * @param section_tests list of test descriptions, by sections
  * @returns the modified (HTML) text of the specification
  */
-export function modify_spec(dom: JSDOM, spec: string, section_tests: TestDescription): string {
+export function modify_spec(dom: JSDOM, section_tests: TestDescription): string {
     const document = dom.window.document;
     for (const section_data of section_tests) {
         const section = document.querySelector(`section#${section_data.section.id}`);
