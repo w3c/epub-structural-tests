@@ -1,0 +1,958 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+		<meta charset="utf-8">
+		<title>EPUB 3.3</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="./biblio.js" class="remove"></script>
+		<script src="../common/js/css-inline.js" class="remove"></script>
+		<script src="../common/js/add-caution-hd.js" class="remove"></script>
+		<script src="../common/js/data-test-display.js" class="remove"></script>
+		<script class="remove">
+			//<![CDATA[
+            var respecConfig = {
+                group: "epub",
+                wgPublicList: "public-epub-wg",
+                specStatus: "ED",
+                shortName: "epub-33",
+                edDraftURI: "https://w3c.github.io/epub-specs/epub33/core/",
+                implementationReportURI: "https://w3c.github.io/epub-specs/epub33/reports/",
+                crEnd: "2022-10-30",
+                previousPublishDate: "2021-07-12",
+                previousMaturity: "WD",
+                copyrightStart: "1999",
+                editors:[
+                {
+                    name: "Matt Garrish",
+                    company: "DAISY Consortium",
+                    companyURL: "https://daisy.org",
+					w3cid: 51655
+                },
+				{
+					name: "Ivan Herman",
+					url: "https://www.w3.org/People/Ivan/",
+					company: "W3C",
+					w3cid: 7382,
+					orcid: "0000-0003-0782-2704",
+					companyURL: "https://www.w3.org",
+				},
+				{
+					name: "Dave Cramer",
+					company: "Invited Expert",
+					w3cid: 65283
+				}],
+                includePermalinks: true,
+                permalinkEdge: true,
+                permalinkHide: false,
+                github: {
+                    repoURL: "https://github.com/w3c/epub-specs",
+                    branch: "main"
+                },
+                localBiblio: biblio,
+                preProcess:[inlineCustomCSS],
+                postProcess:[addCautionHeaders, data_test_display],
+                testSuiteURI: "https://w3c.github.io/epub-tests/index.html",
+                lint: {
+                     "wpt-tests-exist": true,
+				},
+				xref: {
+					profile: "web-platform",
+					specs: ["epub-rs-33"]
+				}
+            };//]]>
+		</script>
+		<style>
+			pre {
+				white-space: break-spaces !important;
+			}
+		</style>
+	</head>
+	<body>
+		<section id="abstract">
+			<p>EPUB® 3 defines a distribution and interchange format for digital publications and documents. The EPUB
+				format provides a means of representing, packaging, and encoding structured and semantically enhanced
+				web content — including HTML, CSS, SVG, and other resources — for distribution in a single-file
+				container.</p>
+			<p>This specification defines the authoring requirements for [=EPUB publications=] and represents the third
+				major revision of the standard.</p>
+		</section>
+		<section id="sotd">
+
+		</section>
+		<section id="sec-epub-conf" data-epubcheck="true" data-tests="https://w3c.github.io/epub-specs/epub33/reports/epubcheck.html#00-minimal/minimal.feature_L17">
+			<h2>EPUB publication conformance</h2>
+
+			<p>An [=EPUB publication=]:</p>
+
+			<ul class="conformance-list">
+				<li>
+					<p id="confreq-package">MUST define at least one rendering of its content as follows:</p>
+					<ul class="conformance-list">
+						<li>
+							<p id="confreq-package-doc">MUST contain a [=package document=] that conforms to <a href="#sec-package-doc"></a> and meet all [=publication resource=] requirements for
+								the package document.</p>
+						</li>
+						<li>
+							<p id="confreq-nav">MUST contain an [=EPUB navigation document=] that conforms to <a href="#sec-nav"></a>.</p>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<p id="confreq-a11y">SHOULD conform to the accessibility requirements defined in
+						[[epub-a11y-11]].</p>
+				</li>
+				<li>
+					<p id="confreq-ocf">MUST be packaged in an [=EPUB container=] as defined in <a href="#sec-ocf"></a>.</p>
+				</li>
+			</ul>
+
+			<p id="confreq-res-location">In addition, all publication resources MUST adhere to the requirements in <a href="#sec-publication-resources"></a>.</p>
+
+			<p>The rest of this specification covers specific conformance details.</p>
+
+			<section id="sec-conformance-checking" class="informative">
+				<h3>Conformance checking</h3>
+
+				<p>Due to the complexity of this specification and number of technologies used in [=EPUB publications=],
+					[=EPUB creators=] are advised to use an [=EPUB conformance checker=] to verify the conformance of
+					their content.</p>
+
+				<p><a href="https://www.w3.org/publishing/epubcheck/">EPUBCheck</a> is the de facto EPUB conformance
+					checker used by the publishing industry and has been updated with each new version of EPUB. It is
+					integrated into a number of authoring tools and also available in alternative interfaces and other
+					languages (for more information, refer to its <a href="https://www.w3.org/publishing/epubcheck/docs/apps-and-tools/">Apps and Tools
+					page</a>).</p>
+
+				<p>When verifying their EPUB publications, EPUB creators should ensure they do not violate the
+					requirements of this specification (practices identified by the keywords "MUST", "MUST NOT", and
+					"REQUIRED"). These types of issues will often result in EPUB publications not rendering or rendering
+					in inconsistent ways. These issues are typically reported as errors or critical errors.</p>
+
+				<p>EPUB creators should also ensure that their EPUB publications do not violate the recommendations of
+					this specification (practices identified by the keywords "SHOULD", "SHOULD NOT", and "RECOMMENDED").
+					Failure to follow these practices does not result in an invalid EPUB publication but may lead to
+					interoperability problems and other issues that impact the user reading experience. These issues are
+					typically reported as warnings.</p>
+
+				<div class="note">
+					<p>Vendors, distributors, and other retailers of EPUB publications should consider the importance of
+						recommended practices before basing their acceptance or rejection on a zero-issue outcome from
+						an EPUB conformance checker. There will be legitimate reasons why EPUB creators cannot follow
+						recommended practices in all cases.</p>
+				</div>
+			</section>
+		</section>
+		<section id="sec-publication-resources">
+			<h2>Publication resources</h2>
+
+			<section id="sec-pub-res-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>An [=EPUB publication=] is made up of many different categories of resources, not all of which are
+					mutually exclusive. Some resources are [=publication resources=], some are not. Some publication
+					resources are allowed in the [=EPUB spine | spine=] by default, while all others require fallbacks.
+					Some resources can be used in rendering [=EPUB content documents=], while others can only be used
+					with fallbacks.</p>
+
+				<p>Trying to understand these differences by reading the technical definitions of each category of
+					resource can be complex. To make the categorizations easier to understand, this introduction uses
+					the concept of different planes to explain how resources are grouped and referred to.</p>
+
+				<p>The three planes are:</p>
+
+				<ul>
+					<li>The [=manifest plane=] — The manifest plane holds all the resources of the EPUB
+						publication (namely, publication resources and [=linked resources=]).</li>
+					<li>The [=spine plane=] — The spine plane holds only the resources used in rendering the spine
+						(namely, EPUB content documents and [=foreign content documents=]).</li>
+					<li>The [=content plane=] — The content plane holds only the resources used in the rendering
+						of EPUB and foreign content documents (namely, [=core media type resources=], [=foreign
+						resources=] and [=exempt resources=]).</li>
+				</ul>
+
+				<p>The same resource may exist on more than one plane and will be referred to differently in this
+					specification depending on which plane is being discussed. For example, a core media type resource
+					used in the rendering of an EPUB content document (on the content plane) may also be a foreign
+					content document if it is also listed in the spine (the spine plane).</p>
+
+				<p>The following sections describe these planes in more detail.</p>
+
+				<div class="note">
+					<p>Refer to <a href="#publication-resources-example"></a> for a detailed example showing how
+						resources fit into the different planes.</p>
+				</div>
+
+				<section id="sec-manifest-plane">
+					<h4>The manifest plane</h4>
+
+					<p>To <dfn class="export" data-lt-no-plural="">manifest plane</dfn> defines all the resources of an
+						[=EPUB publication=]. It is analogous to the [=package document=] [=EPUB manifest | manifest=],
+						but includes resources not present in that list.</p>
+
+					<p>The primary resources in this group are designated [=publication resources=], which are all the
+						resources used in rendering an EPUB publication to the user. [=EPUB creators=] always have to
+						list these resources in the [^manifest^] element.</p>
+
+					<p>Publication resources are further classified by their use(s) in the [=spine plane=] and [=content
+						plane=].</p>
+
+					<p>The manifest plane also contains a set of [=linked resources=]. These resources are tangential to
+						the direct rendering. They include, for example, metadata records and links to external content
+						(e.g., where to purchase an EPUB publication).</p>
+
+					<p>Unlike publication resources, they are not listed in the package document manifest (i.e., because
+						they are not essential to rendering the EPUB publication). They are instead defined in [^link^]
+						elements in the package document metadata. These elements define their nature and purpose
+						similar to how manifest [^item^] elements define publication resource. (In this way, they are
+						like an extension of the manifest.)</p>
+
+					<p>Refer to <a href="#sec-link-elem"></a> for more information about linked resources.</p>
+
+					<p>Resources in the manifest plane are also sometimes broken down by where they are located.
+						Although most publication resources have to be located in the EPUB container (called [=container
+						resources=]), EPUB 3 allows <a href="#sec-resource-locations">audio, video, font and script data
+							resources</a> to be hosted outside the container. These exceptions were made to speed up the
+						download and loading of EPUB publications, as these resources are typically quite large, and, in
+						the case of fonts, not essential to the presentation. When remotely hosted, these publication
+						resources are referred to as [=remote resources=].</p>
+
+					<p>Since linked resources are not essential to the rendering of an EPUB publication, there are no
+						requirements on where they are located and consequently no special naming of them based on their
+						location. They may be located within the EPUB container or outside it.</p>
+
+					<div class="note">
+						<p>Hyperlinked content outside the EPUB container (e.g., web pages) are not publication
+							resources, and consequently are not listed in the manifest. Reading systems will normally
+							open these links in a separate browser instance, not as part of the EPUB publication.</p>
+					</div>
+				</section>
+
+				<section id="sec-spine-plane">
+					<h4>The spine plane</h4>
+
+					<p>The <dfn class="export" data-lt-no-plural="">spine plane</dfn> defines resources used in the
+						default reading order established by the [=EPUB spine | spine=], which includes both <a href="#attrdef-itemref-linear">linear and non-linear content</a>. The spine instructs
+						[=reading systems=] on how to load these resources as the user progresses through the [=EPUB
+						publication=]. Although many resources may be bundled in an [=EPUB container=], they are not all
+						allowed by default in the spine.</p>
+
+					<p>EPUB 3 defines a special class of resources called [=EPUB content documents=] that [=EPUB
+						creators=] can use in the spine without any restrictions. EPUB content documents encompass both
+						[=XHTML content documents=] and [=SVG content documents=].</p>
+
+					<p>To use any other type of resource in the spine, called a [=foreign content document=], requires
+						including a fallback to an EPUB content document. This extensibility model allows EPUB creators
+						to experiment with formats while ensuring that reading systems are always able to render
+						something for the user to read, as there is no guarantee of support for foreign content
+						documents.</p>
+
+					<p>A mechanism called <a href="#sec-manifest-fallbacks">manifest fallbacks</a> allows EPUB creators
+						to provide fallbacks for foreign content documents. In this model, the [=EPUB manifest |
+						manifest=] entry for the foreign content document must include a <a href="#attrdef-item-fallback"><code>fallback</code> attribute</a> that points to the next
+						possible resource for reading systems to try when they do not support its format. Although not
+						common, a fallback resource can specify another fallback, thereby making chains many resources
+						deep. The one requirement is that there must be at least one EPUB content document in a
+						[=manifest fallback chain=].</p>
+
+					<p>Although they are not directly listed in the spine, all of the resources in the fallback chain
+						are considered part of the spine, and by extension part of the spine plane, since any may be
+						used by a reading system.</p>
+
+					<p>Refer to <a href="#sec-manifest-fallbacks"></a> for more information.</p>
+
+					<div class="caution">
+						<p id="caution-fallbacks">Although manifest fallbacks fulfill the technical requirements of
+							EPUB, there is little practical support for them in reading systems. Their use is strongly
+							discouraged as it can lead to unreadable publications.</p>
+					</div>
+
+					<div class="note">
+						<p>It is possible to provide manifest fallbacks for EPUB content documents, but this is not
+							required or common. For example, a [=scripted content document=] could have a fallback to an
+							unscripted alternative for reading systems that do not support scripting.</p>
+					</div>
+				</section>
+
+				<section id="sec-content-plane">
+					<h4>The content plane</h4>
+
+					<p>The <dfn class="export" data-lt-no-plural="">content plane</dfn> classifies resources that are
+						used when rendering [=EPUB content documents=] and [=foreign content documents=]. These types of
+						resources include embedded media, CSS style sheets, scripts, and fonts. These resources fall
+						into three categories based on their reading system support: [=core media type resources=],
+						[=foreign resources=], and [=exempt resources=].</p>
+
+					<p>A core media type resource is one that [=reading systems=] have to support, so it can be used
+						without restriction in EPUB or foreign content documents. For more information about core media
+						type resources, refer to <a href="#sec-core-media-types"></a>.</p>
+
+					<div class="note">
+						<p>Being a core media type resource does not mean that reading systems will always render the
+							resource, as not all reading systems support all features of EPUB 3. A reading system
+							without a [=viewport=], for example, will not render visual content such as images.</p>
+					</div>
+
+					<p>The opposite of core media type resources are foreign resources. These are resources that reading
+						systems are not guaranteed to support the rendering of. As a result, similar to how using
+						foreign content documents in the spine requires fallbacks to ensure their rendering, using
+						foreign resources in content documents also requires fallbacks. These fallbacks are provided in
+						one of two ways: using the capabilities of the host format or via manifest fallbacks.</p>
+
+					<p>The preferred method is to use the fallback capabilities of the host format. Many HTML elements,
+						for example, have intrinsic fallback capabilities. One example is the [^picture^]
+						element&nbsp;[[html]], which allows [=EPUB creators=] to specify multiple alternative image
+						formats.</p>
+
+					<p>If an intrinsic fallback method is not available, it is also possible to use manifest fallbacks,
+						but this method, as <a href="#caution-fallbacks">cautioned against</a> in the previous section,
+						is discouraged. For more information about foreign resources, refer to <a href="#sec-foreign-resources"></a>.</p>
+
+					<p>Falling between core media type resources and foreign resources are exempt resources. These are
+						most closely associated with foreign resources, as there is no guarantee that reading systems
+						will render them. But like core media types, they do not require fallbacks.</p>
+
+					<p>Exempt resources tend to address specific cases for which there are no core media types defined,
+						but for which providing a fallback would prove cumbersome or unnecessary. These include
+						embedding video, adding accessibility tracks, and linking to resources from the [[html]] <a data-cite="html#the-link-element"><code>link</code></a> element.</p>
+
+					<p>Refer to <a href="#sec-exempt-resources"></a> for more information about these exceptions.</p>
+
+					<div class="note">
+						<p>A common point of confusion arising from core media type resources is the listing of XHTML
+							and SVG as core media type resources with the requirement the markup conform to their
+							respective EPUB content document definitions. This allows EPUB creators to embed both XHTML
+							and SVG documents in EPUB content documents while keeping consistent requirements for
+							authoring and reading system support.</p>
+
+						<p>In practice, it means that EPUB creators can put XHTML and SVG core media type resources in
+							the spine without any modification or fallback (they are also conforming XHTML and SVG
+							content documents), but this is a unique case. All other core media type resources become
+							foreign content documents when used in the spine (i.e., foreign content documents include
+							all foreign resources and all core media type resources except for XHTML and SVG).</p>
+					</div>
+				</section>
+			</section>
+
+			<section id="sec-core-media-types" data-epubcheck="true" data-tests="https://w3c.github.io/epub-specs/epub33/reports/epubcheck.html#00-phony/phony.feature_L345">
+				<h3>Core media types</h3>
+
+				<p>[=EPUB creators=] MAY include [=publication resources=] that conform to the MIME media type
+					[[rfc2046]] specifications defined in the following table without fallbacks when they are used in
+					[=EPUB content documents=] and [=foreign content documents=]. These resources are classified as
+					[=core media type resources=].</p>
+
+				<p>With the exception of [=XHTML content documents=] and [=SVG content documents=], EPUB creators MUST
+					provide <a href="#sec-manifest-fallbacks">manifest fallbacks</a> for core media type resources
+					referenced directly from the [=EPUB spine | spine=]. In this case, they are [=foreign content
+					documents=].</p>
+
+				<p>The columns in the table represent the following information:</p>
+
+				<ul>
+					<li>
+						<p><strong>Media Type</strong>—The MIME media type [[rfc2046]] used to represent the given
+							publication resource in the [=EPUB manifest | manifest=].</p>
+						<p>If the table lists more than one media type, the first one is the preferred media type. EPUB
+							creators should use the preferred media type for all new EPUB publications.</p>
+					</li>
+					<li><strong>Content Type Definition</strong>—The specification to which the given core media type
+						resource must conform.</li>
+					<li><strong>Applies to</strong>—The publication resource type(s) that the Media Type and Content
+						Type Definition applies to.</li>
+				</ul>
+
+				<table id="tbl-core-media-types">
+					<thead>
+						<tr>
+							<th id="tbl-cmt-string">Media Type</th>
+							<th id="tbl-cmt-def">Content Type Definition</th>
+							<th id="tbl-cmt-appl">Applies to</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th colspan="3" id="cmt-grp-image" class="tbl-group">Images</th>
+						</tr>
+						<tr>
+							<td id="cmt-gif" data-tests="#pub-cmt-gif">
+								<code>image/gif</code>
+							</td>
+							<td> [[gif]] </td>
+							<td>GIF Images</td>
+						</tr>
+						<tr>
+							<td id="cmt-jpeg" data-tests="#pub-cmt-jpeg">
+								<code>image/jpeg</code>
+							</td>
+							<td> [[jpeg]] </td>
+							<td>JPEG Images</td>
+						</tr>
+						<tr>
+							<td id="cmt-png" data-tests="#pub-cmt-png">
+								<code>image/png</code>
+							</td>
+							<td> [[png]] </td>
+							<td>PNG Images</td>
+						</tr>
+						<tr>
+							<td id="cmt-svg" data-tests="#pub-cmt-svg,#cnt-svg-support">
+								<code>image/svg+xml</code>
+							</td>
+							<td>
+								<a href="#sec-svg">SVG content documents</a>
+							</td>
+							<td>SVG documents</td>
+						</tr>
+						<tr>
+							<td id="cmt-webp" data-tests="#pub-cmt-webp">
+								<code>image/webp</code>
+							</td>
+							<td> [[webp-container]], [[webp-lb]] </td>
+							<td>WebP Images</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-audio" class="tbl-group">Audio</th>
+						</tr>
+						<tr>
+							<td id="cmt-mp3" data-tests="#pub-cmt-mp3">
+								<code>audio/mpeg</code>
+							</td>
+							<td> [[mp3]] </td>
+							<td>MP3 audio</td>
+						</tr>
+						<tr>
+							<td id="cmt-mp4-aac" data-tests="#pub-cmt-mp4">
+								<code>audio/mp4</code>
+							</td>
+							<td> [[mpeg4-audio]], [[mp4]] </td>
+							<td>AAC LC audio using MP4 container</td>
+						</tr>
+						<tr>
+							<td id="cmt-ogg-opus" data-tests="#pub-cmt-opus">
+								<code>audio/opus</code>
+							</td>
+							<td> [[rfc7845]] </td>
+							<td>OPUS audio using OGG container</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-text" class="tbl-group">Style</th>
+						</tr>
+						<tr>
+							<td id="cmt-css">
+								<code>text/css</code>
+							</td>
+							<td>
+								<a href="#sec-css">CSS Style Sheets</a>
+							</td>
+							<td>CSS Style Sheets.</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-font" class="tbl-group">Fonts</th>
+						</tr>
+						<tr>
+							<td id="cmt-sfnt">
+								<ol class="cmt">
+									<li><code>font/ttf</code></li>
+									<li><code>application/font-sfnt</code></li>
+								</ol>
+							</td>
+							<td>[[truetype]] </td>
+							<td>TrueType fonts</td>
+						</tr>
+						<tr>
+							<td id="cmt-otf">
+								<ol class="cmt">
+									<li><code>font/otf</code></li>
+									<li><code>application/font-sfnt</code></li>
+									<li><code>application/vnd.ms-opentype</code></li>
+								</ol>
+							</td>
+							<td>[[opentype]]</td>
+							<td>OpenType fonts</td>
+						</tr>
+						<tr>
+							<td id="cmt-woff">
+								<ol class="cmt">
+									<li><code>font/woff</code></li>
+									<li><code>application/font-woff</code></li>
+								</ol>
+							</td>
+							<td> [[woff]] </td>
+							<td>WOFF fonts</td>
+						</tr>
+						<tr>
+							<td id="cmt-woff2">
+								<code>font/woff2</code>
+							</td>
+							<td> [[woff2]] </td>
+							<td>WOFF2 fonts</td>
+						</tr>
+						<tr>
+							<th colspan="3" id="cmt-grp-other" class="tbl-group">Other</th>
+						</tr>
+						<tr>
+							<td id="cmt-xhtml">
+								<code>application/xhtml+xml</code>
+							</td>
+							<td>
+								<a href="#sec-xhtml">XHTML content documents</a>
+							</td>
+							<td>HTML documents that use the <a data-cite="html#the-xhtml-syntax">XML syntax</a>
+								[[html]].</td>
+						</tr>
+						<tr>
+							<td id="cmt-js">
+								<ol class="cmt">
+									<li><code>application/javascript</code></li>
+									<li><code>application/ecmascript</code></li>
+									<li><code>text/javascript</code></li>
+								</ol>
+							</td>
+							<td> [[rfc4329]] </td>
+							<td>Scripts.</td>
+						</tr>
+						<tr>
+							<td id="cmt-ncx">
+								<code>application/x-dtbncx+xml</code>
+							</td>
+							<td> [[opf-201]] </td>
+							<td>The <a href="#legacy">legacy</a> NCX.</td>
+						</tr>
+						<tr>
+							<td id="cmt-smil">
+								<code>application/smil+xml</code>
+							</td>
+							<td>
+								<a href="#sec-media-overlays">Media overlays</a>
+							</td>
+							<td>EPUB media overlay documents</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="note">
+					<p>Inclusion as a core media type resource does not mean that all reading systems will support the
+						rendering of a resource. Reading system support also depends on the capabilities of the
+						application (e.g., a reading system with a [=viewport=] must support image core media type
+						resources, but a reading system without a viewport does not). Refer to <a data-cite="epub-rs-33#sec-epub-rs-conf-cmt">Core media types</a> [[epub-rs-33]] for more
+						information about which reading systems rendering capabilities require support for which core
+						media type resources.</p>
+
+					<p>The Working Group typically only includes formats as core media type resources when they have
+						broad support in web browser cores — the rendering engines that EPUB 3 reading systems
+						build upon. They are an agreement between reading system developers and EPUB creators to ensure
+						the predictability of rendering of EPUB publications.</p>
+				</div>
+			</section>
+
+			<section id="sec-foreign-resources">
+				<h3>Foreign resources</h3>
+
+				<p>A [=foreign resource=], unlike a <a href="#sec-core-media-types">core media type resource</a> is one
+					which is not guaranteed [=reading system=] support when used in an [=EPUB content document=] or
+					[=foreign content document=].</p>
+
+				<p id="confreq-cmt">[=EPUB creators=] MUST provide fallbacks for foreign resources, where fallbacks take
+					one of the following forms:</p>
+
+				<ul>
+					<li>
+						<p>intrinsic fallback mechanisms provided by the host format (e.g., [[?html]] elements often
+							provide the ability to reference more than one media type or to display an alternate
+							embedded message when a media type cannot be rendered); or</p>
+					</li>
+					<li>
+						<p><a href="#sec-manifest-fallbacks">manifest fallback chains</a> defined on [^item^] elements
+							in the [=package document=].</p>
+					</li>
+				</ul>
+
+				<div class="note">
+					<p>Refer to the [[html]] and [[svg]] specifications for the intrinsic fallback capabilities their
+						elements provide.</p>
+					<p><a href="#sec-intrinsic-fallbacks"></a> also provides additional information about how fallbacks
+						are interpreted for specific elements.</p>
+				</div>
+			</section>
+
+			<section id="sec-exempt-resources">
+				<h3>Exempt resources</h3>
+
+				<p>An [=exempt resource=] shares properties with both [=foreign resources=] and [=core media type
+					resources=]. It is most similar to a [=foreign resource=] in that it is not guaranteed [=reading
+					system=] support, but, like a core media type resource, does not require a fallback.</p>
+
+				<p>There are only a small set of special cases for exempt resources. Video, for example, are exempt from
+					fallbacks because there is no consensus on a core media type video format at this time (i.e., there
+					is no format to fallback to). Similarly, audio and video tracks are exempt to allow [=EPUB
+					creators=] to meet accessibility requirements using whatever format reading systems support
+					best.</p>
+
+				<p>The following list details cases of content-specific exempt resources, including any restrictions on
+					where EPUB creators can use them.</p>
+
+				<dl>
+					<dt id="exempt-fonts">Fonts</dt>
+					<dd id="confreq-resources-cd-fonts">
+						<p>All font resources not already covered as <a href="#cmt-grp-font">font core media types</a>
+							are exempt resources.</p>
+						<p>This exemption allows EPUB creators to use any font format without a fallback, regardless of
+							reading system support expectations, as CSS rules will ensure a fallback font in case of no
+							support.</p>
+						<p>Refer to the <a data-cite="epub-rs-33#confreq-css-rs-fonts">reading system support
+								requirements for fonts</a> [[epub-rs-33]] for more information.</p>
+					</dd>
+
+					<dt id="exempt-links">Linked resources</dt>
+					<dd id="confreq-resources-cd-fallback-link">
+						<p>Any resource referenced from the [[html]] <a data-cite="html#the-link-element"><code>link</code></a> element that is not already a core media type resource (e.g.,
+							CSS style sheets) is an exempt resource.</p>
+					</dd>
+
+					<dt id="exempt-track">Tracks</dt>
+					<dd id="confreq-resources-cd-fallback-track">
+						<p>All audio and video tracks (e.g., [[?webvtt]] captions, subtitles and descriptions)
+							referenced from the [[html]]&nbsp;[^track^] element are exempt resources.</p>
+					</dd>
+
+					<dt id="exempt-video">Video</dt>
+					<dd id="confreq-resources-cd-fallback-video">
+						<p>All video codecs referenced from the [[html]] [^video^] —&nbsp;including any child [^source^]
+							elements&nbsp;— are exempt resources.</p>
+						<div class="note">
+							<p>Although reading systems are encouraged to support at least one of the H.264 [[?h264]]
+								and VP8 [[?rfc6386]] video codecs, support for video codecs is not a conformance
+								requirement. EPUB creators must consider factors such as breadth of adoption, playback
+								quality, and technology royalties when deciding which video formats to include.</p>
+						</div>
+					</dd>
+				</dl>
+
+				<div class="note">
+					<p>The exemptions made above do not apply to the [=EPUB spine | spine=]. If an exempt resource is
+						used in the spine, and it is not also an [=EPUB content document=], it will require a fallback
+						in that context.</p>
+				</div>
+
+				<p id="confreq-foreign-no-fallback">In addition to the content-specific exemptions, a resource is
+					classified as an exempt resource if:</p>
+
+				<ul>
+					<li>
+						<p>it is not referenced from a spine [^itemref^] element (i.e., used as a [=foreign content
+							document=]); <strong><em>and</em></strong></p>
+					</li>
+					<li>
+						<p>it is not embedded directly in EPUB content documents (e.g., via [[?html]]&nbsp;[=embedded
+							content=] and [[?svg]]&nbsp;<a href="https://www.w3.org/TR/SVG/embedded.html#ImageElement"><code>image</code></a> and <a href="https://www.w3.org/TR/SVG/embedded.html#ForeignObjectElement"><code>foreignObject</code></a> elements).</p>
+					</li>
+				</ul>
+
+				<p>This exemption allows EPUB creators to include resources in the [=EPUB container=] that are not for
+					use by EPUB reading systems. The primary case for this exemption is to allow data files to travel
+					with an [=EPUB publication=], whether for scripts to use in their constituent EPUB content documents
+					or for external applications to use (e.g., a scientific journal might include a data set with
+					instructions on how to extract it from the EPUB container).</p>
+
+				<p>It also allows EPUB creators to use foreign resources in foreign content documents without reading
+					systems or [=EPUB conformance checkers=] having to understand the fallback capabilities of those
+					resources (i.e., the requirement for a fallback for the foreign content document covers any
+					rendering issues within it). As the resource is not referenced from an EPUB content document, it
+					automatically becomes exempt from fallbacks.</p>
+			</section>
+
+			<section id="sec-resource-fallbacks">
+				<h4>Resource fallbacks</h4>
+
+				<section id="sec-manifest-fallbacks">
+					<h5>Manifest fallbacks</h5>
+
+					<p>Manifest fallbacks are a feature of the [=package document=] that create a <dfn class="export">manifest fallback chain</dfn> for a [=publication resource=], allowing [=reading systems=]
+						to select an alternative format they can render.</p>
+
+					<p>Fallback chains are created using the <a href="#attrdef-item-fallback"><code>fallback</code>
+							attribute</a> on [=EPUB Manifest | manifest=] [^item^] elements. This attribute references
+						the <a data-cite="xml#id">ID</a> [[xml]] of another manifest <code>item</code> that is a
+						fallback for the current <code>item</code>. The ordered list of all the references that a
+						reading system can reach, starting from a given <code>item</code>'s <code>fallback</code>
+						attribute, represents the full fallback chain for that <code>item</code>. This chain also
+						represents the [=EPUB creator | EPUB creator's=] preferred fallback order.</p>
+
+					<p>There are two cases for manifest fallbacks:</p>
+
+					<dl>
+						<dt id="spine-fallbacks">Spine fallbacks</dt>
+						<dd>
+							<p>EPUB creators MUST specify a fallback chain for a [=foreign content document=] to ensure
+								that reading systems can always render the [=EPUB spine | spine=] item. In this case,
+								the chain MUST contain at least one [=EPUB content document=].</p>
+							<p>EPUB creators MAY provide fallbacks for EPUB content documents (e.g., to provide a <a href="#confreq-cd-scripted-flbk">fallback for scripted content</a>).</p>
+							<p>When a fallback chain includes more than one EPUB content document, EPUB creators can use
+								the <a href="#attrdef-properties"><code>properties</code> attribute</a> to differentiate
+								the purpose of each.</p>
+						</dd>
+
+						<dt id="content-fallbacks">Content fallbacks</dt>
+						<dd>
+							<div class="note">
+								<p>The original purpose for content fallbacks was to specify fallback images for the
+									[[html]] [^img^] element. As HTML now has intrinsic fallback mechanism for images,
+									the use of content fallbacks is strongly discouraged. EPUB creators should always
+									use the intrinsic fallback capabilities of [[html]] and [[svg]] to provide fallback
+									content.</p>
+							</div>
+							<p>EPUB creators MUST provide a content fallback for [=foreign resources=] when the elements
+								that reference them do not have intrinsic fallback capabilities. In this case, the
+								fallback chain MUST contain at least one [=core media type resource=].</p>
+							<p>EPUB creators MAY also provide manifest fallbacks for core media type resources (e.g., to
+								allow reading systems to select from more than one image format).</p>
+						</dd>
+					</dl>
+
+					<p>Regardless of the type of manifest fallback specified, fallback chains MUST NOT contain
+						self-references or circular references to <code>item</code> elements in the chain.</p>
+
+					<div class="note">
+						<p>As it is not possible to use manifest fallbacks for resources represented in <a href="#sec-data-urls">data URLs</a>, EPUB creators can only represent foreign resources
+							as data URLs where an intrinsic fallback mechanism is available.</p>
+					</div>
+				</section>
+
+				<section id="sec-intrinsic-fallbacks">
+					<h4>Intrinsic fallbacks</h4>
+
+					<p>The following sections provide additional clarifications about the intrinsic fallback
+						requirements of specific elements.</p>
+
+					<section id="sec-fallbacks-audio">
+						<h5>HTML <code>audio</code> fallbacks</h5>
+
+						<p id="confreq-resources-cd-fallback-media">[=EPUB creators=] MUST NOT use embedded
+							[[html]]&nbsp;[=flow content=] within the <a data-cite="html#the-audio-element"><code>audio</code></a> element as an intrinsic fallback for [=foreign resources=].
+							Only child [^source^] elements&nbsp;[[html]] provide intrinsic fallback capabilities.</p>
+
+						<p>Only older [=reading systems=] that do not recognize the <code>audio</code> element (e.g.,
+							EPUB 2 reading systems) will render the embedded content. When reading systems support the
+								<code>audio</code> element but not the available audio formats, they do not render the
+							embedded content for the user.</p>
+
+						<div class="note">
+							<p>As video resources are [=exempt resources=], this requirement does not apply to the
+									<code>video</code> element. EPUB creators may also include flow content in the
+									<code>video</code> element for reading systems that do not support the element,
+								however.</p>
+						</div>
+					</section>
+
+					<section id="sec-fallbacks-img">
+						<h5>HTML <code>img</code> fallbacks</h5>
+
+						<p id="confreq-resources-cd-fallback-img">Due to the variety of sources that [=EPUB creators=]
+							can specify in the [[html]] [^img^] element, the following fallback conditions apply to its
+							use:</p>
+						<ul>
+							<li>
+								<p>If it is the child of a [^picture^] element:</p>
+								<ul>
+									<li>it MUST reference core media type resources from its <code>src</code> and
+											<code>srcset</code> attributes, when EPUB creators specify those attributes;
+										and</li>
+									<li>each sibling [^source^] element MUST reference a [=core media type resource=]
+										from its <code>[^source/src^]</code> and <code>[^source/srcset^]</code>
+										attributes unless it specifies the MIME media type [[rfc2046]] of a [=foreign
+										resource=] in its <code>[^source/type^]</code> attribute.</li>
+								</ul>
+							</li>
+
+							<li>Otherwise, it MAY reference foreign resources in its <code>[^img/src^]</code> and
+									<code>[^img/srcset^]</code> attributes provided EPUB creators define a <a href="#sec-manifest-fallbacks">manifest fallback</a>.</li>
+						</ul>
+					</section>
+					<section>
+						<h5>HTML <code>script</code> element</h5>
+
+						<p>Although the [[html]] [^script^] element lacks intrinsic fallback capabilities, it is not
+							required that [=EPUB creators=] provide fallbacks for <a data-cite="html#data-block">data
+								blocks</a> [[html]]. As the <code>script</code> element does not represent user content,
+							data blocks are not rendered unless manipulated by script.</p>
+
+						<div class="note">
+							<p>The exemption from fallbacks aligns data blocks with the exemption made to <a href="confreq-foreign-no-fallback">allow data files</a> to travel in the [=EPUB
+								container=]. As data blocks are not separate resources from their host [=EPUB content
+								document=], they do not fall under the same exemption.</p>
+						</div>
+						<div class="note">
+							<p>[[svg]] does not define data blocks as of publication, but the same exclusion would apply
+								if a future update adds the concept.</p>
+						</div>
+					</section>
+				</section>
+			</section>
+
+			<section id="sec-resource-locations">
+				<h4>Resource locations</h4>
+
+				<p>[=EPUB creators=] MAY host the following types of [=publication resources=] outside the [=EPUB
+					container=]:</p>
+
+				<ul class="conformance-list">
+					<li>
+						<p id="sec-resource-locations-audio"><a href="#cmt-grp-audio">Audio resources</a>.</p>
+					</li>
+					<li>
+						<p id="sec-resource-locations-video"><a href="#exempt-video">Video resources</a>.</p>
+					</li>
+					<li>
+						<p id="sec-resource-locations-script">Resources retrieved via scripting APIs (e.g.,
+							XmlHttpRequest [[?xhr]] and Fetch [[?fetch]]).</p>
+					</li>
+					<li>
+						<p id="sec-resource-locations-fonts"><a href="#cmt-grp-font">Font resources</a>.</p>
+					</li>
+				</ul>
+
+				<p>EPUB creators MUST store all other resources within the EPUB container.</p>
+
+				<p>Storing all resources inside the EPUB container is strongly encouraged whenever possible as it allows
+					users access to the entire presentation regardless of connectivity status.</p>
+
+				<p>When resources have to be located outside the EPUB container, EPUB creators are RECOMMENDED to
+					reference them via the secure <code>https</code> URI scheme [rfc7230] to limit the threat of
+					exposing their publications, and users, to network attacks. [=Reading systems=] might not load
+					[=remote resources=] referenced using insecure schemes such as <code>http</code>.</p>
+
+				<p>These rules for locating publication resource apply regardless of whether the given resource is a
+					[=core media type resource=] or a [=foreign resource=].</p>
+
+				<div class="note">
+					<p>Refer to the <a href="#remote-resources"><code>remote-resources</code> property</a> for more
+						information on how to indicate that a [=EPUB manifest | manifest=] [^item^] references a
+						[=remote resource=].</p>
+				</div>
+
+				<aside class="example" title="Referencing a container resource">
+					<p>In this example, the audio file referenced from the [[html]] <a data-cite="html#the-audio-element"><code>audio</code></a> element is located inside the EPUB
+						container.</p>
+					<pre>&lt;html …&gt;
+   …
+   &lt;body&gt;
+      …
+      &lt;audio
+          src="audio/ch01.mp4"
+          controls="controls"/&gt;
+      …
+   &lt;/body&gt;
+&lt;/html&gt;</pre>
+				</aside>
+
+				<aside class="example" title="Referencing a remote resource">
+					<p>In this example, the audio file referenced from the [[html]] <a data-cite="html#the-audio-element"><code>audio</code></a> element is hosted on the web.</p>
+					<pre>&lt;html …&gt;
+   …
+   &lt;body&gt;
+      …
+         &lt;audio
+             src="http://www.example.com/book/audio/ch01.mp4"
+             controls="controls"/&gt;
+      …
+   &lt;/body&gt;
+&lt;/html&gt;</pre>
+				</aside>
+			</section>
+
+			<section id="sec-data-urls">
+				<h3>Data URLs</h3>
+
+				<p>The <a data-cite="rfc2397#"><code>data:</code> URL scheme</a> [[rfc2397]] is used to encode resources
+					directly into a URL string. The advantage of this scheme is that it allows [=EPUB creators=] to
+					embed a resource within another, avoiding the need for an external file.</p>
+
+				<p>EPUB creators MAY use data URLs in [=EPUB publications=] provided their use does not result in a
+					[=top-level content document=] or [=top-level browsing context=] [[html]]. This restriction applies
+					to data URLs used in the following scenarios:</p>
+
+				<ul>
+					<li>
+						<p>in [EPUB manifest | manifest=] [^item^] elements referenced from the [=EPUB spine |
+							spine=];</p>
+					</li>
+					<li>
+						<p>in the <code>href</code> attribute on [[html]] or [[svg]] <code>a</code> elements (except
+							when inside an [^iframe^] element&nbsp;[[html]]);</p>
+					</li>
+					<li>
+						<p>in the <code>href</code> attribute on [[html]] <code>area</code> elements (except when inside
+							an <code>iframe</code> element);</p>
+					</li>
+					<li>
+						<p>in calls to [[ecmascript]] <code>window.open</code> or <code>document.open</code>.</p>
+					</li>
+				</ul>
+
+				<div class="note">
+					<p>The list of prohibited uses for data URLs is subject to change as the respective standards that
+						allow their use evolve.</p>
+				</div>
+
+				<p>This restriction on their use is to prevent security issues and also to ensure that [=reading
+					systems=] can determine where to take a user next (i.e., because these resources are not be listed
+					in the spine).</p>
+
+				<p>Resources represented as data URLs are not publication resources so are exempt from the requirement
+					for EPUB creators to list them in the manifest.</p>
+
+				<p>EPUB creators MUST encode Data URLs as core media type resources or use them where they can provide a
+					fallback (i.e., data URLs are subject to the <a href="#sec-foreign-resources">foreign resource
+						restrictions</a>).</p>
+			</section>
+
+			<section id="sec-file-urls">
+				<h3>File URLs</h3>
+
+				<p>The <a data-cite="rfc8089#"><code>file:</code> URL scheme</a> is defined in [[rfc8089]] as
+					"identifying an object (a 'file') stored in a structured object naming and accessing environment on
+					a host (a 'file system')." It is typically used to retrieve files from the local operating
+					system.</p>
+
+				<p>Using a file URL in an [=EPUB publication=], which can be transferred among different hosts,
+					represents a security risk and is also non-interoperable. As a consequence, [=EPUB creators=] MUST
+					NOT use file URLs in EPUB publications.</p>
+			</section>
+
+			<section id="sec-xml-constraints">
+				<h3>XML conformance</h3>
+
+				<p>Any [=publication resource=] that is an XML-based media type [[rfc2046]]:</p>
+
+				<ul class="conformance-list">
+					<li>
+						<p id="confreq-xml-wellformed">MUST be a conformant XML 1.0 Document as defined in <a data-cite="xml-names#Conformance">Conformance of Documents</a> [[xml-names]].</p>
+					</li>
+					<li>
+						<p id="confreq-xml-identifiers">MAY only specify a <a data-cite="xml#dt-doctype">document type
+								declaration</a> that references an <a data-cite="xml#NT-ExternalID">external
+								identifier</a> appropriate for its media type — as defined in <a href="#app-identifiers-allowed"></a> — or that omits external identifiers
+							[[xml]].</p>
+					</li>
+					<li>
+						<p id="confreq-xml-entities">MUST NOT contain <a data-cite="xml#dt-extent">external entity</a>
+							declarations in the internal DTD subset [[xml]].</p>
+					</li>
+					<li>
+						<p id="confreq-xml-xinc">MUST NOT make use of XInclude [[xinclude]].</p>
+					</li>
+					<li>
+						<p id="confreq-xml-enc">MUST be encoded in UTF-8 or UTF-16&nbsp;[[unicode]], with UTF-8 as the
+							RECOMMENDED encoding.</p>
+					</li>
+				</ul>
+
+				<p>The above constraints apply regardless of whether the given publication resource is a [=core media
+					type resource=] or a [=foreign resource=].</p>
+
+				<div class="note">
+					<p>[[html]] and [[svg]] are removing support for the XML <code>base</code> attribute [[xmlbase]].
+						EPUB creators should avoid using this feature.</p>
+				</div>
+			</section>
+		</section>
+</body>
+</html>
