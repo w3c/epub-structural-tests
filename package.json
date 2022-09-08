@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "generate": "./node_modules/.bin/ts-node src/main.ts",
+    "generate_store": "./node_modules/.bin/ts-node src/main.ts --download",
     "generate_local": "./node_modules/.bin/ts-node src/main.ts --local"
   },
   "author": "Ivan Herman",

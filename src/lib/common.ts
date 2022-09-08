@@ -1,16 +1,20 @@
 export namespace Constants {
     export const SPEC_URL        = 'https://w3c.github.io/epub-specs/epub33/core/' ;
     export const FEATURE_DIR_URL = 'https://github.com/w3c/epubcheck/tree/main/src/test/resources/epub3' ;
-    export const TEST_REPORT_URL = 'https://w3c.github.io/epub-specs/epub33/reports/epubcheck.html' ;
+    export const TEST_REPORT_URL = 'https://w3c.github.io/epub-structural-tests/' ;
 
-    /** Location for the final report */
-    export const DOCS_DIR: string = 'reports';
-
-    /** Location for the resulting specs */
+    /** Location for the resulting spec */
     export const SPEC_DIR: string = 'epub33/core'
 
     /** Location for the vocabulary specs */
     export const VOCAB_DIR: string = 'epub33/core/vocab'
+
+    /** Location for the original spec */
+    export const SPEC_DIR_ORIG = 'epub33-orig/core'
+    
+    /** Location for the original vocabulary specs */
+    export const VOCAB_DIR_ORIG: string = 'epub33-orig/core/vocab'
+
 
     /** Location for the specification source */
     export const SPECS: string[] = [
@@ -35,10 +39,10 @@ export namespace Constants {
     ];
 
     /** Location for the HTML fragment on implementation lists */
-    export const TABLE_FRAGMENTS: string = `${DOCS_DIR}/fragments/`;
+    export const TABLE_FRAGMENTS: string = `docs/fragments/`;
 
     /** Location for the raw data for the tests */
-    export const TEST_DATA: string = `${DOCS_DIR}/tests.json`;
+    export const TEST_DATA: string = `epubcheck_data/tests.json`;
 
     /** CSS Class name for columns containing the ID-s */
     export const CLASS_COL_ID: string = "col_id";

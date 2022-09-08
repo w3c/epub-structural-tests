@@ -15,21 +15,29 @@ const fs = fs_old_school.promises;
  * 2. modify the specification tests by adding the test references following what respec requires
  */
 
-async function handleOneSpec(data: TestSuite, fname: string, local: boolean): Promise<void> {
+async function handleOneSpec(data: TestSuite, fname: string, options: OptionValues): Promise<void> {
     const fname_path: string[] = fname.split('/');
     if (fname_path.length != 0) {
         const base_name: string | undefined = fname_path.pop();
         const table_fragment_name: string = `${Constants.TABLE_FRAGMENTS}${base_name}`;
         const modified_fname =  base_name === 'index.html' ? `${Constants.SPEC_DIR}/index.html` :  `${Constants.VOCAB_DIR}/${base_name}`;
+        const local_copy_fname = base_name === 'index.html' ? `${Constants.SPEC_DIR_ORIG}/index.html` :  `${Constants.VOCAB_DIR_ORIG}/${base_name}`;
+
+        // Possible extra async actions to be performed at the end
+        const extra_async_actions: unknown[] = [];
 
         // Get the spec text
         let src_text: string;
-
-        if (local) {
+        if (options.local) {
+            console.log(`picking up ${base_name} locally`)
             src_text = await fs.readFile(fname, 'utf-8');
         } else {
+            console.log(`downloading ${base_name} from github`)
             const response = await fetch(fname);
             src_text = await response.text(); 
+            if (options.download) {
+                extra_async_actions.push(fs.writeFile(local_copy_fname, src_text))
+            }
         }
 
         // Get the spec as a DOM
@@ -49,9 +57,11 @@ async function handleOneSpec(data: TestSuite, fname: string, local: boolean): Pr
         // Create the modified version of the spec (as a serialized HTML fragment)
         const modified_spec: string = modify_spec(dom, sections)
 
+
         await Promise.all([
             fs.writeFile(table_fragment_name, html_fragment),
             fs.writeFile(modified_fname, modified_spec),
+            ...extra_async_actions
         ]);
     }
 } 
@@ -67,20 +77,17 @@ async function main(): Promise<void> {
     program
         .name('harvest epubcheck tests')
         .description('Harvesting EPUB 3.3 specific test information to produce a test report for the EPUB 3.3 CR phase')
-        .usage('[options] [file]')
-        .option('-l, --local', 'pick up the specification files locally instead of fetching them from github')
-        .on('--help', () => {
-            console.log('  file:                      irc log file; if not present, retrieved from the W3C site');
-        })
+        .usage('[options]')
+        .option('-l, --local', 'Pick up the specification files locally instead of fetching them from github')
+        .option('-d, --download','When picking up the specification files from github, store them locally')
         .parse(process.argv);
 
     const options: OptionValues = program.opts();
-    const local: boolean        = options.local ? true : false;
-    const sources: string[]     = local ? Constants.SPECS : Constants.SPECS_ONLINE ;
+    const sources: string[]     = options.local ? Constants.SPECS : Constants.SPECS_ONLINE ;
 
     const inp_data = await fs.readFile(Constants.TEST_DATA, 'utf-8');
     const data: TestSuite = JSON.parse(inp_data) as TestSuite;
-    await Promise.all(sources.map((fname) => handleOneSpec(data, fname, local)));
+    await Promise.all(sources.map((fname) => handleOneSpec(data, fname, options)));
 }
 
 main();
