@@ -1,106 +1,154 @@
 [
    {
+      "scenario" : "Verify a minimal EPUB",
       "line" : 12,
+      "file" : "00-minimal/minimal.feature",
       "xref" : [
          "sec-metadata-elem",
          "sec-opf-dcidentifier",
          "sec-opf-dclanguage",
          "sec-opf-dcmes-optional-def"
-      ],
-      "file" : "00-minimal/minimal.feature",
-      "scenario" : "Verify a minimal EPUB"
-   },
-   {
-      "scenario" : "Verify a minimal packaged EPUB",
-      "line" : 17,
-      "xref" : [
-         "sec-epub-conf"
-      ],
-      "file" : "00-minimal/minimal.feature"
-   },
-   {
-      "scenario" : "Report foreign audio used with no available fallback",
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-foreign-resources"
-      ],
-      "line" : 43
-   },
-   {
-      "scenario" : "Report a `picture` element with a foreign resource in its `img src` fallback  ",
-      "line" : 119,
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-fallbacks-img"
       ]
    },
    {
+      "scenario" : "Verify a minimal packaged EPUB",
+      "file" : "00-minimal/minimal.feature",
+      "line" : 17,
+      "xref" : [
+         "sec-epub-conf"
+      ]
+   },
+   {
+      "scenario" : "Report foreign audio used with no available fallback",
+      "xref" : [
+         "sec-foreign-resources"
+      ],
       "file" : "03-resources/resources.feature",
+      "line" : 43
+   },
+   {
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 121,
+      "scenario" : "Allow non-CMT file to be in the spine if they have an XHTML Content Document fallback"
+   },
+   {
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 127,
+      "scenario" : "Allow an SVG Content Document to be used as a fallback"
+   },
+   {
+      "scenario" : "Allow a deep fallback chain as long as it contains a Content Document",
+      "line" : 133,
+      "file" : "03-resources/resources.feature",
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ]
+   },
+   {
+      "scenario" : "Report a cycle in the fallback chain",
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ],
+      "line" : 139,
+      "file" : "03-resources/resources.feature"
+   },
+   {
+      "scenario" : "Report files that aren't Content Documents (like audio) in spine when they don't have a fallback  ",
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 146
+   },
+   {
+      "scenario" : "Report a circular manifest fallback chain",
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 153
+   },
+   {
+      "scenario" : "Report a `picture` element with a foreign resource in its `img src` fallback  ",
       "xref" : [
          "sec-fallbacks-img"
       ],
-      "line" : 125,
+      "file" : "03-resources/resources.feature",
+      "line" : 165
+   },
+   {
+      "xref" : [
+         "sec-fallbacks-img"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 171,
       "scenario" : "Report a `picture` element with a foreign resource in its `img srcset` fallback"
    },
    {
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-fallbacks-img"
       ],
-      "line" : 131,
+      "file" : "03-resources/resources.feature",
+      "line" : 177,
       "scenario" : "Verify the `picture source` element can reference foreign resources so long as the `type` attribute is declared"
    },
    {
+      "scenario" : "Report a `picture source` element that does not include a `type` attribute for a foreign resource",
       "xref" : [
          "sec-fallbacks-img"
       ],
-      "file" : "03-resources/resources.feature",
-      "line" : 136,
-      "scenario" : "Report a `picture source` element that does not include a `type` attribute for a foreign resource"
+      "line" : 182,
+      "file" : "03-resources/resources.feature"
    },
    {
-      "scenario" : "Report a `picture source` element that references a foreign resource but incorrectly states a core media type in its `type` attribute",
-      "line" : 142,
+      "line" : 188,
+      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-fallbacks-img"
       ],
-      "file" : "03-resources/resources.feature"
+      "scenario" : "Report a `picture source` element that references a foreign resource but incorrectly states a core media type in its `type` attribute"
    },
    {
-      "scenario" : "Allow audio resources to be remote ",
-      "line" : 165,
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "xref" : [
-         "sec-resource-locations"
-      ],
       "file" : "03-resources/resources.feature",
-      "line" : 170,
-      "scenario" : "Verify that remote audio resources are allowed"
+      "line" : 209,
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Allow audio resources to be remote "
+   },
+   {
+      "scenario" : "Verify that remote audio resources are allowed",
+      "file" : "03-resources/resources.feature",
+      "line" : 214,
+      "xref" : [
+         "sec-resource-locations"
+      ]
    },
    {
       "scenario" : "Verify that remote audio resources are allowed anywhere",
+      "line" : 219,
       "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
-      ],
-      "line" : 175
+      ]
    },
    {
-      "line" : 181,
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ],
+      "line" : 225,
+      "file" : "03-resources/resources.feature",
       "scenario" : "Verify that remote audio resources defined in the `sources` element are allowed"
    },
    {
       "scenario" : "Verify that remote audio resources with foreign media types are allowed with a fallback",
-      "line" : 186,
+      "line" : 230,
       "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
@@ -111,181 +159,405 @@
          "sec-resource-locations"
       ],
       "file" : "03-resources/resources.feature",
-      "line" : 191,
+      "line" : 235,
       "scenario" : "Verify that remote video resources are allowed"
    },
    {
+      "file" : "03-resources/resources.feature",
+      "line" : 240,
       "xref" : [
          "sec-resource-locations"
       ],
-      "file" : "03-resources/resources.feature",
-      "line" : 196,
       "scenario" : "Verify that remote video resources are allowed anywhere"
    },
    {
-      "scenario" : "Report a reference to a remote resource from an `iframe` element when the resource is declared in the package document (issue 852)",
       "xref" : [
          "sec-resource-locations"
       ],
       "file" : "03-resources/resources.feature",
-      "line" : 202
+      "line" : 246,
+      "scenario" : "Report a reference to a remote resource from an `iframe` element when the resource is declared in the package document (issue 852)"
    },
    {
       "scenario" : "Report a reference to a remote resource from an `iframe` element when the resource is not declared in package document",
       "xref" : [
          "sec-resource-locations"
       ],
-      "file" : "03-resources/resources.feature",
-      "line" : 208
+      "line" : 252,
+      "file" : "03-resources/resources.feature"
    },
    {
       "xref" : [
          "sec-resource-locations"
       ],
+      "line" : 258,
       "file" : "03-resources/resources.feature",
-      "line" : 214,
       "scenario" : "Report a remote image that is declared in the packaged document"
    },
    {
-      "line" : 220,
       "xref" : [
          "sec-resource-locations"
       ],
+      "line" : 264,
       "file" : "03-resources/resources.feature",
       "scenario" : "Report a remote image that is not declared in the package document"
    },
    {
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ],
-      "line" : 226,
+      "file" : "03-resources/resources.feature",
+      "line" : 270,
       "scenario" : "Report a remote image declared in the package document when it is referenced from an `img` tag and also retrieved by a script"
    },
    {
-      "xref" : [
-         "sec-resource-locations"
-      ],
+      "scenario" : "Verify that remote fonts are allowed",
       "file" : "03-resources/resources.feature",
-      "line" : 232,
-      "scenario" : "Verify that remote fonts are allowed"
-   },
-   {
-      "scenario" : "Verify that remote SVG fonts are allowed",
-      "line" : 237,
-      "file" : "03-resources/resources.feature",
+      "line" : 276,
       "xref" : [
          "sec-resource-locations"
       ]
    },
    {
-      "line" : 242,
+      "line" : 281,
       "file" : "03-resources/resources.feature",
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Verify that remote SVG fonts are allowed"
+   },
+   {
+      "file" : "03-resources/resources.feature",
+      "line" : 286,
       "xref" : [
          "sec-resource-locations"
       ],
       "scenario" : "Verify that remote fonts of unknown type declared in CSS `@font-face` are allowed"
    },
    {
-      "line" : 247,
       "xref" : [
          "sec-resource-locations"
       ],
       "file" : "03-resources/resources.feature",
+      "line" : 291,
       "scenario" : "Verify that remote fonts of unknown type declared in SVG `font-face-uri` are allowed"
    },
    {
       "scenario" : "Report a remote SVG font when it is referenced from an HTML `img` element",
-      "line" : 252,
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 296
+   },
+   {
+      "scenario" : "Report a reference to a remote resource from an `object` element when the resource is not declared in package document",
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 302
+   },
+   {
+      "file" : "03-resources/resources.feature",
+      "line" : 309,
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Report a remote SVG Content Document"
+   },
+   {
+      "scenario" : "Verify that a remote foreign resource is allowed when used by a script",
+      "line" : 315,
       "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ]
    },
    {
-      "scenario" : "Report a reference to a remote resource from an `object` element when the resource is not declared in package document",
-      "line" : 258,
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 265,
-      "scenario" : "Report a remote SVG Content Document"
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 271,
-      "scenario" : "Verify that a remote foreign resource is allowed when used by a script"
-   },
-   {
-      "line" : 279,
+      "scenario" : "Verify that a remote core media type resource is allowed when used by a script",
       "xref" : [
          "sec-resource-locations"
       ],
       "file" : "03-resources/resources.feature",
-      "scenario" : "Verify that a remote core media type resource is allowed when used by a script"
+      "line" : 323
    },
    {
-      "line" : 287,
       "file" : "03-resources/resources.feature",
+      "line" : 331,
       "xref" : [
          "sec-resource-locations"
       ],
       "scenario" : "Report a remote top-level Content Documents"
    },
    {
-      "scenario" : "Report a remote script",
       "xref" : [
          "sec-resource-locations"
       ],
       "file" : "03-resources/resources.feature",
-      "line" : 293
+      "line" : 337,
+      "scenario" : "Report a remote script"
    },
    {
-      "scenario" : "Report a remote stylesheet",
-      "line" : 299,
       "xref" : [
          "sec-resource-locations"
       ],
-      "file" : "03-resources/resources.feature"
+      "file" : "03-resources/resources.feature",
+      "line" : 343,
+      "scenario" : "Report a remote stylesheet"
    },
    {
-      "line" : 308,
-      "file" : "03-resources/resources.feature",
+      "scenario" : "Report publication resources found in META-INF",
+      "xref" : [
+         "sec-container-file-and-dir-structure"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 17
+   },
+   {
+      "xref" : [
+         "sec-container-filenames"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 26,
+      "scenario" : "Verify a file name containing a `+` character is allowed (issue 188)"
+   },
+   {
+      "scenario" : "Report a duplicate filename if two files only differ by case",
+      "xref" : [
+         "sec-container-filenames"
+      ],
+      "line" : 31,
+      "file" : "04-ocf/ocf.feature"
+   },
+   {
+      "xref" : [
+         "sec-container-filenames"
+      ],
+      "line" : 37,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report a duplicate filename if two files have the same name after Unicode normalization"
+   },
+   {
+      "xref" : [
+         "sec-container-filenames"
+      ],
+      "line" : 43,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report forbidden characters in filenames"
+   },
+   {
+      "scenario" : "Report leaking URLs in the package document",
+      "file" : "04-ocf/ocf.feature",
+      "line" : 57,
+      "xref" : [
+         "sec-container-iri"
+      ]
+   },
+   {
+      "scenario" : "Report an unknown element in the `container.xml` file",
+      "xref" : [
+         "sec-container-metainf-container.xml"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 68
+   },
+   {
+      "scenario" : "Report a missing 'container.xml' file",
+      "xref" : [
+         "sec-container-metainf-container.xml"
+      ],
+      "line" : 75,
+      "file" : "04-ocf/ocf.feature"
+   },
+   {
+      "file" : "04-ocf/ocf.feature",
+      "line" : 81,
+      "xref" : [
+         "sec-container-metainf-container.xml"
+      ],
+      "scenario" : "Report a fatal error when checking an archive that is not an OCF"
+   },
+   {
+      "xref" : [
+         "sec-container.xml-rootfile-elem"
+      ],
+      "line" : 90,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report a missing OPF document"
+   },
+   {
+      "xref" : [
+         "sec-encryption.xml-encryption"
+      ],
+      "line" : 101,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report an `encryption.xml` file with invalid markup"
+   },
+   {
+      "scenario" : "Report an `encryption.xml` file with duplicate IDs",
+      "xref" : [
+         "sec-encryption.xml-encryption"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 117
+   },
+   {
+      "scenario" : "Report an `encryption.xml` file with invalid compression metadata",
+      "line" : 126,
+      "file" : "04-ocf/ocf.feature",
+      "xref" : [
+         "sec-enc-compression"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-signatures.xml-signatures"
+      ],
+      "line" : 138,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report a `signature.xml` file with invald markup"
+   },
+   {
+      "scenario" : "Verify a minimal packaged EPUB",
+      "xref" : [
+         "sec-zip-container-zipreqs"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 151
+   },
+   {
+      "xref" : [
+         "sec-zip-container-zipreqs"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 156,
+      "scenario" : "Report an unreadable ZIP file (empty file)"
+   },
+   {
+      "xref" : [
+         "sec-zip-container-zipreqs"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 164,
+      "scenario" : "Report an unreadable ZIP file (no end header)"
+   },
+   {
+      "file" : "04-ocf/ocf.feature",
+      "line" : 171,
+      "xref" : [
+         "sec-zip-container-zipreqs"
+      ],
+      "scenario" : "Report an unreadable ZIP file (image file with an '.epub' extension)"
+   },
+   {
+      "xref" : [
+         "sec-zip-container-zipreqs"
+      ],
+      "line" : 178,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report a duplicate ZIP entry for the same file"
+   },
+   {
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "line" : 187,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report a mimetype file with an incorrect value"
+   },
+   {
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 193,
+      "scenario" : "Report a mimetype file with leading spaces"
+   },
+   {
+      "line" : 199,
+      "file" : "04-ocf/ocf.feature",
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "scenario" : "Report a missing mimetype file"
+   },
+   {
+      "scenario" : "Report a mimetype file with a trailing newline",
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "line" : 205,
+      "file" : "04-ocf/ocf.feature"
+   },
+   {
+      "scenario" : "Report a mimetype file with trailing spaces",
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 211
+   },
+   {
+      "line" : 217,
+      "file" : "04-ocf/ocf.feature",
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "scenario" : "Report when the 'mimetype' entry has an extra field in its ZIP header"
+   },
+   {
+      "scenario" : "Verify a publication with obfuscated font",
+      "xref" : [
+         "obfus-specifying"
+      ],
+      "line" : 228,
+      "file" : "04-ocf/ocf.feature"
+   },
+   {
+      "file" : "04-ocf/ocf.feature",
+      "line" : 233,
+      "xref" : [
+         "obfus-specifying"
+      ],
+      "scenario" : "Report an obfuscated font that is not a Core Media Type"
+   },
+   {
+      "xref" : [
+         "obfus-specifying"
+      ],
+      "line" : 239,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report an obfuscated font that is not a font"
+   },
+   {
       "xref" : [
          "sec-manifest-elem"
       ],
+      "file" : "05-package-document/package-document.feature",
+      "line" : 302,
       "scenario" : "Report a remote image declared in the package document when it is referenced from an HTML `a` element"
    },
    {
-      "line" : 314,
+      "scenario" : "Report remote audio resources not declared in the package document",
+      "line" : 308,
+      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-manifest-elem"
-      ],
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Report remote audio resources not declared in the package document"
+      ]
    },
    {
-      "scenario" : "Report remote audio resources defined in `sources` elements but not declared in the package document",
-      "line" : 321,
+      "file" : "05-package-document/package-document.feature",
+      "line" : 315,
       "xref" : [
          "sec-manifest-elem"
       ],
-      "file" : "03-resources/resources.feature"
+      "scenario" : "Report remote audio resources defined in `sources` elements but not declared in the package document"
    },
    {
       "scenario" : "Report a remote font not declared in the package document",
-      "line" : 327,
-      "file" : "03-resources/resources.feature",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 321,
       "xref" : [
          "sec-manifest-elem"
       ]
@@ -294,32 +566,32 @@
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "file" : "03-resources/resources.feature",
-      "line" : 336,
+      "file" : "05-package-document/package-document.feature",
+      "line" : 330,
       "scenario" : "Report an XHTML document with remote audio but without the `remote-resources` property set in the package document"
    },
    {
-      "line" : 342,
+      "line" : 336,
+      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "file" : "03-resources/resources.feature",
       "scenario" : "Report remote fonts in CSS without the `remote-resource` property set in the package document"
    },
    {
-      "line" : 348,
-      "file" : "03-resources/resources.feature",
+      "scenario" : "Report an SVG using remote fonts without the `remote-resource` property set in the package document",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "scenario" : "Report an SVG using remote fonts without the `remote-resource` property set in the package document"
+      "line" : 342,
+      "file" : "05-package-document/package-document.feature"
    },
    {
-      "line" : 354,
+      "line" : 348,
+      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "file" : "03-resources/resources.feature",
       "scenario" : "Report an XHTML document using remote fonts in `style` without the `remote-resource` property set in the package document"
    }
 ]
