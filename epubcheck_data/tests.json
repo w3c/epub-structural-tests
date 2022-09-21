@@ -1,561 +1,561 @@
 [
    {
-      "scenario" : "Verify a minimal EPUB",
+      "line" : 12,
       "file" : "00-minimal/minimal.feature",
+      "scenario" : "Verify a minimal EPUB",
       "xref" : [
          "sec-metadata-elem"
-      ],
-      "line" : 12
+      ]
    },
    {
+      "file" : "02-epub-publication-conformance/epub-publication-conformance.feature",
       "line" : 15,
       "xref" : [
          "sec-epub-conf"
       ],
-      "file" : "02-epub-publication-conformance/epub-publication-conformance.feature",
       "scenario" : "the minimal Package Document is reported as valid "
    },
    {
+      "file" : "02-epub-publication-conformance/epub-publication-conformance.feature",
       "line" : 20,
+      "scenario" : "Verify a minimal packaged EPUB",
       "xref" : [
          "sec-epub-conf"
-      ],
-      "file" : "02-epub-publication-conformance/epub-publication-conformance.feature",
-      "scenario" : "Verify a minimal packaged EPUB"
+      ]
    },
    {
       "xref" : [
          "sec-foreign-resources"
       ],
-      "line" : 43,
       "scenario" : "Report foreign audio used with no available fallback",
-      "file" : "03-resources/resources.feature"
+      "file" : "03-resources/resources.feature",
+      "line" : 43
    },
    {
       "xref" : [
          "sec-manifest-fallbacks"
       ],
-      "line" : 121,
       "scenario" : "Allow non-CMT file to be in the spine if they have an XHTML Content Document fallback",
-      "file" : "03-resources/resources.feature"
+      "file" : "03-resources/resources.feature",
+      "line" : 121
    },
    {
       "line" : 127,
-      "xref" : [
-         "sec-manifest-fallbacks"
-      ],
       "file" : "03-resources/resources.feature",
-      "scenario" : "Allow an SVG Content Document to be used as a fallback"
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Allow a deep fallback chain as long as it contains a Content Document",
-      "line" : 133,
+      "scenario" : "Allow an SVG Content Document to be used as a fallback",
       "xref" : [
          "sec-manifest-fallbacks"
       ]
    },
    {
-      "scenario" : "Report a cycle in the fallback chain",
+      "line" : 133,
       "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-manifest-fallbacks"
       ],
-      "line" : 139
+      "scenario" : "Allow a deep fallback chain as long as it contains a Content Document"
    },
    {
+      "line" : 139,
+      "file" : "03-resources/resources.feature",
+      "xref" : [
+         "sec-manifest-fallbacks"
+      ],
+      "scenario" : "Report a cycle in the fallback chain"
+   },
+   {
+      "file" : "03-resources/resources.feature",
+      "line" : 146,
       "scenario" : "Report files that aren't Content Documents (like audio) in spine when they don't have a fallback  ",
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-manifest-fallbacks"
-      ],
-      "line" : 146
+      ]
    },
    {
+      "scenario" : "Report a circular manifest fallback chain",
       "xref" : [
          "sec-manifest-fallbacks"
       ],
       "line" : 153,
-      "scenario" : "Report a circular manifest fallback chain",
       "file" : "03-resources/resources.feature"
    },
    {
-      "xref" : [
-         "sec-fallbacks-img"
-      ],
+      "file" : "03-resources/resources.feature",
       "line" : 165,
       "scenario" : "Report a `picture` element with a foreign resource in its `img src` fallback  ",
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "xref" : [
-         "sec-fallbacks-img"
-      ],
-      "line" : 171,
-      "scenario" : "Report a `picture` element with a foreign resource in its `img srcset` fallback",
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "scenario" : "Verify the `picture source` element can reference foreign resources so long as the `type` attribute is declared",
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-fallbacks-img"
-      ],
-      "line" : 177
-   },
-   {
-      "xref" : [
-         "sec-fallbacks-img"
-      ],
-      "line" : 182,
-      "scenario" : "Report a `picture source` element that does not include a `type` attribute for a foreign resource",
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Report a `picture source` element that references a foreign resource but incorrectly states a core media type in its `type` attribute",
-      "line" : 188,
       "xref" : [
          "sec-fallbacks-img"
       ]
    },
    {
+      "line" : 171,
+      "file" : "03-resources/resources.feature",
+      "xref" : [
+         "sec-fallbacks-img"
+      ],
+      "scenario" : "Report a `picture` element with a foreign resource in its `img srcset` fallback"
+   },
+   {
+      "xref" : [
+         "sec-fallbacks-img"
+      ],
+      "scenario" : "Verify the `picture source` element can reference foreign resources so long as the `type` attribute is declared",
+      "line" : 177,
+      "file" : "03-resources/resources.feature"
+   },
+   {
+      "line" : 182,
+      "file" : "03-resources/resources.feature",
+      "scenario" : "Report a `picture source` element that does not include a `type` attribute for a foreign resource",
+      "xref" : [
+         "sec-fallbacks-img"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-fallbacks-img"
+      ],
+      "scenario" : "Report a `picture source` element that references a foreign resource but incorrectly states a core media type in its `type` attribute",
+      "file" : "03-resources/resources.feature",
+      "line" : 188
+   },
+   {
+      "file" : "03-resources/resources.feature",
       "line" : 209,
       "xref" : [
          "sec-resource-locations"
       ],
-      "file" : "03-resources/resources.feature",
       "scenario" : "Allow audio resources to be remote "
    },
    {
+      "file" : "03-resources/resources.feature",
       "line" : 214,
+      "scenario" : "Verify that remote audio resources are allowed",
       "xref" : [
          "sec-resource-locations"
-      ],
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Verify that remote audio resources are allowed"
+      ]
    },
    {
-      "xref" : [
-         "sec-resource-locations"
-      ],
+      "file" : "03-resources/resources.feature",
       "line" : 219,
       "scenario" : "Verify that remote audio resources are allowed anywhere",
-      "file" : "03-resources/resources.feature"
+      "xref" : [
+         "sec-resource-locations"
+      ]
    },
    {
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Verify that remote audio resources defined in the `sources` element are allowed",
       "line" : 225,
+      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
-      ]
+      ],
+      "scenario" : "Verify that remote audio resources defined in the `sources` element are allowed"
    },
    {
-      "file" : "03-resources/resources.feature",
       "scenario" : "Verify that remote audio resources with foreign media types are allowed with a fallback",
-      "line" : 230,
       "xref" : [
          "sec-resource-locations"
-      ]
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 230
    },
    {
+      "scenario" : "Verify that remote video resources are allowed",
+      "xref" : [
+         "sec-resource-locations"
+      ],
       "line" : 235,
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Verify that remote video resources are allowed"
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Verify that remote video resources are allowed anywhere",
-      "line" : 240,
-      "xref" : [
-         "sec-resource-locations"
-      ]
-   },
-   {
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 246,
-      "scenario" : "Report a reference to a remote resource from an `iframe` element when the resource is declared in the package document (issue 852)",
       "file" : "03-resources/resources.feature"
+   },
+   {
+      "scenario" : "Verify that remote video resources are allowed anywhere",
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "line" : 240,
+      "file" : "03-resources/resources.feature"
+   },
+   {
+      "line" : 246,
+      "file" : "03-resources/resources.feature",
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Report a reference to a remote resource from an `iframe` element when the resource is declared in the package document (issue 852)"
    },
    {
       "scenario" : "Report a reference to a remote resource from an `iframe` element when the resource is not declared in package document",
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ],
+      "file" : "03-resources/resources.feature",
       "line" : 252
    },
    {
-      "line" : 258,
+      "scenario" : "Report a remote image that is declared in the packaged document",
       "xref" : [
          "sec-resource-locations"
       ],
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Report a remote image that is declared in the packaged document"
+      "line" : 258,
+      "file" : "03-resources/resources.feature"
    },
    {
       "scenario" : "Report a remote image that is not declared in the package document",
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ],
+      "file" : "03-resources/resources.feature",
       "line" : 264
    },
    {
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 270,
       "scenario" : "Report a remote image declared in the package document when it is referenced from an `img` tag and also retrieved by a script",
-      "file" : "03-resources/resources.feature"
-   },
-   {
       "xref" : [
          "sec-resource-locations"
       ],
+      "file" : "03-resources/resources.feature",
+      "line" : 270
+   },
+   {
       "line" : 276,
-      "scenario" : "Verify that remote fonts are allowed",
-      "file" : "03-resources/resources.feature"
-   },
-   {
+      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ],
+      "scenario" : "Verify that remote fonts are allowed"
+   },
+   {
+      "file" : "03-resources/resources.feature",
       "line" : 281,
       "scenario" : "Verify that remote SVG fonts are allowed",
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "scenario" : "Verify that remote fonts of unknown type declared in CSS `@font-face` are allowed",
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 286
-   },
-   {
-      "scenario" : "Verify that remote fonts of unknown type declared in SVG `font-face-uri` are allowed",
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 291
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Report a remote SVG font when it is referenced from an HTML `img` element",
-      "line" : 296,
       "xref" : [
          "sec-resource-locations"
       ]
    },
    {
+      "scenario" : "Verify that remote fonts of unknown type declared in CSS `@font-face` are allowed",
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "file" : "03-resources/resources.feature",
+      "line" : 286
+   },
+   {
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Verify that remote fonts of unknown type declared in SVG `font-face-uri` are allowed",
+      "line" : 291,
+      "file" : "03-resources/resources.feature"
+   },
+   {
+      "file" : "03-resources/resources.feature",
+      "line" : 296,
+      "scenario" : "Report a remote SVG font when it is referenced from an HTML `img` element",
+      "xref" : [
+         "sec-resource-locations"
+      ]
+   },
+   {
+      "scenario" : "Report a reference to a remote resource from an `object` element when the resource is not declared in package document",
       "xref" : [
          "sec-resource-locations"
       ],
       "line" : 302,
-      "scenario" : "Report a reference to a remote resource from an `object` element when the resource is not declared in package document",
       "file" : "03-resources/resources.feature"
    },
    {
+      "line" : 309,
+      "file" : "03-resources/resources.feature",
       "scenario" : "Report a remote SVG Content Document",
-      "file" : "03-resources/resources.feature",
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 309
-   },
-   {
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 315,
-      "scenario" : "Verify that a remote foreign resource is allowed when used by a script",
-      "file" : "03-resources/resources.feature"
-   },
-   {
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Verify that a remote core media type resource is allowed when used by a script",
-      "line" : 323,
       "xref" : [
          "sec-resource-locations"
       ]
+   },
+   {
+      "file" : "03-resources/resources.feature",
+      "line" : 315,
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Verify that a remote foreign resource is allowed when used by a script"
+   },
+   {
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Verify that a remote core media type resource is allowed when used by a script",
+      "line" : 323,
+      "file" : "03-resources/resources.feature"
    },
    {
       "scenario" : "Report a remote top-level Content Documents",
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-resource-locations"
       ],
-      "line" : 331
-   },
-   {
-      "line" : 337,
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "file" : "03-resources/resources.feature",
-      "scenario" : "Report a remote script"
-   },
-   {
-      "xref" : [
-         "sec-resource-locations"
-      ],
-      "line" : 343,
-      "scenario" : "Report a remote stylesheet",
+      "line" : 331,
       "file" : "03-resources/resources.feature"
    },
    {
-      "scenario" : "a not well-formed Package Document is reported ",
+      "line" : 337,
       "file" : "03-resources/resources.feature",
+      "scenario" : "Report a remote script",
+      "xref" : [
+         "sec-resource-locations"
+      ]
+   },
+   {
+      "line" : 343,
+      "file" : "03-resources/resources.feature",
+      "xref" : [
+         "sec-resource-locations"
+      ],
+      "scenario" : "Report a remote stylesheet"
+   },
+   {
+      "file" : "03-resources/resources.feature",
+      "line" : 352,
       "xref" : [
          "sec-xml-constraint"
       ],
-      "line" : 352
+      "scenario" : "a not well-formed Package Document is reported "
    },
    {
       "scenario" : "using a not-declared namespace is not allowed ",
-      "file" : "03-resources/resources.feature",
       "xref" : [
          "sec-xml-constraint"
       ],
-      "line" : 359
+      "line" : 359,
+      "file" : "03-resources/resources.feature"
    },
    {
-      "line" : 17,
       "xref" : [
          "sec-container-file-and-dir-structure"
       ],
+      "scenario" : "Report publication resources found in META-INF",
       "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report publication resources found in META-INF"
+      "line" : 17
    },
    {
       "file" : "04-ocf/ocf.feature",
-      "scenario" : "Verify a file name containing a `+` character is allowed (issue 188)",
       "line" : 26,
       "xref" : [
          "sec-container-filenames"
+      ],
+      "scenario" : "Verify a file name containing a `+` character is allowed (issue 188)"
+   },
+   {
+      "file" : "04-ocf/ocf.feature",
+      "line" : 31,
+      "scenario" : "Report a duplicate filename if two files only differ by case",
+      "xref" : [
+         "sec-container-filenames"
       ]
    },
    {
-      "scenario" : "Report a duplicate filename if two files only differ by case",
-      "file" : "04-ocf/ocf.feature",
       "xref" : [
          "sec-container-filenames"
       ],
-      "line" : 31
+      "scenario" : "Report a duplicate filename if two files have the same name after Unicode normalization",
+      "file" : "04-ocf/ocf.feature",
+      "line" : 37
    },
    {
-      "line" : 37,
       "xref" : [
          "sec-container-filenames"
       ],
-      "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report a duplicate filename if two files have the same name after Unicode normalization"
-   },
-   {
-      "file" : "04-ocf/ocf.feature",
       "scenario" : "Report forbidden characters in filenames",
       "line" : 43,
-      "xref" : [
-         "sec-container-filenames"
-      ]
+      "file" : "04-ocf/ocf.feature"
    },
    {
+      "file" : "04-ocf/ocf.feature",
       "line" : 57,
       "xref" : [
          "sec-container-iri"
       ],
-      "file" : "04-ocf/ocf.feature",
       "scenario" : "Report leaking URLs in the package document"
    },
    {
-      "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report an unknown element in the `container.xml` file",
       "line" : 68,
+      "file" : "04-ocf/ocf.feature",
       "xref" : [
          "sec-container-metainf-container.xml"
-      ]
+      ],
+      "scenario" : "Report an unknown element in the `container.xml` file"
    },
    {
       "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report a missing 'container.xml' file",
       "line" : 75,
+      "scenario" : "Report a missing 'container.xml' file",
       "xref" : [
          "sec-container-metainf-container.xml"
       ]
    },
    {
+      "line" : 81,
       "file" : "04-ocf/ocf.feature",
       "scenario" : "Report a fatal error when checking an archive that is not an OCF",
-      "line" : 81,
       "xref" : [
          "sec-container-metainf-container.xml"
       ]
    },
    {
-      "xref" : [
-         "sec-container.xml-rootfile-elem"
-      ],
+      "file" : "04-ocf/ocf.feature",
       "line" : 90,
       "scenario" : "Report a missing OPF document",
-      "file" : "04-ocf/ocf.feature"
+      "xref" : [
+         "sec-container.xml-rootfile-elem"
+      ]
    },
    {
+      "file" : "04-ocf/ocf.feature",
       "line" : 101,
       "xref" : [
          "sec-encryption.xml-encryption"
       ],
-      "file" : "04-ocf/ocf.feature",
       "scenario" : "Report an `encryption.xml` file with invalid markup"
    },
    {
       "line" : 117,
+      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report an `encryption.xml` file with duplicate IDs",
       "xref" : [
          "sec-encryption.xml-encryption"
-      ],
-      "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report an `encryption.xml` file with duplicate IDs"
+      ]
    },
    {
+      "scenario" : "Report an `encryption.xml` file with invalid compression metadata",
       "xref" : [
          "sec-enc-compression"
       ],
-      "line" : 126,
-      "scenario" : "Report an `encryption.xml` file with invalid compression metadata",
-      "file" : "04-ocf/ocf.feature"
+      "file" : "04-ocf/ocf.feature",
+      "line" : 126
    },
    {
-      "scenario" : "Report a `signature.xml` file with invald markup",
+      "line" : 138,
       "file" : "04-ocf/ocf.feature",
       "xref" : [
          "sec-signatures.xml-signatures"
       ],
-      "line" : 138
+      "scenario" : "Report a `signature.xml` file with invald markup"
    },
    {
-      "line" : 151,
       "xref" : [
          "sec-epub-conf",
          "sec-zip-container-zipreqs"
       ],
-      "file" : "04-ocf/ocf.feature",
-      "scenario" : "Verify a minimal packaged EPUB"
+      "scenario" : "Verify a minimal packaged EPUB",
+      "line" : 151,
+      "file" : "04-ocf/ocf.feature"
    },
    {
-      "xref" : [
-         "sec-zip-container-zipreqs"
-      ],
-      "line" : 156,
       "scenario" : "Report an unreadable ZIP file (empty file)",
-      "file" : "04-ocf/ocf.feature"
+      "xref" : [
+         "sec-zip-container-zipreqs"
+      ],
+      "file" : "04-ocf/ocf.feature",
+      "line" : 156
    },
    {
       "xref" : [
          "sec-zip-container-zipreqs"
       ],
-      "line" : 164,
       "scenario" : "Report an unreadable ZIP file (no end header)",
-      "file" : "04-ocf/ocf.feature"
+      "file" : "04-ocf/ocf.feature",
+      "line" : 164
    },
    {
       "xref" : [
          "sec-zip-container-zipreqs"
       ],
-      "line" : 171,
       "scenario" : "Report an unreadable ZIP file (image file with an '.epub' extension)",
-      "file" : "04-ocf/ocf.feature"
+      "file" : "04-ocf/ocf.feature",
+      "line" : 171
    },
    {
+      "scenario" : "Report a duplicate ZIP entry for the same file",
       "xref" : [
          "sec-zip-container-zipreqs"
       ],
-      "line" : 178,
-      "scenario" : "Report a duplicate ZIP entry for the same file",
-      "file" : "04-ocf/ocf.feature"
+      "file" : "04-ocf/ocf.feature",
+      "line" : 178
    },
    {
+      "line" : 187,
+      "file" : "04-ocf/ocf.feature",
       "scenario" : "Report a mimetype file with an incorrect value",
-      "file" : "04-ocf/ocf.feature",
-      "xref" : [
-         "sec-zip-container-mime"
-      ],
-      "line" : 187
-   },
-   {
-      "scenario" : "Report a mimetype file with leading spaces",
-      "file" : "04-ocf/ocf.feature",
-      "xref" : [
-         "sec-zip-container-mime"
-      ],
-      "line" : 193
-   },
-   {
-      "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report a missing mimetype file",
-      "line" : 199,
       "xref" : [
          "sec-zip-container-mime"
       ]
    },
    {
-      "scenario" : "Report a mimetype file with a trailing newline",
-      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report a mimetype file with leading spaces",
       "xref" : [
          "sec-zip-container-mime"
       ],
-      "line" : 205
+      "line" : 193,
+      "file" : "04-ocf/ocf.feature"
    },
    {
       "xref" : [
          "sec-zip-container-mime"
       ],
+      "scenario" : "Report a missing mimetype file",
+      "file" : "04-ocf/ocf.feature",
+      "line" : 199
+   },
+   {
+      "line" : 205,
+      "file" : "04-ocf/ocf.feature",
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "scenario" : "Report a mimetype file with a trailing newline"
+   },
+   {
+      "file" : "04-ocf/ocf.feature",
       "line" : 211,
-      "scenario" : "Report a mimetype file with trailing spaces",
-      "file" : "04-ocf/ocf.feature"
-   },
-   {
       "xref" : [
          "sec-zip-container-mime"
       ],
+      "scenario" : "Report a mimetype file with trailing spaces"
+   },
+   {
       "line" : 217,
-      "scenario" : "Report when the 'mimetype' entry has an extra field in its ZIP header",
+      "file" : "04-ocf/ocf.feature",
+      "xref" : [
+         "sec-zip-container-mime"
+      ],
+      "scenario" : "Report when the 'mimetype' entry has an extra field in its ZIP header"
+   },
+   {
+      "xref" : [
+         "obfus-specifying"
+      ],
+      "scenario" : "Verify a publication with obfuscated font",
+      "line" : 228,
       "file" : "04-ocf/ocf.feature"
    },
    {
-      "scenario" : "Verify a publication with obfuscated font",
-      "file" : "04-ocf/ocf.feature",
+      "scenario" : "Report an obfuscated font that is not a Core Media Type",
       "xref" : [
          "obfus-specifying"
       ],
-      "line" : 228
+      "file" : "04-ocf/ocf.feature",
+      "line" : 233
    },
    {
-      "line" : 233,
       "xref" : [
          "obfus-specifying"
       ],
+      "scenario" : "Report an obfuscated font that is not a font",
       "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report an obfuscated font that is not a Core Media Type"
-   },
-   {
-      "line" : 239,
-      "xref" : [
-         "obfus-specifying"
-      ],
-      "file" : "04-ocf/ocf.feature",
-      "scenario" : "Report an obfuscated font that is not a font"
+      "line" : 239
    },
    {
       "file" : "05-package-document/package-document.feature",
-      "scenario" : "the 'dir' attribute value can be 'auto' ",
       "line" : 24,
+      "scenario" : "the 'dir' attribute value can be 'auto' ",
       "xref" : [
          "attrdef-dir"
       ]
@@ -564,513 +564,537 @@
       "xref" : [
          "attrdef-href"
       ],
-      "line" : 32,
       "scenario" : "'link' target must not reference a manifest ID",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 32
+   },
+   {
+      "scenario" : "'id' attributes must be unique ",
+      "xref" : [
+         "attrdef-id"
+      ],
+      "line" : 46,
       "file" : "05-package-document/package-document.feature"
    },
    {
-      "line" : 46,
+      "scenario" : "'id' attributes must be unique after whitespace normalization ",
       "xref" : [
          "attrdef-id"
       ],
       "file" : "05-package-document/package-document.feature",
-      "scenario" : "'id' attributes must be unique "
+      "line" : 52
    },
    {
-      "xref" : [
-         "attrdef-id"
-      ],
-      "line" : 52,
-      "scenario" : "'id' attributes must be unique after whitespace normalization ",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
-      "scenario" : "'refines' attribute MUST be a relative URL ",
+      "line" : 61,
       "file" : "05-package-document/package-document.feature",
       "xref" : [
          "attrdef-refines"
       ],
-      "line" : 61
+      "scenario" : "'refines' attribute MUST be a relative URL "
    },
    {
       "line" : 74,
+      "file" : "05-package-document/package-document.feature",
+      "scenario" : "'refines' attribute, when using fragment ID, must target an existing ID",
       "xref" : [
          "attrdef-refines"
-      ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "'refines' attribute, when using fragment ID, must target an existing ID"
+      ]
    },
    {
-      "scenario" : "'refines' references cycles are not allowed",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "attrdef-refines"
       ],
+      "scenario" : "'refines' references cycles are not allowed",
+      "file" : "05-package-document/package-document.feature",
       "line" : 81
    },
    {
-      "file" : "05-package-document/package-document.feature",
       "scenario" : "the 'xml:lang' attribute can be empty",
-      "line" : 90,
       "xref" : [
          "attrdef-xml-lang"
-      ]
+      ],
+      "file" : "05-package-document/package-document.feature",
+      "line" : 90
    },
    {
+      "xref" : [
+         "attrdef-xml-lang"
+      ],
       "scenario" : "the 'xml:lang' language tag must not have leading/trailing whitespace   ",
-      "file" : "05-package-document/package-document.feature",
+      "line" : 95,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
       "xref" : [
          "attrdef-xml-lang"
       ],
-      "line" : 95
-   },
-   {
       "scenario" : "the 'xml:lang' language tag must be well-formed   ",
-      "file" : "05-package-document/package-document.feature",
+      "line" : 101,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "scenario" : "Verify that three-character language codes are allowed (issue 615)",
       "xref" : [
          "attrdef-xml-lang"
       ],
-      "line" : 101
+      "file" : "05-package-document/package-document.feature",
+      "line" : 107
    },
    {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Verify that three-character language codes are allowed (issue 615)",
-      "line" : 107,
-      "xref" : [
-         "attrdef-xml-lang"
-      ]
-   },
-   {
-      "scenario" : "the 'package' 'unique-identifier' attribute must be a known ID",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-package-elem"
       ],
+      "scenario" : "the 'package' 'unique-identifier' attribute must be a known ID",
+      "file" : "05-package-document/package-document.feature",
       "line" : 115
    },
    {
       "line" : 122,
+      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-package-elem"
       ],
-      "file" : "05-package-document/package-document.feature",
       "scenario" : "the 'package' 'unique-identifier' attribute must point to a 'dc:identifier' element"
    },
    {
+      "line" : 129,
       "file" : "05-package-document/package-document.feature",
       "scenario" : "the 'package' element must have a 'metadata' child element  ",
-      "line" : 129,
       "xref" : [
          "sec-package-elem"
       ]
    },
    {
       "scenario" : "the 'package' element's 'metadata' child must be before the 'manifest' child  ",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-package-elem"
       ],
+      "file" : "05-package-document/package-document.feature",
       "line" : 137
    },
    {
-      "scenario" : "the unique identifier must not be empty",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-metadata-values"
       ],
+      "scenario" : "the unique identifier must not be empty",
+      "file" : "05-package-document/package-document.feature",
       "line" : 154
    },
    {
       "line" : 163,
+      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-metadata-values"
       ],
-      "file" : "05-package-document/package-document.feature",
       "scenario" : "'dc:identifier' must not be empty "
    },
    {
       "line" : 170,
-      "xref" : [
-         "sec-metadata-values"
-      ],
       "file" : "05-package-document/package-document.feature",
-      "scenario" : "'dc:language' must not be empty  "
-   },
-   {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "'dc:title' must not be empty ",
-      "line" : 177,
+      "scenario" : "'dc:language' must not be empty  ",
       "xref" : [
          "sec-metadata-values"
       ]
    },
    {
-      "line" : 184,
+      "line" : 177,
+      "file" : "05-package-document/package-document.feature",
+      "scenario" : "'dc:title' must not be empty ",
+      "xref" : [
+         "sec-metadata-values"
+      ]
+   },
+   {
+      "scenario" : "a metadata's value must be defined ",
       "xref" : [
          "sec-metadata-values"
       ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "a metadata's value must be defined "
+      "line" : 184,
+      "file" : "05-package-document/package-document.feature"
    },
    {
-      "scenario" : "'dc:title' must be specified",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-opf-dctitle"
       ],
-      "line" : 204
+      "scenario" : "'dc:title' must be specified",
+      "line" : 204,
+      "file" : "05-package-document/package-document.feature"
    },
    {
       "scenario" : "'dc:language' must be well-formed  ",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-opf-dclanguage"
       ],
-      "line" : 214
-   },
-   {
-      "scenario" : "Multiple 'dc:date' elements specified",
-      "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-opf-dcdate"
-      ],
-      "line" : 232
-   },
-   {
-      "scenario" : "a metadata's property name must be defined ",
-      "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-meta-elem"
-      ],
-      "line" : 273
-   },
-   {
-      "xref" : [
-         "sec-meta-elem"
-      ],
-      "line" : 280,
-      "scenario" : "a metadata's property name must not be a list of values ",
+      "line" : 214,
       "file" : "05-package-document/package-document.feature"
    },
    {
       "file" : "05-package-document/package-document.feature",
-      "scenario" : "a metadata's property name must be well-formed",
+      "line" : 232,
+      "scenario" : "Multiple 'dc:date' elements specified",
+      "xref" : [
+         "sec-opf-dcdate"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-meta-elem"
+      ],
+      "scenario" : "a metadata's property name must be defined ",
+      "line" : 273,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "line" : 280,
+      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-meta-elem"
+      ],
+      "scenario" : "a metadata's property name must not be a list of values "
+   },
+   {
       "line" : 288,
+      "file" : "05-package-document/package-document.feature",
+      "scenario" : "a metadata's property name must be well-formed",
       "xref" : [
          "sec-meta-elem"
       ]
    },
    {
-      "line" : 298,
+      "scenario" : "'scheme' must not be list of values",
       "xref" : [
          "sec-meta-elem"
       ],
       "file" : "05-package-document/package-document.feature",
-      "scenario" : "'scheme' must not be list of values"
+      "line" : 298
    },
    {
+      "line" : 305,
+      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-meta-elem"
       ],
-      "line" : 305,
-      "scenario" : "'scheme' must not be an unknown value with no prefix",
-      "file" : "05-package-document/package-document.feature"
+      "scenario" : "'scheme' must not be an unknown value with no prefix"
    },
    {
       "scenario" : "'dc:modified' must be defined ",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-metadata-last-modified"
       ],
-      "line" : 314
-   },
-   {
-      "scenario" : "'dc:modified' must be of the form 'CCYY-MM-DDThh:mm:ssZ' ",
-      "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-metadata-last-modified"
-      ],
-      "line" : 321
-   },
-   {
-      "line" : 336,
-      "xref" : [
-         "sec-link-elem"
-      ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "A link to a local resource must declare a media type  "
-   },
-   {
-      "scenario" : "the 'link' 'hreflang' attribute can be empty",
-      "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-link-elem"
-      ],
-      "line" : 348
-   },
-   {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "the 'link' 'hreflang' language tag must not have leading/trailing whitespace   ",
-      "line" : 353,
-      "xref" : [
-         "sec-link-elem"
-      ]
-   },
-   {
-      "xref" : [
-         "sec-link-elem"
-      ],
-      "line" : 359,
-      "scenario" : "the 'link' 'hreflang' language tag must be well-formed   ",
+      "line" : 314,
       "file" : "05-package-document/package-document.feature"
    },
    {
+      "file" : "05-package-document/package-document.feature",
+      "line" : 321,
+      "scenario" : "'dc:modified' must be of the form 'CCYY-MM-DDThh:mm:ssZ' ",
+      "xref" : [
+         "sec-metadata-last-modified"
+      ]
+   },
+   {
+      "line" : 336,
+      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-link-elem"
+      ],
+      "scenario" : "A link to a local resource must declare a media type  "
+   },
+   {
+      "xref" : [
+         "sec-link-elem"
+      ],
+      "scenario" : "the link 'rel' attribute can have multiple properties",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 344
+   },
+   {
+      "scenario" : "the link 'properties' attribute must not be empty",
+      "xref" : [
+         "sec-link-elem"
+      ],
+      "file" : "05-package-document/package-document.feature",
+      "line" : 349
+   },
+   {
+      "file" : "05-package-document/package-document.feature",
+      "line" : 356,
+      "scenario" : "a link with an unknown 'properties' value is reported",
+      "xref" : [
+         "sec-link-elem"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-link-elem"
+      ],
+      "scenario" : "the 'link' 'hreflang' attribute can be empty",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 366
+   },
+   {
+      "line" : 371,
+      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-link-elem"
+      ],
+      "scenario" : "the 'link' 'hreflang' language tag must not have leading/trailing whitespace   "
+   },
+   {
+      "line" : 377,
+      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-link-elem"
+      ],
+      "scenario" : "the 'link' 'hreflang' language tag must be well-formed   "
+   },
+   {
       "scenario" : "Report a remote image declared in the package document when it is referenced from an HTML `a` element",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-manifest-elem"
       ],
-      "line" : 370
+      "line" : 388,
+      "file" : "05-package-document/package-document.feature"
    },
    {
-      "file" : "05-package-document/package-document.feature",
       "scenario" : "Report remote audio resources not declared in the package document",
-      "line" : 376,
-      "xref" : [
-         "sec-manifest-elem"
-      ]
-   },
-   {
-      "line" : 383,
       "xref" : [
          "sec-manifest-elem"
       ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Report remote audio resources defined in `sources` elements but not declared in the package document"
+      "line" : 394,
+      "file" : "05-package-document/package-document.feature"
    },
    {
-      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-manifest-elem"
+      ],
+      "scenario" : "Report remote audio resources defined in `sources` elements but not declared in the package document",
+      "line" : 401,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "xref" : [
+         "sec-manifest-elem"
+      ],
       "scenario" : "Report a remote font not declared in the package document",
-      "line" : 389,
-      "xref" : [
-         "sec-manifest-elem"
-      ]
+      "file" : "05-package-document/package-document.feature",
+      "line" : 407
    },
    {
-      "line" : 398,
       "xref" : [
          "sec-item-elem"
       ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "a manifest item must declare a media type  "
-   },
-   {
+      "scenario" : "a manifest item must declare a media type  ",
       "line" : 416,
-      "xref" : [
-         "sec-item-elem"
-      ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "item URLs must not have a fragment identifier"
+      "file" : "05-package-document/package-document.feature"
    },
    {
       "file" : "05-package-document/package-document.feature",
-      "scenario" : "two manifest items cannot represent the same resource ",
-      "line" : 422,
-      "xref" : [
-         "sec-item-elem"
-      ]
-   },
-   {
-      "line" : 428,
-      "xref" : [
-         "sec-item-elem"
-      ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Report duplicate declarations of a resource in the package document manifest"
-   },
-   {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Report a resource declared in the package document but missing from the container",
       "line" : 434,
+      "scenario" : "item URLs must not have a fragment identifier",
       "xref" : [
-         "sec-item-elem",
-         "sec-container-iri"
+         "sec-item-elem"
       ]
    },
    {
       "line" : 440,
+      "file" : "05-package-document/package-document.feature",
+      "scenario" : "two manifest items cannot represent the same resource ",
+      "xref" : [
+         "sec-item-elem"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-item-elem"
+      ],
+      "scenario" : "Report duplicate declarations of a resource in the package document manifest",
+      "line" : 446,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "scenario" : "Report a resource declared in the package document but missing from the container",
+      "xref" : [
+         "sec-item-elem",
+         "sec-container-iri"
+      ],
+      "file" : "05-package-document/package-document.feature",
+      "line" : 452
+   },
+   {
       "xref" : [
          "sec-item-elem",
          "attrdef-href"
       ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Report a manifest item path with unencoded spaces"
+      "scenario" : "Report a manifest item path with unencoded spaces",
+      "line" : 458,
+      "file" : "05-package-document/package-document.feature"
    },
    {
+      "scenario" : "Report fonts declared in the package document but missing from the container",
       "xref" : [
          "sec-item-elem",
          "sec-container-iri"
       ],
-      "line" : 447,
-      "scenario" : "Report fonts declared in the package document but missing from the container",
+      "line" : 465,
       "file" : "05-package-document/package-document.feature"
    },
    {
+      "scenario" : "fallback attribute must point to an existing item ID ",
       "xref" : [
          "sec-item-elem"
       ],
-      "line" : 453,
-      "scenario" : "fallback attribute must point to an existing item ID ",
+      "line" : 471,
       "file" : "05-package-document/package-document.feature"
    },
    {
       "scenario" : "fallback attribute must not reference its item ID ",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-elem"
       ],
-      "line" : 460
+      "file" : "05-package-document/package-document.feature",
+      "line" : 478
    },
    {
+      "line" : 485,
       "file" : "05-package-document/package-document.feature",
       "scenario" : "Report a manifest fallback that references a non-existent resource",
-      "line" : 467,
       "xref" : [
          "sec-item-elem"
       ]
    },
    {
+      "line" : 502,
+      "file" : "05-package-document/package-document.feature",
       "scenario" : "An unknown item property in the default vocab is reported",
-      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-item-resource-properties"
+      ]
+   },
+   {
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 484
+      "scenario" : "The 'cover-image' item property must occur at most once ",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 510
    },
    {
-      "line" : 492,
+      "line" : 517,
+      "file" : "05-package-document/package-document.feature",
+      "scenario" : "The 'cover-image' item property must only be used on images ",
       "xref" : [
          "sec-item-resource-properties"
-      ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "The 'cover-image' item property must occur at most once "
-   },
-   {
-      "line" : 499,
-      "xref" : [
-         "sec-item-resource-properties"
-      ],
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "The 'cover-image' item property must only be used on images "
+      ]
    },
    {
       "file" : "05-package-document/package-document.feature",
+      "line" : 523,
       "scenario" : "Report an unknown manifest item property",
-      "line" : 505,
       "xref" : [
          "sec-item-resource-properties"
       ]
    },
    {
-      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-item-resource-properties"
+      ],
       "scenario" : "Verify content documents are identified as containing mathml",
-      "line" : 513,
-      "xref" : [
-         "sec-item-resource-properties"
-      ]
+      "line" : 531,
+      "file" : "05-package-document/package-document.feature"
    },
    {
-      "xref" : [
-         "sec-item-resource-properties"
-      ],
-      "line" : 520,
       "scenario" : "Report an XHTML document with remote audio but without the `remote-resources` property set in the package document",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 526,
-      "scenario" : "Report remote fonts in CSS without the `remote-resource` property set in the package document",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
-      "scenario" : "Report an SVG using remote fonts without the `remote-resource` property set in the package document",
       "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-item-resource-properties"
-      ],
-      "line" : 532
+      "line" : 538
    },
    {
-      "xref" : [
-         "sec-item-resource-properties"
-      ],
-      "line" : 538,
-      "scenario" : "Report an XHTML document using remote fonts in `style` without the `remote-resource` property set in the package document",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Report the declaration of the `remote-resources` property when the content has no script",
       "line" : 544,
-      "xref" : [
-         "sec-item-resource-properties"
-      ]
-   },
-   {
-      "scenario" : "Report a reference a remote resource when the `remote-resources` property is not set in the manifest",
       "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 550
+      "scenario" : "Report remote fonts in CSS without the `remote-resource` property set in the package document"
    },
    {
-      "xref" : [
-         "sec-item-resource-properties"
-      ],
-      "line" : 556,
-      "scenario" : "Report the incorrect use of the `remote-resources` property for a resource defined in an `object` `param` element (issue 249)",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
-      "scenario" : "Report a media overlay document with remote resources but missing the `remote-resources` property",
       "file" : "05-package-document/package-document.feature",
+      "line" : 550,
       "xref" : [
          "sec-item-resource-properties"
       ],
+      "scenario" : "Report an SVG using remote fonts without the `remote-resource` property set in the package document"
+   },
+   {
+      "xref" : [
+         "sec-item-resource-properties"
+      ],
+      "scenario" : "Report an XHTML document using remote fonts in `style` without the `remote-resource` property set in the package document",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 556
+   },
+   {
+      "scenario" : "Report the declaration of the `remote-resources` property when the content has no script",
+      "xref" : [
+         "sec-item-resource-properties"
+      ],
+      "file" : "05-package-document/package-document.feature",
       "line" : 562
    },
    {
-      "scenario" : "Report the declaration of the `scripted` property when the content has no script",
-      "file" : "05-package-document/package-document.feature",
+      "scenario" : "Report a reference a remote resource when the `remote-resources` property is not set in the manifest",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 570
+      "line" : 568,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "xref" : [
+         "sec-item-resource-properties"
+      ],
+      "scenario" : "Report the incorrect use of the `remote-resources` property for a resource defined in an `object` `param` element (issue 249)",
+      "file" : "05-package-document/package-document.feature",
+      "line" : 574
+   },
+   {
+      "scenario" : "Report a media overlay document with remote resources but missing the `remote-resources` property",
+      "xref" : [
+         "sec-item-resource-properties"
+      ],
+      "file" : "05-package-document/package-document.feature",
+      "line" : 580
+   },
+   {
+      "file" : "05-package-document/package-document.feature",
+      "line" : 588,
+      "scenario" : "Report the declaration of the `scripted` property when the content has no script",
+      "xref" : [
+         "sec-item-resource-properties"
+      ]
    },
    {
       "scenario" : "Report a scripted document without the `scripted` property declared in the package document",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 576
+      "file" : "05-package-document/package-document.feature",
+      "line" : 594
    },
    {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Verify that script data blocks do not require the `scripted` property to be defined in the manifest",
-      "line" : 582,
       "xref" : [
          "sec-item-resource-properties"
-      ]
+      ],
+      "scenario" : "Verify that script data blocks do not require the `scripted` property to be defined in the manifest",
+      "line" : 600,
+      "file" : "05-package-document/package-document.feature"
    },
    {
+      "line" : 607,
       "file" : "05-package-document/package-document.feature",
       "scenario" : "Report the declaration of the `svg` property when the content has no embedded SVG",
-      "line" : 589,
       "xref" : [
          "sec-item-resource-properties"
       ]
@@ -1079,142 +1103,142 @@
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 595,
       "scenario" : "Report references to embedded SVG when the `svg` property is not set in the manifest ",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
-      "xref" : [
-         "sec-item-resource-properties"
-      ],
-      "line" : 601,
-      "scenario" : "Report reference to an embedded SVG when the `svg` property is not set in the manifest (one reference is set properly)",
-      "file" : "05-package-document/package-document.feature"
-   },
-   {
-      "scenario" : "Report a content document without the `switch` property declared in the manifest",
       "file" : "05-package-document/package-document.feature",
+      "line" : 613
+   },
+   {
+      "file" : "05-package-document/package-document.feature",
+      "line" : 619,
+      "scenario" : "Report reference to an embedded SVG when the `svg` property is not set in the manifest (one reference is set properly)",
+      "xref" : [
+         "sec-item-resource-properties"
+      ]
+   },
+   {
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 610
+      "scenario" : "Report a content document without the `switch` property declared in the manifest",
+      "line" : 628,
+      "file" : "05-package-document/package-document.feature"
    },
    {
       "scenario" : "one item must have the 'nav' property  ",
+      "xref" : [
+         "sec-item-resource-properties"
+      ],
+      "file" : "05-package-document/package-document.feature",
+      "line" : 639
+   },
+   {
+      "line" : 646,
       "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 621
+      "scenario" : "at most one item must have the 'nav' property  "
    },
    {
-      "scenario" : "at most one item must have the 'nav' property  ",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-item-resource-properties"
       ],
-      "line" : 628
-   },
-   {
-      "file" : "05-package-document/package-document.feature",
       "scenario" : "the 'nav' property must be on an XHTML Content Document  ",
-      "line" : 635,
-      "xref" : [
-         "sec-item-resource-properties"
-      ]
+      "file" : "05-package-document/package-document.feature",
+      "line" : 653
    },
    {
-      "scenario" : "Report a missing spine",
-      "file" : "05-package-document/package-document.feature",
       "xref" : [
          "sec-spine-elem"
       ],
-      "line" : 682
-   },
-   {
-      "scenario" : "An SVG Content Document is allowed in the spine ",
-      "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-itemref-elem"
-      ],
-      "line" : 693
-   },
-   {
-      "scenario" : "An unknown 'itemref' ID is reported  ",
-      "file" : "05-package-document/package-document.feature",
-      "xref" : [
-         "sec-itemref-elem"
-      ],
-      "line" : 698
-   },
-   {
-      "file" : "05-package-document/package-document.feature",
-      "scenario" : "Two spine 'itemref' elements cannot reference the same manifest item  ",
-      "line" : 705,
-      "xref" : [
-         "sec-itemref-elem"
-      ]
-   },
-   {
-      "xref" : [
-         "sec-collection-elem"
-      ],
-      "line" : 717,
-      "scenario" : "a collection role can be an absolute URL",
+      "scenario" : "Report a missing spine",
+      "line" : 700,
       "file" : "05-package-document/package-document.feature"
    },
    {
-      "line" : 722,
+      "xref" : [
+         "sec-itemref-elem"
+      ],
+      "scenario" : "An SVG Content Document is allowed in the spine ",
+      "line" : 711,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "line" : 716,
+      "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-itemref-elem"
+      ],
+      "scenario" : "An unknown 'itemref' ID is reported  "
+   },
+   {
+      "xref" : [
+         "sec-itemref-elem"
+      ],
+      "scenario" : "Two spine 'itemref' elements cannot reference the same manifest item  ",
+      "line" : 723,
+      "file" : "05-package-document/package-document.feature"
+   },
+   {
+      "file" : "05-package-document/package-document.feature",
+      "line" : 735,
       "xref" : [
          "sec-collection-elem"
       ],
+      "scenario" : "a collection role can be an absolute URL"
+   },
+   {
+      "line" : 740,
       "file" : "05-package-document/package-document.feature",
+      "xref" : [
+         "sec-collection-elem"
+      ],
       "scenario" : "a collection role must not be an invalid URL"
    },
    {
+      "xref" : [
+         "sec-css-req"
+      ],
+      "scenario" : "Verify a minimal publication with a stylesheet ",
       "line" : 17,
-      "xref" : [
-         "sec-css-req"
-      ],
-      "file" : "06-content-document/content-document-css.feature",
-      "scenario" : "Verify a minimal publication with a stylesheet "
-   },
-   {
-      "scenario" : "Report the use of the CSS 'direction' property ",
-      "file" : "06-content-document/content-document-css.feature",
-      "xref" : [
-         "sec-css-req"
-      ],
-      "line" : 24
-   },
-   {
-      "xref" : [
-         "sec-css-req"
-      ],
-      "line" : 31,
-      "scenario" : "Report the use of the CSS 'unicode-bidi' property ",
       "file" : "06-content-document/content-document-css.feature"
    },
    {
-      "scenario" : "Verify a CSS file with a `@charset` declaration and UTF8 encoding",
+      "line" : 24,
       "file" : "06-content-document/content-document-css.feature",
       "xref" : [
          "sec-css-req"
       ],
+      "scenario" : "Report the use of the CSS 'direction' property "
+   },
+   {
+      "line" : 31,
+      "file" : "06-content-document/content-document-css.feature",
+      "xref" : [
+         "sec-css-req"
+      ],
+      "scenario" : "Report the use of the CSS 'unicode-bidi' property "
+   },
+   {
+      "scenario" : "Verify a CSS file with a `@charset` declaration and UTF8 encoding",
+      "xref" : [
+         "sec-css-req"
+      ],
+      "file" : "06-content-document/content-document-css.feature",
       "line" : 40
    },
    {
-      "scenario" : "Report a CSS file with a `@charset` declaration that is not utf-8",
-      "file" : "06-content-document/content-document-css.feature",
       "xref" : [
          "sec-css-req"
       ],
+      "scenario" : "Report a CSS file with a `@charset` declaration that is not utf-8",
+      "file" : "06-content-document/content-document-css.feature",
       "line" : 46
    },
    {
       "file" : "06-content-document/content-document-css.feature",
-      "scenario" : "Report an attempt to `@import` a CSS file that declared in the package document but not present in the container",
       "line" : 58,
+      "scenario" : "Report an attempt to `@import` a CSS file that declared in the package document but not present in the container",
       "xref" : [
          "sec-container-iri"
       ]
@@ -1223,346 +1247,1379 @@
       "xref" : [
          "sec-manifest-elem"
       ],
-      "line" : 64,
       "scenario" : "Report an attempt to `@import` a CSS file that is not declared in the manifest but is present in the container",
-      "file" : "06-content-document/content-document-css.feature"
+      "file" : "06-content-document/content-document-css.feature",
+      "line" : 64
    },
    {
-      "scenario" : "Report a CSS `url` that is not declared in the package document or present in the container",
-      "file" : "06-content-document/content-document-css.feature",
       "xref" : [
          "sec-container-iri",
          "sec-manifest-elem"
       ],
-      "line" : 71
+      "scenario" : "Report a CSS `url` that is not declared in the package document or present in the container",
+      "line" : 71,
+      "file" : "06-content-document/content-document-css.feature"
    },
    {
-      "line" : 15,
+      "scenario" : "Verify that SVG Content Documents can be referenced in the spine",
       "xref" : [
          "sec-spine-elem"
       ],
       "file" : "06-content-document/content-document-svg.feature",
-      "scenario" : "Verify that SVG Content Documents can be referenced in the spine"
+      "line" : 15
    },
    {
-      "scenario" : "Verify that `foreignObject` conforming to the rules is allowed",
       "file" : "06-content-document/content-document-svg.feature",
+      "line" : 104,
       "xref" : [
          "sec-svg-restrictions"
       ],
-      "line" : 104
+      "scenario" : "Verify that `foreignObject` conforming to the rules is allowed"
    },
    {
+      "line" : 114,
+      "file" : "06-content-document/content-document-svg.feature",
       "scenario" : "Report `foreignObject` with non-HTML child content ",
-      "file" : "06-content-document/content-document-svg.feature",
       "xref" : [
          "sec-svg-restrictions"
-      ],
-      "line" : 114
+      ]
    },
    {
-      "scenario" : "Report `foreignObject` with non-flow content",
+      "line" : 121,
       "file" : "06-content-document/content-document-svg.feature",
+      "scenario" : "Report `foreignObject` with non-flow content",
       "xref" : [
          "sec-svg-restrictions"
-      ],
-      "line" : 121
+      ]
    },
    {
       "line" : 128,
+      "file" : "06-content-document/content-document-svg.feature",
+      "scenario" : "Report `foreignObject` with multiple HTML `body` elements",
+      "xref" : [
+         "sec-svg-restrictions"
+      ]
+   },
+   {
       "xref" : [
          "sec-svg-restrictions"
       ],
-      "file" : "06-content-document/content-document-svg.feature",
-      "scenario" : "Report `foreignObject` with multiple HTML `body` elements"
-   },
-   {
-      "file" : "06-content-document/content-document-svg.feature",
       "scenario" : "Verify `title` can contain text",
       "line" : 141,
-      "xref" : [
-         "sec-svg-restrictions"
-      ]
+      "file" : "06-content-document/content-document-svg.feature"
    },
    {
-      "file" : "06-content-document/content-document-svg.feature",
-      "scenario" : "Verify `title` can contain HTML phrasing content",
       "line" : 146,
-      "xref" : [
-         "sec-svg-restrictions"
-      ]
-   },
-   {
-      "line" : 151,
+      "file" : "06-content-document/content-document-svg.feature",
       "xref" : [
          "sec-svg-restrictions"
       ],
-      "file" : "06-content-document/content-document-svg.feature",
-      "scenario" : "Report `title` with non-phrasing content"
+      "scenario" : "Verify `title` can contain HTML phrasing content"
    },
    {
-      "scenario" : "Minimal Content Document",
-      "file" : "06-content-document/content-document-xhtml.feature",
+      "file" : "06-content-document/content-document-svg.feature",
+      "line" : 151,
+      "scenario" : "Report `title` with non-phrasing content",
+      "xref" : [
+         "sec-svg-restrictions"
+      ]
+   },
+   {
       "xref" : [
          "sec-xhtml-req"
       ],
+      "scenario" : "Minimal Content Document",
+      "file" : "06-content-document/content-document-xhtml.feature",
       "line" : 21
    },
    {
       "line" : 26,
+      "file" : "06-content-document/content-document-xhtml.feature",
       "xref" : [
          "sec-xhtml-req"
       ],
-      "file" : "06-content-document/content-document-xhtml.feature",
       "scenario" : "Report RelaxNG schema errors when checking a Content Document in a full publication"
    },
    {
-      "line" : 32,
       "xref" : [
          "sec-xhtml-req"
       ],
+      "scenario" : "Report Schematron schema errors when checking a Content Document in a full publication",
       "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report Schematron schema errors when checking a Content Document in a full publication"
+      "line" : 32
    },
    {
       "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report as an INFO a hyperlink to a resource in the local file system",
       "line" : 247,
+      "scenario" : "Report as an INFO a hyperlink to a resource in the local file system",
       "xref" : [
          "sec-file-urls"
       ]
    },
    {
-      "line" : 260,
+      "scenario" : "Report a hyperlink to a resource missing from the publication",
       "xref" : [
          "sec-container-iri"
       ],
       "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report a hyperlink to a resource missing from the publication"
+      "line" : 260
    },
    {
-      "line" : 291,
+      "scenario" : "Report a link to a resource that is not in the spine",
       "xref" : [
          "sec-spine-elem"
       ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report a link to a resource that is not in the spine"
+      "line" : 291,
+      "file" : "06-content-document/content-document-xhtml.feature"
    },
    {
-      "scenario" : "Report a reference from an XHTML doc to a resource not declared in the manifest",
-      "file" : "06-content-document/content-document-xhtml.feature",
       "xref" : [
          "sec-manifest-elem"
       ],
+      "scenario" : "Report a reference from an XHTML doc to a resource not declared in the manifest",
+      "file" : "06-content-document/content-document-xhtml.feature",
       "line" : 297
    },
    {
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify a linked resource without a fallback",
       "line" : 314,
+      "file" : "06-content-document/content-document-xhtml.feature",
       "xref" : [
          "sec-exempt-resources"
-      ]
+      ],
+      "scenario" : "Verify a linked resource without a fallback"
    },
    {
+      "scenario" : "Verify that an `img` element can reference a foreign resource so long as it has a manifest fallback (and is not in a `picture` element)",
+      "xref" : [
+         "sec-fallbacks-img"
+      ],
       "line" : 347,
-      "xref" : [
-         "sec-fallbacks-img"
-      ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify that an `img` element can reference a foreign resource so long as it has a manifest fallback (and is not in a `picture` element)"
+      "file" : "06-content-document/content-document-xhtml.feature"
    },
    {
-      "file" : "06-content-document/content-document-xhtml.feature",
       "scenario" : "Verify that an `img srcset` can reference foreign resources when they have manifest fallbacks",
-      "line" : 352,
-      "xref" : [
-         "sec-fallbacks-img"
-      ]
-   },
-   {
-      "line" : 357,
       "xref" : [
          "sec-fallbacks-img"
       ],
       "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report an `img src` with a foreign resource and no manifest fallback (when the `img` is not in a `picture` element)"
+      "line" : 352
    },
    {
+      "xref" : [
+         "sec-fallbacks-img"
+      ],
+      "scenario" : "Report an `img src` with a foreign resource and no manifest fallback (when the `img` is not in a `picture` element)",
       "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 357
+   },
+   {
       "scenario" : "Report references to undeclared resources in `img srcset`",
-      "line" : 372,
-      "xref" : [
-         "sec-manifest-elem"
-      ]
-   },
-   {
-      "scenario" : "Report a MathML formula with an alternative image that cannot be found",
-      "file" : "06-content-document/content-document-xhtml.feature",
       "xref" : [
          "sec-manifest-elem"
       ],
-      "line" : 449
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 372
+   },
+   {
+      "xref" : [
+         "sec-manifest-elem"
+      ],
+      "scenario" : "Report a MathML formula with an alternative image that cannot be found",
+      "line" : 449,
+      "file" : "06-content-document/content-document-xhtml.feature"
+   },
+   {
+      "line" : 478,
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "xref" : [
+         "sec-fxl-content-dimensions"
+      ],
+      "scenario" : "Verify that `viewport meta` declaration is not checked for non-fixed layout documents (issue 419)"
+   },
+   {
+      "scenario" : "Report an `object` element with a media type not matching the Package Document declaration",
+      "xref" : [
+         "sec-item-elem"
+      ],
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 553
+   },
+   {
+      "line" : 562,
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "xref" : [
+         "sec-xhtml-req"
+      ],
+      "scenario" : "Verify no schematron assertions"
+   },
+   {
+      "xref" : [
+         "sec-container-iri"
+      ],
+      "scenario" : "Verify valid URLs",
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 661
+   },
+   {
+      "xref" : [
+         "sec-container-iri"
+      ],
+      "scenario" : "Report non-conforming URLs",
+      "line" : 666,
+      "file" : "06-content-document/content-document-xhtml.feature"
    },
    {
       "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify that `viewport meta` declaration is not checked for non-fixed layout documents (issue 419)",
-      "line" : 478,
+      "line" : 672,
+      "xref" : [
+         "sec-container-iri"
+      ],
+      "scenario" : "Report a URL host that cannot be parsed"
+   },
+   {
+      "line" : 679,
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "scenario" : "Report unregistered URL scheme",
+      "xref" : [
+         "sec-container-iri"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-exempt-resources"
+      ],
+      "scenario" : "Verify an xpgt style sheet without a fallback",
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 705
+   },
+   {
+      "xref" : [
+         "sec-prefix-attr"
+      ],
+      "scenario" : "Verify `epub:type` attribute with author-declared vocabulary",
+      "line" : 735,
+      "file" : "06-content-document/content-document-xhtml.feature"
+   },
+   {
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 758,
+      "scenario" : "Report `epub:type` attribute with a semantic from an undeclared vocabulary",
+      "xref" : [
+         "sec-prefix-attr"
+      ]
+   },
+   {
+      "scenario" : "Verify RDFa attributes are allowed on HTML elements",
+      "xref" : [
+         "sec-xhtml-rdfa"
+      ],
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 767
+   },
+   {
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 854,
+      "scenario" : "Verify attributes in custom namespaces are ignored",
+      "xref" : [
+         "sec-xhtml-custom-attributes"
+      ]
+   },
+   {
+      "line" : 859,
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "scenario" : "Report custom attributes using reserved strings in their namespace",
+      "xref" : [
+         "sec-xhtml-custom-attributes"
+      ]
+   },
+   {
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 893,
+      "scenario" : "Report MathML markup with only content MathML",
+      "xref" : [
+         "sec-xhtml-deviations"
+      ]
+   },
+   {
+      "line" : 906,
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "scenario" : "Verify MathML with content MathML annotation",
+      "xref" : [
+         "sec-xhtml-deviations"
+      ]
+   },
+   {
+      "scenario" : "Verify MathML with presentation MathML annotation",
+      "xref" : [
+         "sec-xhtml-deviations"
+      ],
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 911
+   },
+   {
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 932,
+      "xref" : [
+         "sec-xhtml-deviations"
+      ],
+      "scenario" : "Report MathML annotation with an invalid `encoding` attribute"
+   },
+   {
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 947,
+      "xref" : [
+         "sec-xhtml-deviations"
+      ],
+      "scenario" : "Verify MathML markup with `annotation-xml` `name` attribute set to `contentequiv`"
+   },
+   {
+      "xref" : [
+         "sec-xhtml-svg"
+      ],
+      "scenario" : "Verify inclusion of SVG markup",
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 969
+   },
+   {
+      "scenario" : "Verify that `epub:type` attribute can be used on SVG",
+      "xref" : [
+         "sec-xhtml-svg",
+         "sec-svg-req"
+      ],
+      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 982
+   },
+   {
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 14,
+      "scenario" : "Verify a minimal Navigation Document",
+      "xref" : [
+         "sec-nav-content-req"
+      ]
+   },
+   {
+      "line" : 20,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "xref" : [
+         "sec-nav-content-req"
+      ],
+      "scenario" : "Report a missing `toc` nav"
+   },
+   {
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 27,
+      "xref" : [
+         "sec-nav-content-req"
+      ],
+      "scenario" : "Report schema errors when checking a Navigation Document in a full publication"
+   },
+   {
+      "scenario" : "Report an empty nav heading ",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 35
+   },
+   {
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 43,
+      "scenario" : "Report a `p` element used as a nav heading",
+      "xref" : [
+         "sec-nav-def-model"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "scenario" : "Report a missing list item label",
+      "line" : 51,
+      "file" : "07-navigation-document/navigation-document.feature"
+   },
+   {
+      "scenario" : "Report an empty list item label",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 59
+   },
+   {
+      "line" : 67,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "scenario" : "Report a leaf list item with no link (just a span label)",
+      "xref" : [
+         "sec-nav-def-model"
+      ]
+   },
+   {
+      "line" : 75,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "scenario" : "Report a nav hyperlink without content",
+      "xref" : [
+         "sec-nav-def-model"
+      ]
+   },
+   {
+      "scenario" : "Report a nav hyperlink without content (but an empty nested span)",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 83
+   },
+   {
+      "scenario" : "Report a nav list without content",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 98
+   },
+   {
+      "line" : 106,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "scenario" : "Report a `toc nav` that links to documents not in the spine"
+   },
+   {
+      "scenario" : "Report external links in the `toc`, `page-list` and `landmarks` `nav` elements",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 112
+   },
+   {
+      "scenario" : "Report a `toc nav` that links to resource that is not a Content Document",
+      "xref" : [
+         "sec-nav-def-model"
+      ],
+      "line" : 118,
+      "file" : "07-navigation-document/navigation-document.feature"
+   },
+   {
+      "line" : 162,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "xref" : [
+         "sec-nav-pagelist"
+      ],
+      "scenario" : "Allow a `page-list` nav"
+   },
+   {
+      "line" : 168,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "scenario" : "Report multiple occurences of `page-list` nav",
+      "xref" : [
+         "sec-nav-pagelist"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-nav-landmarks"
+      ],
+      "scenario" : "Allow a `landmarks` nav",
+      "line" : 199,
+      "file" : "07-navigation-document/navigation-document.feature"
+   },
+   {
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 205,
+      "scenario" : "Report a link without an epub:type in a `landmarks` nav",
+      "xref" : [
+         "sec-nav-landmarks"
+      ]
+   },
+   {
+      "scenario" : "Report multiple occurences of `landmarks` nav",
+      "xref" : [
+         "sec-nav-landmarks"
+      ],
+      "line" : 213,
+      "file" : "07-navigation-document/navigation-document.feature"
+   },
+   {
+      "line" : 221,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "xref" : [
+         "sec-nav-landmarks"
+      ],
+      "scenario" : "Allow multiple entries with the same epub:type in a `landmarks` nav when pointing to different resources"
+   },
+   {
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 227,
+      "xref" : [
+         "sec-nav-landmarks"
+      ],
+      "scenario" : "Report multiple entries with the same epub:type in a `landmarks` nav"
+   },
+   {
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 245,
+      "xref" : [
+         "sec-nav-def-types-other"
+      ],
+      "scenario" : "Allow a `lot` nav"
+   },
+   {
+      "line" : 251,
+      "file" : "07-navigation-document/navigation-document.feature",
+      "scenario" : "Report a nav other than 'toc'/'page-list'/'landmarks' without a heading",
+      "xref" : [
+         "sec-nav-def-types-other"
+      ]
+   },
+   {
+      "scenario" : "Verify a nav without a declared epub:type is not restricted",
+      "xref" : [
+         "sec-nav-def-types-other"
+      ],
+      "file" : "07-navigation-document/navigation-document.feature",
+      "line" : 259
+   },
+   {
+      "line" : 22,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "layout"
+      ],
+      "scenario" : "the 'rendition:layout' property can be used to define the global layout preference"
+   },
+   {
+      "xref" : [
+         "layout"
+      ],
+      "scenario" : "a 'rendition:layout' property with no value is reported",
+      "file" : "08-layout/layout.feature",
+      "line" : 27
+   },
+   {
+      "line" : 36,
+      "file" : "08-layout/layout.feature",
+      "scenario" : "a 'rendition:layout' property with an unknown value is reported",
+      "xref" : [
+         "layout"
+      ]
+   },
+   {
+      "scenario" : "the 'rendition:layout' property cannot be declared more than once",
+      "xref" : [
+         "layout"
+      ],
+      "file" : "08-layout/layout.feature",
+      "line" : 43
+   },
+   {
+      "xref" : [
+         "layout"
+      ],
+      "scenario" : "the 'rendition:layout' property cannot be used in a 'meta' element to refine a publication resource",
+      "file" : "08-layout/layout.feature",
+      "line" : 50
+   },
+   {
+      "line" : 59,
+      "file" : "08-layout/layout.feature",
+      "scenario" : "the 'rendition:layout' property can be used as a spine override",
+      "xref" : [
+         "layout-overrides"
+      ]
+   },
+   {
+      "xref" : [
+         "layout-overrides"
+      ],
+      "scenario" : "the 'rendition:layout' spine overrides values are mutually exclusive",
+      "file" : "08-layout/layout.feature",
+      "line" : 64
+   },
+   {
+      "scenario" : "the 'rendition:orientation' property can be used to define the global orientation preference",
+      "xref" : [
+         "orientation"
+      ],
+      "file" : "08-layout/layout.feature",
+      "line" : 74
+   },
+   {
+      "line" : 79,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "orientation"
+      ],
+      "scenario" : "a 'rendition:orientation' property with an unknown value is reported"
+   },
+   {
+      "line" : 86,
+      "file" : "08-layout/layout.feature",
+      "scenario" : "the 'rendition:orientation' property cannot be declared more than once",
+      "xref" : [
+         "orientation"
+      ]
+   },
+   {
+      "line" : 93,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "orientation"
+      ],
+      "scenario" : "the 'rendition:orientation' property cannot be used in a 'meta' element to refine a publication resource"
+   },
+   {
+      "file" : "08-layout/layout.feature",
+      "line" : 102,
+      "xref" : [
+         "orientation-overrides"
+      ],
+      "scenario" : "the 'rendition:orientation' property can be used as a spine override"
+   },
+   {
+      "line" : 107,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "orientation-overrides"
+      ],
+      "scenario" : "the 'rendition:orientation' spine overrides values are mutually exclusive"
+   },
+   {
+      "xref" : [
+         "spread"
+      ],
+      "scenario" : "the 'rendition:spread' property can be used to define the global spread preference",
+      "line" : 117,
+      "file" : "08-layout/layout.feature"
+   },
+   {
+      "line" : 122,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "spread"
+      ],
+      "scenario" : "a 'rendition:spread' property with an unknown value is reported"
+   },
+   {
+      "line" : 129,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "spread"
+      ],
+      "scenario" : "the 'rendition:spread' property cannot be declared more than once"
+   },
+   {
+      "line" : 136,
+      "file" : "08-layout/layout.feature",
+      "scenario" : "the 'rendition:spread' property cannot be used in a 'meta' element to refine a publication resource",
+      "xref" : [
+         "spread"
+      ]
+   },
+   {
+      "file" : "08-layout/layout.feature",
+      "line" : 145,
+      "scenario" : "the 'rendition:spread' property can be used as a spine override",
+      "xref" : [
+         "spread-overrides"
+      ]
+   },
+   {
+      "xref" : [
+         "spread-overrides"
+      ],
+      "scenario" : "the 'rendition:spread' spine overrides values are mutually exclusive",
+      "file" : "08-layout/layout.feature",
+      "line" : 150
+   },
+   {
+      "line" : 172,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "page-spread"
+      ],
+      "scenario" : "the 'rendition:page-spread-*' properties can be used without the prefix"
+   },
+   {
+      "scenario" : "the 'rendition:page-spread-*' properties values are mutually exclusive",
+      "xref" : [
+         "page-spread"
+      ],
+      "line" : 177,
+      "file" : "08-layout/layout.feature"
+   },
+   {
+      "scenario" : "Report a fixed-layout XHTML document with no viewport",
+      "xref" : [
+         "sec-fxl-content-dimensions"
+      ],
+      "file" : "08-layout/layout.feature",
+      "line" : 210
+   },
+   {
+      "file" : "08-layout/layout.feature",
+      "line" : 216,
+      "scenario" : "Report a fixed-layout XHTML document with an invalid viewport",
       "xref" : [
          "sec-fxl-content-dimensions"
       ]
    },
    {
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report an `object` element with a media type not matching the Package Document declaration",
-      "line" : 553,
+      "file" : "08-layout/layout.feature",
+      "line" : 226,
+      "scenario" : "Report a fixed-layout SVG without a `viewbox` declaration",
       "xref" : [
-         "sec-item-elem"
+         "sec-fxl-content-dimensions"
+      ]
+   },
+   {
+      "line" : 232,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "sec-fxl-content-dimensions"
+      ],
+      "scenario" : "Report a fixed-layout SVG without a `viewbox` declaration (only `width`/`height` in units)"
+   },
+   {
+      "line" : 238,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "sec-fxl-content-dimensions"
+      ],
+      "scenario" : "Report a fixed-layout SVG without a `viewbox` declaration (only `width`/`height` in percent)"
+   },
+   {
+      "scenario" : "the 'rendition:flow' property can be used to define the global flow preference",
+      "xref" : [
+         "flow"
+      ],
+      "line" : 249,
+      "file" : "08-layout/layout.feature"
+   },
+   {
+      "file" : "08-layout/layout.feature",
+      "line" : 254,
+      "xref" : [
+         "flow"
+      ],
+      "scenario" : "a 'rendition:flow' property with an unknown value is reported"
+   },
+   {
+      "line" : 261,
+      "file" : "08-layout/layout.feature",
+      "xref" : [
+         "flow"
+      ],
+      "scenario" : "the 'rendition:flow' property cannot be declared more than once"
+   },
+   {
+      "scenario" : "the 'rendition:flow' property cannot be used in a 'meta' element to refine a publication resource",
+      "xref" : [
+         "flow"
+      ],
+      "file" : "08-layout/layout.feature",
+      "line" : 268
+   },
+   {
+      "file" : "08-layout/layout.feature",
+      "line" : 277,
+      "scenario" : "the 'rendition:flow' property can be used as a spine override",
+      "xref" : [
+         "flow-overrides"
+      ]
+   },
+   {
+      "scenario" : "the 'rendition:flow' spine overrides values are mutually exclusive",
+      "xref" : [
+         "flow-overrides"
+      ],
+      "line" : 282,
+      "file" : "08-layout/layout.feature"
+   },
+   {
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 21,
+      "xref" : [
+         "sec-overlay-req"
+      ],
+      "scenario" : "Verify a minimal EPUB 3 publication with Media Overlays"
+   },
+   {
+      "line" : 26,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "xref" : [
+         "sec-overlay-req"
+      ],
+      "scenario" : "Verify a minimal Media Overlay document"
+   },
+   {
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 31,
+      "xref" : [
+         "sec-overlay-req"
+      ],
+      "scenario" : "Report an EPUB content document that is declared in more than one overlay"
+   },
+   {
+      "scenario" : "Report a `meta` element used in the `head` container ",
+      "xref" : [
+         "sec-smil-head-elem"
+      ],
+      "line" : 42,
+      "file" : "09-media-overlays/media-overlays.feature"
+   },
+   {
+      "line" : 59,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "scenario" : "Report media clips used as direct children of a `seq` element",
+      "xref" : [
+         "sec-smil-seq-elem"
+      ]
+   },
+   {
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 67,
+      "scenario" : "Report a fragment identifier that does not resolve to an element",
+      "xref" : [
+         "sec-smil-seq-elem"
+      ]
+   },
+   {
+      "line" : 76,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "scenario" : "Report a `par` element with more than one `text` child",
+      "xref" : [
+         "sec-smil-par-elem"
+      ]
+   },
+   {
+      "line" : 83,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "scenario" : "Report a `par` element with a `seq` child",
+      "xref" : [
+         "sec-smil-par-elem"
       ]
    },
    {
       "xref" : [
-         "sec-xhtml-req"
+         "sec-smil-text-elem",
+         "sec-smil-body-elem"
       ],
-      "line" : 562,
-      "scenario" : "Verify no schematron assertions",
-      "file" : "06-content-document/content-document-xhtml.feature"
+      "scenario" : "Report empty fragment identifiers",
+      "line" : 93,
+      "file" : "09-media-overlays/media-overlays.feature"
    },
    {
-      "line" : 661,
+      "scenario" : "Allow clock values with the full clock syntax (`hh:mm:ss.milli`)",
       "xref" : [
-         "sec-container-iri"
+         "sec-smil-audio-elem"
       ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify valid URLs"
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 102
    },
    {
-      "scenario" : "Report non-conforming URLs",
-      "file" : "06-content-document/content-document-xhtml.feature",
       "xref" : [
-         "sec-container-iri"
+         "sec-smil-audio-elem"
       ],
-      "line" : 666
+      "scenario" : "Allow clock values with the partial clock syntax (`mm:ss.milli`)",
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 107
    },
    {
-      "scenario" : "Report a URL host that cannot be parsed",
-      "file" : "06-content-document/content-document-xhtml.feature",
+      "scenario" : "Allow clock values with the timecount syntax (`XXmin`)",
       "xref" : [
-         "sec-container-iri"
+         "sec-smil-audio-elem"
       ],
-      "line" : 672
+      "line" : 112,
+      "file" : "09-media-overlays/media-overlays.feature"
    },
    {
-      "scenario" : "Report unregistered URL scheme",
-      "file" : "06-content-document/content-document-xhtml.feature",
+      "line" : 117,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "scenario" : "Report invalid clock values",
       "xref" : [
-         "sec-container-iri"
-      ],
-      "line" : 679
+         "sec-smil-audio-elem"
+      ]
    },
    {
-      "line" : 705,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 123,
+      "scenario" : "Report if the `clipBegin` value is after the `clipEnd` value",
       "xref" : [
-         "sec-exempt-resources"
-      ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify an xpgt style sheet without a fallback"
+         "sec-smil-audio-elem"
+      ]
    },
    {
-      "scenario" : "Verify `epub:type` attribute with author-declared vocabulary",
-      "file" : "06-content-document/content-document-xhtml.feature",
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 129,
+      "xref" : [
+         "sec-smil-audio-elem"
+      ],
+      "scenario" : "Report if the `clipEnd` value equals the `clipBegin` value"
+   },
+   {
+      "line" : 135,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "xref" : [
+         "sec-smil-audio-elem"
+      ],
+      "scenario" : "Report an audio clip that is not a Core Media Type"
+   },
+   {
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 178,
+      "scenario" : "Report a 'media:active-class' property with a refines attribute",
+      "xref" : [
+         "sec-docs-assoc-style"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-docs-assoc-style"
+      ],
+      "scenario" : "Report a 'media:playback-active-class' property with a refines attribute",
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 185
+   },
+   {
+      "scenario" : "Report an EPUB content document referenced from an overlay that is missing its media-overlay attribute",
+      "xref" : [
+         "sec-package-including"
+      ],
+      "line" : 197,
+      "file" : "09-media-overlays/media-overlays.feature"
+   },
+   {
+      "line" : 203,
+      "file" : "09-media-overlays/media-overlays.feature",
+      "xref" : [
+         "sec-package-including"
+      ],
+      "scenario" : "Report an EPUB content document that references the wrong overlay"
+   },
+   {
+      "scenario" : "Report an EPUB content document that declares a media-overlay attribute but is not referenced from the overlay",
+      "xref" : [
+         "sec-package-including"
+      ],
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 209
+   },
+   {
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 215,
+      "scenario" : "a Media Overlay must have the media type 'application/smil+xml'",
+      "xref" : [
+         "sec-package-including"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-package-including"
+      ],
+      "scenario" : "Report use of the media-overlay attribute on non-EPUB Content Documents",
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 222
+   },
+   {
+      "scenario" : "the entire publication duration must be defined",
+      "xref" : [
+         "sec-mo-package-metadata"
+      ],
+      "line" : 232,
+      "file" : "09-media-overlays/media-overlays.feature"
+   },
+   {
+      "scenario" : "the duration of each Media Overlay must be defined",
+      "xref" : [
+         "sec-mo-package-metadata"
+      ],
+      "file" : "09-media-overlays/media-overlays.feature",
+      "line" : 239
+   },
+   {
+      "line" : 23,
+      "file" : "B-external-identifiers/external-identifiers.feature",
+      "scenario" : "Report a DOCTYPE declaration with an external identifier that is not allowed",
+      "xref" : [
+         "app-identifiers-allowed"
+      ]
+   },
+   {
+      "scenario" : "the 'media:duration' property can be expressed as a full clock value",
+      "xref" : [
+         "sec-duration"
+      ],
+      "line" : 16,
+      "file" : "D-vocabularies/media-overlays.feature"
+   },
+   {
+      "xref" : [
+         "sec-duration"
+      ],
+      "scenario" : "the 'media:duration' property can be expressed as a timecount value",
+      "line" : 21,
+      "file" : "D-vocabularies/media-overlays.feature"
+   },
+   {
+      "xref" : [
+         "sec-duration"
+      ],
+      "scenario" : "Report 'media:duration' properties with non-clock values",
+      "file" : "D-vocabularies/media-overlays.feature",
+      "line" : 26
+   },
+   {
+      "xref" : [
+         "sec-authority"
+      ],
+      "scenario" : "'authority' metadata can refine a subject expression",
+      "line" : 16,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "xref" : [
+         "sec-authority"
+      ],
+      "scenario" : "'authority' metadata can only refine a subject expression",
+      "line" : 21,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "xref" : [
+         "sec-authority"
+      ],
+      "scenario" : "'authority' metadata must be associated to a term",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 28
+   },
+   {
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 35,
+      "xref" : [
+         "sec-authority"
+      ],
+      "scenario" : "'authority' metadata must not be defined more than once"
+   },
+   {
+      "line" : 45,
+      "file" : "D-vocabularies/meta-properties.feature",
+      "xref" : [
+         "sec-belongs-to-collection"
+      ],
+      "scenario" : "'belongs-to-collection' metadata can identify the publication's collection"
+   },
+   {
+      "scenario" : "'belongs-to-collection' metadata can only refine other 'belongs-to-collection' metadata",
+      "xref" : [
+         "sec-belongs-to-collection"
+      ],
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 50
+   },
+   {
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 60,
+      "xref" : [
+         "sec-collection-type"
+      ],
+      "scenario" : "'collection-type' cannot be used as a primary metadata"
+   },
+   {
+      "line" : 67,
+      "file" : "D-vocabularies/meta-properties.feature",
+      "scenario" : "'collection-type' metadata can only refine a 'belongs-to-collection' property",
+      "xref" : [
+         "sec-collection-type"
+      ]
+   },
+   {
+      "scenario" : "'collection-type' metadata cannot be defined more than once to refine the same expression ",
+      "xref" : [
+         "sec-collection-type"
+      ],
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 74
+   },
+   {
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 84,
+      "xref" : [
+         "sec-display-seq"
+      ],
+      "scenario" : "'display-seq' metadata is allowed "
+   },
+   {
+      "scenario" : "'display-seq' metadata cannot be defined more than once to refine the same expression ",
+      "xref" : [
+         "sec-display-seq"
+      ],
+      "line" : 89,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "line" : 99,
+      "file" : "D-vocabularies/meta-properties.feature",
+      "xref" : [
+         "sec-file-as"
+      ],
+      "scenario" : "'file-as' metadata is allowed "
+   },
+   {
+      "xref" : [
+         "sec-file-as"
+      ],
+      "scenario" : "'file-as' metadata cannot be defined more than once to refine the same expression ",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 104
+   },
+   {
+      "xref" : [
+         "sec-group-position"
+      ],
+      "scenario" : "'group-position' metadata is allowed ",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 114
+   },
+   {
+      "xref" : [
+         "sec-group-position"
+      ],
+      "scenario" : "'group-position' metadata cannot be defined more than once to refine the same expression ",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 119
+   },
+   {
+      "scenario" : "'identifier-type' metadata can only refine a 'source' or 'identifier' property",
+      "xref" : [
+         "sec-identifier-type"
+      ],
+      "line" : 129,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "scenario" : "'identifier-type' metadata cannot be defined more than once to refine the same expression ",
+      "xref" : [
+         "sec-identifier-type"
+      ],
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 136
+   },
+   {
+      "scenario" : "'role' metadata can be used once or more to refine a creator, contributor, or publisher ",
+      "xref" : [
+         "sec-role"
+      ],
+      "line" : 155,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 160,
+      "scenario" : "'role' metadata cannot be used to refine properties other than creator, contributor, or publisher  ",
+      "xref" : [
+         "sec-role"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-source-of"
+      ],
+      "scenario" : "'source-of' metadata can be used to refine the pagination source ",
+      "line" : 170,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "xref" : [
+         "sec-source-of"
+      ],
+      "scenario" : "'source-of' metadata value must be \"pagination\" ",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 175
+   },
+   {
+      "xref" : [
+         "sec-source-of"
+      ],
+      "scenario" : "'source-of' metadata cannot be used as a primary metadata ",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 182
+   },
+   {
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 189,
+      "xref" : [
+         "sec-source-of"
+      ],
+      "scenario" : "'source-of' metadata must refine a 'dc:source' metadata entry"
+   },
+   {
+      "xref" : [
+         "sec-source-of"
+      ],
+      "scenario" : "'source-of' metadata cannot be defined more than once to refine the same expression ",
+      "line" : 196,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "scenario" : "'term' metadata can refine a subject expression",
+      "xref" : [
+         "sec-term"
+      ],
+      "line" : 206,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "line" : 211,
+      "file" : "D-vocabularies/meta-properties.feature",
+      "scenario" : "'term' metadata can only refine a subject expression",
+      "xref" : [
+         "sec-term"
+      ]
+   },
+   {
+      "xref" : [
+         "sec-term"
+      ],
+      "scenario" : "'term' metadata must be associated to an authority",
+      "line" : 218,
+      "file" : "D-vocabularies/meta-properties.feature"
+   },
+   {
+      "xref" : [
+         "sec-term"
+      ],
+      "scenario" : "'term' metadata must not be defined more than once",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 225
+   },
+   {
+      "xref" : [
+         "sec-title-type"
+      ],
+      "scenario" : "'title-type' metadata can be used to refine a title expression ",
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 235
+   },
+   {
+      "file" : "D-vocabularies/meta-properties.feature",
+      "line" : 240,
+      "scenario" : "'title-type' metadata can only refine a 'title' expression",
+      "xref" : [
+         "sec-title-type"
+      ]
+   },
+   {
+      "line" : 247,
+      "file" : "D-vocabularies/meta-properties.feature",
+      "xref" : [
+         "sec-title-type"
+      ],
+      "scenario" : "'title-type' metadata cannot be defined more than once to refine the same expression "
+   },
+   {
+      "line" : 18,
+      "file" : "D-vocabularies/metadata-link.feature",
+      "xref" : [
+         "sec-acquire"
+      ],
+      "scenario" : "an 'acquire' link can identify the full version of the publication"
+   },
+   {
+      "scenario" : "an 'alternate' link can identify an alternate version of the Package Document",
+      "xref" : [
+         "sec-alternate"
+      ],
+      "file" : "D-vocabularies/metadata-link.feature",
+      "line" : 26
+   },
+   {
+      "xref" : [
+         "sec-alternate"
+      ],
+      "scenario" : "an 'alternate' link must not be paired with other keywords",
+      "file" : "D-vocabularies/metadata-link.feature",
+      "line" : 31
+   },
+   {
+      "file" : "D-vocabularies/metadata-link.feature",
+      "line" : 64,
+      "scenario" : "a 'record' link must have a 'media-type' attribute ",
+      "xref" : [
+         "sec-record"
+      ]
+   },
+   {
+      "scenario" : "a 'record' link cannot refine another property or resource",
+      "xref" : [
+         "sec-record"
+      ],
+      "line" : 75,
+      "file" : "D-vocabularies/metadata-link.feature"
+   },
+   {
+      "file" : "D-vocabularies/metadata-link.feature",
+      "line" : 85,
+      "xref" : [
+         "sec-voicing"
+      ],
+      "scenario" : "a 'voicing' link can identify the aural representation of metadata"
+   },
+   {
+      "line" : 90,
+      "file" : "D-vocabularies/metadata-link.feature",
+      "xref" : [
+         "sec-voicing"
+      ],
+      "scenario" : "a 'voicing' link must refine another property or resource"
+   },
+   {
+      "file" : "D-vocabularies/metadata-link.feature",
+      "line" : 97,
+      "xref" : [
+         "sec-voicing"
+      ],
+      "scenario" : "a 'voicing' link must have a 'media-type' attribute"
+   },
+   {
+      "file" : "D-vocabularies/metadata-link.feature",
+      "line" : 104,
+      "scenario" : "a 'voicing' link resource must have an audio media type",
+      "xref" : [
+         "sec-voicing"
+      ]
+   },
+   {
       "xref" : [
          "sec-prefix-attr"
       ],
-      "line" : 735
+      "scenario" : "the 'prefix' attribute can be used to define new prefix mappings ",
+      "file" : "D-vocabularies/vocabulary-association.feature",
+      "line" : 17
    },
    {
-      "scenario" : "Report `epub:type` attribute with a semantic from an undeclared vocabulary",
-      "file" : "06-content-document/content-document-xhtml.feature",
+      "file" : "D-vocabularies/vocabulary-association.feature",
+      "line" : 22,
       "xref" : [
          "sec-prefix-attr"
       ],
-      "line" : 758
+      "scenario" : "syntax errors in the 'prefix' attribute are reported"
    },
    {
-      "scenario" : "Verify RDFa attributes are allowed on HTML elements",
-      "file" : "06-content-document/content-document-xhtml.feature",
+      "scenario" : "default vocabularies must not be assigned a prefix",
       "xref" : [
-         "sec-xhtml-rdfa"
+         "sec-prefix-attr"
       ],
-      "line" : 767
+      "line" : 28,
+      "file" : "D-vocabularies/vocabulary-association.feature"
    },
    {
-      "line" : 854,
       "xref" : [
-         "sec-xhtml-custom-attributes"
+         "sec-prefix-attr"
       ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify attributes in custom namespaces are ignored"
-   },
-   {
-      "line" : 859,
-      "xref" : [
-         "sec-xhtml-custom-attributes"
-      ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Report custom attributes using reserved strings in their namespace"
-   },
-   {
-      "scenario" : "Report MathML markup with only content MathML",
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "xref" : [
-         "sec-xhtml-deviations"
-      ],
-      "line" : 893
-   },
-   {
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify MathML with content MathML annotation",
-      "line" : 906,
-      "xref" : [
-         "sec-xhtml-deviations"
-      ]
-   },
-   {
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify MathML with presentation MathML annotation",
-      "line" : 911,
-      "xref" : [
-         "sec-xhtml-deviations"
-      ]
-   },
-   {
-      "xref" : [
-         "sec-xhtml-deviations"
-      ],
-      "line" : 932,
-      "scenario" : "Report MathML annotation with an invalid `encoding` attribute",
-      "file" : "06-content-document/content-document-xhtml.feature"
-   },
-   {
-      "line" : 947,
-      "xref" : [
-         "sec-xhtml-deviations"
-      ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify MathML markup with `annotation-xml` `name` attribute set to `contentequiv`"
-   },
-   {
-      "line" : 969,
-      "xref" : [
-         "sec-xhtml-svg"
-      ],
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "scenario" : "Verify inclusion of SVG markup"
-   },
-   {
-      "scenario" : "Verify that `epub:type` attribute can be used on SVG",
-      "file" : "06-content-document/content-document-xhtml.feature",
-      "xref" : [
-         "sec-xhtml-svg",
-         "sec-svg-req"
-      ],
-      "line" : 982
+      "scenario" : "A metadata property with an unknown prefix is reported",
+      "line" : 36,
+      "file" : "D-vocabularies/vocabulary-association.feature"
    }
 ]
