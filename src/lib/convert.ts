@@ -198,7 +198,8 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
 export function modify_spec(dom: JSDOM, section_tests: TestDescription): string {
     const document = dom.window.document;
     for (const section_data of section_tests) {
-        const section = document.querySelector(`section#${section_data.section.id}`);
+    	const id = section_data.section.id.replace('.','\\.');
+        const section = document.querySelector(`section#${id}`);
         if (section === null) {
             console.log(`Could not find section element with id "${section_data.section.id}"`);
         } else {
