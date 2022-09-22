@@ -3,17 +3,14 @@ function data_test_display() {
     const test_references = document.querySelectorAll('details.respec-tests-details a');
     for( const a of test_references ) {
         const href = a.href;
-        // This is a bit of a hack, and fragile at that. It is based on the structure of the
+        // This is a bit of a hack, and fragile at that...
         const test_reference = href.split('#')[1];
         // if the string contains a '.feature' then this is an epubcheck test reference
         if (test_reference.match(".feature")) {
-            // Can be split further:
-            a.textContent = test_reference.split('/')[1];
             // give a separate class name to these references if we want to give them a distinctive look
             a.className = 'epubcheck';
-        } else {
-            a.textContent = test_reference;
-        }
+        } 
+        a.textContent = test_reference;
     }
     
     // 2. step: find the sections that have tests associated to them (those are usually epubcheck tests). 

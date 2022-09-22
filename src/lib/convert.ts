@@ -77,7 +77,7 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
 
     // Create an Internal Test structure using the incoming data
     const create_TestReference = (test: Test): TestReference => {
-        const id = `${test.file}_L${test.line}`;
+        const id = `${test.file.replace('/', '_')}_L${test.line}`;
         return {
             id,
             url: `${Constants.FEATURE_DIR_URL}/${test.file}#L${test.line}`,
@@ -169,7 +169,9 @@ export function convert_input(dom: JSDOM, inp: TestSuite): TestDescription {
 
             // a bunch of table cells
             const td_id = add_child(tr, 'td');
-            const a_id = add_child(td_id, 'a', row.id);
+            // Reverting an earlier hack to turn the link value display to the real feature file URL
+            // It was hacked in an earlier step to avoid creating a fragment ID with a '/' character in it
+            const a_id = add_child(td_id, 'a', row.id.replace('_','/'));
             a_id.setAttribute('href', row.url);
 
             add_child(tr, 'td', row.test_scenario);
