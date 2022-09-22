@@ -55,17 +55,17 @@ export namespace Constants {
 /** Data corresponding to one single test */
 export interface Test {
     /** `id` of the corresponding section in the spec */
-    xref:       string[];
+    xref:     string[];
 
     /** 
      * The "feature" file that contains the test. If the
      * feature files are spread over several directories, it should be of the form
      * `dir/fname`.
      */
-    file:  string;
+    file:     string;
 
     /** Line number, within the feature file, for the test. */
-    line:   number;
+    line:     number;
 
     /** 
      * Short description of the scenario of the test. If necessary, this may be a simple
@@ -86,7 +86,7 @@ export interface Section {
     title: string;
 
     /** Id value for the HTML element, to be used when the spec is manipulated */
-    id: string;
+    id:    string;
     
     /** URL for that session in the spec */
     url:   string;
@@ -94,10 +94,10 @@ export interface Section {
 
 export interface TestReference {
     /** id value for the test, unique for all tests */
-    id: string
+    id:            string
 
     /** URL for that single test (pointing into the feature file) */
-    url: string;
+    url:           string;
 
     /** URL for the table entry in the test description file */
     url_table_row: string;
@@ -108,7 +108,7 @@ export interface TestReference {
 
 export interface SectionTests {
     section: Section;
-    tests: TestReference[];
+    tests:   TestReference[];
 }
 
 export type TestDescription = SectionTests[];
