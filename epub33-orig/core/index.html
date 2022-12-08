@@ -540,22 +540,16 @@
 							render the EPUB publication as the [=EPUB creator=] intends. Examples of publication
 							resources include the [=package document=], [=EPUB content documents=], CSS Style Sheets,
 							audio, video, images, embedded fonts, and scripts.</p>
-						<p>EPUB creators typically list publication resources in the package document [=EPUB manifest |
-							manifest=] and bundle them in the [=EPUB container=], with the following exceptions:</p>
-						<ul>
-							<li>
-								<p>they do not have to list resources encoded as <a href="#sec-data-urls">data URLs</a>
-									in the manifest; and</p>
-							</li>
-							<li>
-								<p>they may locate resources listed in <a href="#sec-resource-locations"></a> outside
-									the EPUB container.</p>
-							</li>
-						</ul>
+						<p>EPUB creators must list publication resources in the package document [=EPUB manifest |
+							manifest=] and typically bundle them all in the [=EPUB container=] (the exception being they
+							may locate resources listed in <a href="#sec-resource-locations"></a> outside the EPUB
+							container).</p>
 						<div class="note">
 							<p>Resources on the web identified in outbound hyperlinks (e.g., referenced from the
 									<code>href</code> attribute of an [[html]] [^a^] element) are not publication
 								resources.</p>
+							<p><a href="#sec-data-urls">Data urls</a> are also not publication resources &#8212; they
+								are considered part of the resource they are embedded in.</p>
 						</div>
 					</dd>
 
@@ -584,7 +578,7 @@
 					</dt>
 					<dd>
 						<p>An [=EPUB content document=] that includes scripting or an [=XHTML content document=] that
-							contains [[html]] [=forms=].</p>
+							contains [[html]] [^form^] elements.</p>
 						<p>Refer to <a href="#sec-scripted-content"></a> for more information.</p>
 					</dd>
 
@@ -1323,23 +1317,24 @@
 						requirements of specific elements.</p>
 
 					<section id="sec-fallbacks-audio">
-						<h5>HTML <code>audio</code> fallbacks</h5>
+						<h5>HTML <code>audio</code> and <code>video</code> fallbacks</h5>
 
 						<p id="confreq-resources-cd-fallback-media">[=EPUB creators=] MUST NOT use embedded
-							[[html]] [=flow content=] within the <a data-cite="html#the-audio-element"
-									><code>audio</code></a> element as an intrinsic fallback for [=foreign resources=].
-							Only child [^source^] elements [[html]] provide intrinsic fallback capabilities.</p>
+							[[html]] [=flow content=] within a <a data-cite="html#the-media-element">media element</a>
+							(i.e, <a data-cite="html#the-audio-element"><code>audio</code></a> or <a
+								data-cite="html#the-vido-element"><code>video</code></a>) as an intrinsic fallback for
+							audio [=foreign resources=]. Only child [^source^] elements [[html]] provide intrinsic
+							fallback capabilities.</p>
 
-						<p>Only older [=reading systems=] that do not recognize the <code>audio</code> element (e.g.,
-							EPUB 2 reading systems) will render the embedded content. When reading systems support the
-								<code>audio</code> element but not the available audio formats, they do not render the
-							embedded content for the user.</p>
+						<p>Only older [=reading systems=] that do not recognize the <code>audio</code> or the
+								<code>video</code> elements (e.g., EPUB 2 reading systems) will render the embedded
+							content. When reading systems support these elements but not the available media formats,
+							they do not render the embedded content for the user.</p>
 
 						<div class="note">
-							<p>As video resources are [=exempt resources=], this requirement does not apply to the
-									<code>video</code> element. EPUB creators may also include flow content in the
-									<code>video</code> element for reading systems that do not support the element,
-								however.</p>
+							<p>The requirement for fallbacks only applies to audio foreign resources referenced from
+									<code>audio</code> and <code>video</code> elements. Fallbacks are not required for
+								video resources; they are [=exempt resources=]. </p>
 						</div>
 					</section>
 
@@ -1368,20 +1363,30 @@
 									href="#sec-manifest-fallbacks">manifest fallback</a>.</li>
 						</ul>
 					</section>
+
 					<section>
 						<h5>HTML <code>script</code> element</h5>
 
-						<p>Although the [[html]] [^script^] element lacks intrinsic fallback capabilities, it is not
-							required that [=EPUB creators=] provide fallbacks for <a data-cite="html#data-block">data
-								blocks</a> [[html]]. As the <code>script</code> element does not represent user content,
-							data blocks are not rendered unless manipulated by script.</p>
+						<p>Although data blocks have a separate MIME media type [[rfc2046]] from their containing
+							[=XHTML content document=], it is not possible to provide intrinsic fallbacks as no such
+							mechanisms are specified for the [[html]] [^script^] element. It is also not possible to
+							provide manifest fallbacks because data blocks cannot be defined as standalone files in the
+							EPUB container but are always embedded as inline <code>script</code> elements.</p>
+
+						<p>But, as the <code>script</code> element does not represent user content &#8212; <a
+								data-cite="html#data-block">data blocks</a> are not rendered unless manipulated by
+							script, and content rendered by scripts already has <a href="#confreq-cd-scripted-flbk">core
+								media type requirements</a> &#8212; requiring fallbacks for the raw data does not serve
+							a useful purpose.</p>
+
+						<p>Consequently, to ensure that [=EPUB creators=] can include data blocks for scripting
+							purposes, they are exempt from fallback requirements.</p>
 
 						<div class="note">
-							<p>The exemption from fallbacks aligns data blocks with the exemption made to <a
-									href="confreq-foreign-no-fallback">allow data files</a> to travel in the [=EPUB
-								container=]. As data blocks are not separate resources from their host [=EPUB content
-								document=], they do not fall under the same exemption.</p>
+							<p>This exemption aligns data blocks with the <a href="#confreq-foreign-no-fallback"
+									>exemption for data files</a>.</p>
 						</div>
+
 						<div class="note">
 							<p>[[svg]] does not define data blocks as of publication, but the same exclusion would apply
 								if a future update adds the concept.</p>
@@ -1470,22 +1475,21 @@
 					directly into a URL string. The advantage of this scheme is that it allows [=EPUB creators=] to
 					embed a resource within another, avoiding the need for an external file.</p>
 
-				<p>EPUB creators MAY use data URLs in [=EPUB publications=] provided their use does not result in a
-					[=top-level content document=] or [=top-level browsing context=] [[html]]. This restriction applies
-					to data URLs used in the following scenarios:</p>
+				<p>EPUB creators MUST NOT use data URLs in the following scenarios where they can result in a
+					[=top-level content document=] or [=top-level browsing context=] [[html]]:</p>
 
 				<ul>
 					<li>
-						<p>in [EPUB manifest | manifest=] [^item^] elements referenced from the [=EPUB spine |
-							spine=];</p>
+						<p>in <code>href</code> attributes in the package document &#8212; this applies both to manifest
+							[^item^] elements and metadata [^link^] elements;</p>
 					</li>
 					<li>
-						<p>in the <code>href</code> attribute on [[html]] or [[svg]] <code>a</code> elements (except
-							when inside an [^iframe^] element [[html]]);</p>
+						<p>in the <code>href</code> attribute on [[html]] or [[svg]] <code>a</code> elements, except
+							when inside an [^iframe^] element [[html]];</p>
 					</li>
 					<li>
-						<p>in the <code>href</code> attribute on [[html]] <code>area</code> elements (except when inside
-							an <code>iframe</code> element);</p>
+						<p>in the <code>href</code> attribute on [[html]] <code>area</code> elements, except when inside
+							an <code>iframe</code> element;</p>
 					</li>
 					<li>
 						<p>in calls to [[ecmascript]] <code>window.open</code> or <code>document.open</code>.</p>
@@ -1493,20 +1497,20 @@
 				</ul>
 
 				<div class="note">
+					<p>These restrictions on the use of data URLs are to prevent security issues and also to ensure that
+						[=reading systems=] can determine where to take a user next (i.e., because data URLs cannot be
+						referenced from the [=EPUB spine | spine=]).</p>
+
 					<p>The list of prohibited uses for data URLs is subject to change as the respective standards that
 						allow their use evolve.</p>
 				</div>
 
-				<p>This restriction on their use is to prevent security issues and also to ensure that [=reading
-					systems=] can determine where to take a user next (i.e., because these resources are not be listed
-					in the spine).</p>
-
-				<p>Resources represented as data URLs are not publication resources so are exempt from the requirement
-					for EPUB creators to list them in the manifest.</p>
-
-				<p>EPUB creators MUST encode Data URLs as core media type resources or use them where they can provide a
-					fallback (i.e., data URLs are subject to the <a href="#sec-foreign-resources">foreign resource
-						restrictions</a>).</p>
+				<p>A consequence of embedding is that the data in a data URL is not considered its own unique
+					[=publication resource=] for manifest reporting purposes (i.e., only its containing publication
+					resource gets listed). As this data has its own media type, however, it is still subject to <a
+						href="#sec-foreign-resources">foreign resource restrictions</a>. EPUB creators MUST therefore
+					encode data URLs as [=core media type resources=] or provide a fallback using the intrinsic fallback
+					mechanisms of the host format.</p>
 			</section>
 
 			<section id="sec-file-urls">
@@ -1563,6 +1567,32 @@
 		</section>
 		<section id="sec-ocf">
 			<h2>Open Container Format (OCF)</h2>
+
+			<section id="sec-ocf-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>OCF is the required container technology for [=EPUB publications=]. OCF may play a role in the
+					following workflows:</p>
+
+				<ul>
+					<li>During the preparation steps in producing an EPUB publication, OCF may be used as the container
+						format when exchanging in-progress publications between different individuals and/or different
+						organizations.</li>
+					<li>When providing an EPUB publication from publisher or conversion house to the distribution or
+						sales channel, OCF is the recommended container format to be used as the transport format.</li>
+					<li>When delivering the final EPUB publication to an [=EPUB reading system=] or user, OCF is the
+						required format for the container that holds all of the assets that make up the
+						publication.</li>
+				</ul>
+
+				<p>This section defines the rules for structuring the file collection in the abstract: the "abstract
+					container". It also defines the rules for the representation of this abstract container within a ZIP
+					archive: the "physical container". The rules for ZIP physical containers build upon the ZIP
+					technologies used by [[odf]].</p>
+
+				<p>OCF also defines a standard method for <a href="#sec-font-obfuscation">obfuscating embedded fonts</a>
+					for those EPUB publications that require this functionality.</p>
+			</section>
 
 			<section id="sec-container-abstract">
 				<h3>OCF abstract container</h3>
@@ -1666,24 +1696,21 @@
 					<h4>File paths and file names</h4>
 
 					<p id="ocf-fn-cs">In the context of the [=OCF abstract container=], [=file paths=] and [=file
-						names=] are case sensitive.</p>
+						names=] are [=scalar value strings=] [[infra]] (i.e., their values are case sensitive).</p>
 
 					<p>In addition, the following restrictions are designed to allow file paths and file names to be
 						used without modification on most operating systems:</p>
 
 					<ul class="conformance-list">
 						<li>
-							<p id="ocf-fn-encoding">file names and paths MUST be UTF-8 [[unicode]] encoded.</p>
-						</li>
-						<li>
-							<p id="ocf-fn-length">file names MUST NOT exceed 255 bytes.</p>
+							<p id="ocf-fn-length">File names MUST NOT exceed 255 bytes.</p>
 						</li>
 						<li>
 							<p id="ocf-pn-length">The file paths for any directory or file within the OCF abstract
 								container MUST NOT exceed 65535 bytes.</p>
 						</li>
 						<li>
-							<p id="ocf-fn-chars">file names MUST NOT use the following [[unicode]] characters, as
+							<p id="ocf-fn-chars">File names MUST NOT use the following [[unicode]] characters, as
 								commonly used operating systems may not support these characters consistently:</p>
 							<ul>
 								<li>
@@ -1749,16 +1776,23 @@
 									<p>Specials (<code>U+FFF0 … U+FFFF</code>)</p>
 								</li>
 								<li>
-									<p>The Deprecated Characters in the Tags and Variation Selectors Supplement
-											(<code>U+E0001</code> and <code>U+E007F</code>)</p>
-								</li>
-								<li>
 									<p>Supplementary Private Use Area-A (<code>U+F0000 … U+FFFFF</code>)</p>
 								</li>
 								<li>
 									<p>Supplementary Private Use Area-B (<code>U+100000 … U+10FFFF</code>)</p>
 								</li>
 							</ul>
+							<div class="note">
+								<p>The Unicode Character Database [[uax44]] also includes a <a
+										href="https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt">list of
+										deprecated characters</a>. EPUB creators are advised to avoid these characters,
+									as well, as it is expected that [=EPUB conformance checkers=] will flag their
+									use.</p>
+							</div>
+						</li>
+						<li>
+							<p id="ocf-fn-space">For compatibility with older [=reading systems=], file names SHOULD NOT
+								contain SPACE (U+0020) characters.</p>
 						</li>
 						<li>
 							<p id="ocf-fn-cn">All file names within the same directory MUST be unique following Unicode
@@ -1784,10 +1818,6 @@
 							characters are supported. Although Unicode support is much better now than in earlier
 							iterations of EPUB, older tools and toolchains may still be encountered (e.g., ZIP tools
 							that only support [[us-ascii]]).</p>
-
-						<p>If EPUB creators need to ensure compatibility with EPUB 2 [=reading systems=] that only
-							accept URIs [[rfc3986]], they should further consider restricting resource names to the
-							ASCII character set [[us-ascii]].</p>
 					</div>
 				</section>
 
@@ -2863,7 +2893,7 @@
 									href="#sec-container-metainf-encryption.xml"></a>.</p>
 						</li>
 						<li>
-							<p id="confreq-zip-utf8">OCF ZIP containers MUST encode File System Names using UTF-8
+							<p id="confreq-zip-utf8">OCF ZIP containers MUST encode file system names using UTF-8
 								[[unicode]].</p>
 						</li>
 					</ul>
@@ -3179,7 +3209,7 @@
 					<p
 						data-tests="#pkg-dir_creator-rtl,#pkg-dir_rtl-root-ltr,#pkg-dir_rtl-root-unset,#pkg-dir_unset-root-rtl,#pkg-dir_unset-root-unset,#pkg-dir-auto_root-rtl"
 						>Specifies the <a data-cite="bidi#BD5">base direction</a> [[bidi]] of the textual content and
-						attribute values of the carrying element and its descendants</p>
+						attribute values of the carrying element and its descendants.</p>
 
 					<p>Allowed values are:</p>
 
@@ -4525,10 +4555,11 @@
 					</dl>
 
 					<p>The [^metadata^] element MAY contain zero or more <code>link</code> elements, each of which
-						identifies the location of a [=linked resource=] in its REQUIRED <code>href</code>
-						attribute.</p>
+						identifies the location of a [=publication resource=] or a [=linked resource=] in its REQUIRED
+							<code>href</code> attribute.</p>
 
-					<p id="linked-res-manifest">Linked resources are [=publication resources=] only when they are:</p>
+					<p id="linked-res-manifest">Resources referenced from the <code>link</code> element are
+						[=publication resources=] only when they are:</p>
 
 					<ul>
 						<li>
@@ -4536,13 +4567,13 @@
 						</li>
 						<li>
 							<p>included or embedded in an [=EPUB content document=] (e.g., a metadata record serialized
-								as RDFa [[?rdfa-core]] or JSON-LD [[?json-ld11]] embedded in an [[html]] [^script^]
+								as RDFa [[?rdfa-core]] or as JSON-LD [[?json-ld11]] embedded in an [[html]] [^script^]
 								element).</p>
 						</li>
 					</ul>
 
-					<p>In all other cases (e.g., when linking to standalone [[?onix]] or [[?xmp]] records), the linked
-						resources are not [=publication resources=] (i.e., are not subject to <a
+					<p>In all other cases (e.g., when linking to standalone [[?onix]] or [[?xmp]] records), the
+						resources referenced are not [=publication resources=] (i.e., are not subject to <a
 							href="#sec-core-media-types">core media type requirements</a>) and [=EPUB creators=] MUST
 						NOT list them in the <a href="#sec-manifest-elem">manifest</a>.</p>
 
@@ -4801,7 +4832,7 @@ XHTML:
 								</li>
 								<li>
 									<p>
-										<a href="#attrdef-href">
+										<a href="#attrdef-item-href">
 											<code>href</code>
 										</a>
 										<code>[required]</code>
@@ -4847,12 +4878,12 @@ XHTML:
 						</dd>
 					</dl>
 
-					<p>Each <code>item</code> element identifies a publication resource by the URL [[url]] in its
-							<code>href</code> attribute. The value MUST be an <a data-lt="absolute-url string"
-							>absolute-</a> or <a data-lt="path-relative-scheme-less-url string"
-							>path-relative-scheme-less-URL</a> string [[url]]. [=EPUB creators=] MUST ensure each URL is
-						unique within the <code>manifest</code> scope after <a href="#sec-parse-package-urls"
-							>parsing</a>.</p>
+					<p id="attrdef-item-href">Each <code>item</code> element identifies a publication resource by the
+						URL [[url]] in its <a href="#attrdef-href"><code>href</code> attribute</a>. The value MUST be an
+							<a data-lt="absolute-url string">absolute-</a> or <a
+							data-lt="path-relative-scheme-less-url string">path-relative-scheme-less-URL</a>
+						string [[url]]. [=EPUB creators=] MUST ensure each URL is unique within the
+							<code>manifest</code> scope after <a href="#sec-parse-package-urls">parsing</a>.</p>
 
 					<p id="attrdef-item-media-type">The publication resource identified by an <code>item</code> element
 						MUST conform to the applicable specification(s) as inferred from the MIME media type [[rfc2046]]
@@ -5227,7 +5258,7 @@ No Entry</pre>
 					<p>Use of the element is <a href="#deprecated">deprecated</a>.</p>
 
 					<p>Refer to the <a
-							href="http://idpf.org/epub/301/spec/epub-publications-20140626.html#sec-bindings-elem"
+							href="https://idpf.org/epub/301/spec/epub-publications-20140626.html#sec-bindings-elem"
 								><code>bindings</code> element definition</a> in [[epubpublications-301]] for more
 						information.</p>
 				</section>
@@ -5568,8 +5599,8 @@ No Entry</pre>
 
 					<div class="note">
 						<p>The former <abbr title="International Digital Publishing Forum">IDPF</abbr> EPUB 3 Working
-							Group maintained both a <a href="http://idpf.org/epub/registries/roles/">registry of role
-								extensions</a> and a list of <a href="http://idpf.org/epub/extensions/roles/">custom
+							Group maintained both a <a href="https://idpf.org/epub/registries/roles/">registry of role
+								extensions</a> and a list of <a href="https://idpf.org/epub/extensions/roles/">custom
 								extension roles</a>. This Working Group no longer maintains these registries.</p>
 					</div>
 
@@ -5634,11 +5665,11 @@ No Entry</pre>
 				<section id="sec-opf2-meta">
 					<h4>The <code>meta</code> element</h4>
 
-					<p>The <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"><code>meta</code>
+					<p>The <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"><code>meta</code>
 							element</a> [[opf-201]] provides a means of including generic metadata for EPUB 2 [=reading
 						systems=].</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"
+					<p>Refer to the <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"
 								><code>meta</code> element definition</a> in [[opf-201]] for more information.</p>
 
 					<div class="note">
@@ -5655,11 +5686,11 @@ No Entry</pre>
 				<section id="sec-opf2-guide">
 					<h4>The <code>guide</code> element</h4>
 
-					<p>The <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"><code>guide</code>
+					<p>The <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"><code>guide</code>
 							element</a> [[opf-201]] provides machine-processable navigation to key structures in EPUB 2
 						[=reading systems=].</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"
+					<p>Refer to the <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"
 								><code>guide</code> element definition</a> in [[opf-201]] for more information.</p>
 
 					<div class="note">
@@ -5671,10 +5702,10 @@ No Entry</pre>
 				<section id="sec-opf2-ncx">
 					<h4>NCX</h4>
 
-					<p>The <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX</a> [[opf-201]]
+					<p>The <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX</a> [[opf-201]]
 						provides a table of contents for EPUB 2 [=reading systems=].</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX
+					<p>Refer to the <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX
 							definition</a> in [[opf-201]] for more information.</p>
 
 					<div class="note">
@@ -5748,7 +5779,8 @@ No Entry</pre>
 						<p>[=EPUB creators=] MAY use the [^/epub:type^] attribute in [=XHTML content documents=] to
 							express <a href="#sec-structural-semantics-intro">structural semantics</a>.</p>
 
-						<p>The attribute MUST only be used on [=palpable content=] [[html]].</p>
+						<p>The attribute MUST NOT be used on the <a data-cite="html#the-head-element"
+								><code>head</code></a> element or [=metadata content=] [[html]].</p>
 					</section>
 
 					<section id="sec-xhtml-rdfa">
@@ -5780,7 +5812,7 @@ No Entry</pre>
 						<p>Use of the element is <a href="#deprecated">deprecated</a>.</p>
 
 						<p>Refer to the <a
-								href="http://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-switch"
+								href="https://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-switch"
 									><code>switch</code> element definition</a> in [[epubcontentdocs-301]] for more
 							information.</p>
 					</section>
@@ -5795,7 +5827,7 @@ No Entry</pre>
 						<p>Use of the element is <a href="#deprecated">deprecated</a>.</p>
 
 						<p>Refer to the <a
-								href="http://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-trigger"
+								href="https://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-trigger"
 									><code>epub:trigger</code> element definition</a> in [[epubcontentdocs-301]] for
 							more information.</p>
 					</section>
@@ -6022,7 +6054,7 @@ No Entry</pre>
 						<li>
 							<p id="confreq-svg-title" data-cite="svg">If the [[svg]] [^title^] element contains
 								marked-up text, the markup MUST contain only elements declared in the <a
-									data-cite="dom#html-namespace">HTML namespace</a> [[dom]].</p>
+									data-cite="infra#html-namespace">HTML namespace</a> [[infra]].</p>
 						</li>
 					</ul>
 					<div class="note">
@@ -6160,8 +6192,8 @@ No Entry</pre>
 						<p>[=EPUB content documents=] MAY contain scripting using the facilities defined for this in the
 							respective underlying specifications ([[html]] and [[svg]]). When an EPUB content document
 							contains scripting, this specification refers to it as a [=scripted content document=]. This
-							label also applies to [=XHTML content documents=] when they contain instances of [[html]]
-							[=forms=].</p>
+							label also applies to [=XHTML content documents=] that contain [[html]] [^form^]
+							elements.</p>
 
 						<p>The <a href="#scripted"><code>scripted</code> property</a> of the [=EPUB manifest |
 							manifest=] <code>item</code> element is used to indicate that an EPUB content document is a
@@ -6176,8 +6208,9 @@ No Entry</pre>
 						</div>
 
 						<p>[=EPUB creators=] should note that [=reading systems=] are required to behave as though a
-							unique [=origin=] [[url]] has been assigned to each [=EPUB publication=]. In practice, this
-							means that it is not possible for scripts to share data between EPUB publications.</p>
+							unique <a data-cite="html#origin">origin</a> [[html]] has been assigned to each [=EPUB
+							publication=]. In practice, this means that it is not possible for scripts to share data
+							between EPUB publications.</p>
 
 						<p>Which <a href="#sec-scripted-context">context</a> a script is used in also determines the
 							rights and restrictions that a reading system places on it (refer to <a
@@ -6458,7 +6491,7 @@ No Entry</pre>
 						<p id="confreq-nav-a">Each list item of the ordered list represents a heading, structure, or
 							other item of interest. A child <code>a</code> element describes the target that the link
 							points to, while a <code>span</code> element serves as a heading for breaking down lists
-							into distinct groups (for example, an [=EPUB creator=] could segment a large list of
+							into distinct groups (for example, an EPUB creator could segment a large list of
 							illustrations into several lists, one for each chapter).</p>
 					</li>
 					<li>
@@ -6530,9 +6563,23 @@ No Entry</pre>
             …
          &lt;/ol>
       &lt;/li>
+      &lt;li>
+         &lt;a href="appendix.xhtml">
+            &lt;img src="app1.jpg" alt="An image-based heading"/>
+         &lt;/a>
+      &lt;/li>
    &lt;/ol>
 &lt;/nav></pre>
 				</aside>
+
+				<div class="caution">
+					<p>Although the headings and links in <code>nav</code> elements allow any [[html]] [=phrasing
+						content=], app-based reading systems often only support simple text labels. Because these apps
+						create their own navigation widgets that are not based on HTML rendering, they often cannot
+						retain embedded images and multimedia, MathML, inline styling and other element- and
+						attribute-based rendering instructions. EPUB creators should avoid using these types of elements
+						where their absence may lead to usability issues.</p>
+				</div>
 
 				<p id="confreq-cd-nav-docprops-spine">As a conforming [=XHTML content document=], EPUB creators MAY
 					include the EPUB navigation document in the [=EPUB spine | spine=].</p>
@@ -6918,8 +6965,8 @@ No Entry</pre>
 									configuration</a> [[uaag20]] for related information.</p>
 						</div>
 
-						<p id="fxl-layout-duplication" data-tests="#lay-fxl-layout-duplication">When the property is set to
-								<code>pre-paginated</code> for a spine item, its content dimensions MUST be set as
+						<p id="fxl-layout-duplication" data-tests="#lay-fxl-layout-duplication">When the property is set
+							to <code>pre-paginated</code> for a spine item, its content dimensions MUST be set as
 							defined in <a href="#sec-fxl-content-dimensions"></a>.</p>
 
 						<p>EPUB creators MUST NOT declare the <code>rendition:layout</code> property more than once.</p>
@@ -6933,8 +6980,8 @@ No Entry</pre>
 								defined to be a [=fixed-layout document=]). Furthermore, media queries
 								[[mediaqueries-3]] are used to apply different style sheets for three different device
 								categories. Note that the media queries only affect the style sheet applied to the
-								document; the size of the content area set in the <code>viewport</code>
-								<code>meta</code> tag is static.</p>
+								document; the size of the content area set in the <code>viewport meta</code> tag is
+								static.</p>
 
 							<p>Package document:</p>
 
@@ -7030,8 +7077,8 @@ No Entry</pre>
 							</dd>
 						</dl>
 
-						<p id="fxl-orientation-duplication" data-tests="#lay-fxl-orientation-duplication">EPUB creators MUST
-							NOT declare the <code>rendition:orientation</code> property more than once.</p>
+						<p id="fxl-orientation-duplication" data-tests="#lay-fxl-orientation-duplication">EPUB creators
+							MUST NOT declare the <code>rendition:orientation</code> property more than once.</p>
 
 						<p>They also MUST NOT declare the property using the <a href="#attrdef-refines"
 									><code>refines</code> attribute</a>. Refer to <a href="#orientation-overrides"></a>
@@ -7137,9 +7184,9 @@ No Entry</pre>
 						<div class="note">
 							<p>When synthetic spreads are used in the context of [=XHTML content document | XHTML=] and
 								[=SVG content documents=], the dimensions given via the <a href="#sec-fxl-icb-html"
-										><code>viewport</code>
-									<code>meta</code> element</a> and <a href="#sec-fxl-icb-svg"><code>viewBox</code>
-									attribute</a> represents the size of one page in the spread, respectively.</p>
+										><code>viewport meta</code> element</a> and <a href="#sec-fxl-icb-svg"
+										><code>viewBox</code> attribute</a> represents the size of one page in the
+								spread, respectively.</p>
 						</div>
 
 						<div class="note">
@@ -7362,7 +7409,7 @@ No Entry</pre>
 									<p>The <code>rendition:spread-portrait</code> property is <a href="#deprecated"
 											>deprecated</a>.</p>
 									<p></p>Refer to the <a
-										href="http://idpf.org/epub/301/spec/epub-publications-20140626.html#spread-portrait"
+										href="https://idpf.org/epub/301/spec/epub-publications-20140626.html#spread-portrait"
 											><code>spread-portrait</code> property definition</a>
 									in [[epubpublications-301]] for more information.</dd>
 							</dl>
@@ -7419,8 +7466,10 @@ No Entry</pre>
 							and omit the properties on spine items where one-up or two-up presentation is equally
 							acceptable.</p>
 
-						<p>EPUB creators MUST NOT declare more than one <code>page-spread-*</code> property on any given
-							spine item.</p>
+						<p>EPUB creators MUST NOT declare more than one <code>rendition:page-spread-*</code> property,
+							and/or their unprefixed equivalents, on any given spine item (e.g., it is valid to specify
+							both "<code>rendition:page-spread-left page-spread-left</code>" in case reading systems only
+							support one of properties).</p>
 
 						<div class="note" id="note-page-spread-aliases">
 							<p>The <code>rendition:page-spread-left</code> and <code>rendition:page-spread-right</code>
@@ -7541,7 +7590,7 @@ No Entry</pre>
 						<p>Use of the property is <a href="#deprecated">deprecated</a>.</p>
 
 						<p>Refer to the <a
-								href="http://idpf.org/epub/301/spec/epub-publications-20140626.html#fxl-property-viewport"
+								href="https://idpf.org/epub/301/spec/epub-publications-20140626.html#fxl-property-viewport"
 									><code>rendition:viewport</code> property definition</a> in [[epubpublications-301]]
 							for more information.</p>
 					</section>
@@ -7557,14 +7606,14 @@ No Entry</pre>
 								containing block</a> [[css2]] in the manner applicable to their format:</p>
 
 						<dl class="conformance-list" id="sec-fxl-html-svg-dimensions">
-							<dt id="sec-fxl-icb-html" data-tests="#lay-fxl-xhtml-icb,#lay-fxl-xhtml-icb_multi">Expressing in
-								XHTML</dt>
+							<dt id="sec-fxl-icb-html" data-tests="#lay-fxl-xhtml-icb,#lay-fxl-xhtml-icb_multi"
+								>Expressing in XHTML</dt>
 							<dd>
 								<p>For XHTML [=fixed-layout documents=], the <a
 										href="https://www.w3.org/TR/CSS2/visudet.html#containing-block-details">initial
 										containing block</a> [[css2]] is obtained from the REQUIRED <code>height</code>
-									and <code>width</code> definitions in a <a href="#app-viewport-meta"
-											><code>viewport</code> meta tag</a>, where:</p>
+									and <code>width</code> definitions in a <a href="#app-viewport-meta"><code>viewport
+											meta</code> tag</a>, where:</p>
 								<ul>
 									<li>the <code>height</code>
 										<a href="#viewport.ebnf.property">property</a> MUST have as its <a
@@ -7575,6 +7624,9 @@ No Entry</pre>
 								</ul>
 								<p>The <code>device-width</code> and <code>device-height</code> values refer to the 100%
 									of the width and height, respectively, of the reading system's [=viewport=].</p>
+								<p>EPUB creators MUST NOT specify duplicate <code>height</code> or <code>width</code>
+									definitions either within a single <code>viewport meta</code> tag or by specifying
+									multiple <code>viewport meta</code> tags.</p>
 								<aside class="example"
 									title="Specifying the initial containing block in a viewport meta tag">
 									<pre>&lt;html …>
@@ -9914,7 +9966,7 @@ html.my-document-playing * {
 
 						<pre>&lt;meta property="dcterms:modified">2011-01-01T12:00:00Z&lt;/meta></pre>
 
-						<p>After <a data-cite="epub-rs-33#sec-property-datatype">processing</a> [[epub-rs-33]], this
+						<p>After <a data-cite="epub-rs-33#sec-property-values">processing</a> [[epub-rs-33]], this
 							property would expand to the following URL:</p>
 
 						<pre class="nohighlight">http://purl.org/dc/terms/modified</pre>
@@ -10621,23 +10673,20 @@ html.my-document-playing * {
 			</section>
 		</section>
 		<section id="app-viewport-meta" class="appendix">
-			<h2>The <code>viewport</code>
-				<code>meta</code> tag</h2>
+			<h2>The <code>viewport meta</code> tag</h2>
 
 			<section id="app-viewport-meta-intro" class="informative">
 				<h3>Introduction</h3>
 
 				<p>As the <a
 						href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html#//apple_ref/doc/uid/TP40008193-SW6"
-						>Safari HTML definition</a> of the <code>viewport</code>
-					<code>meta</code> tag, that was used in earlier versions of EPUB 3, is not an officially recognized
-					standard, this specification defines a basic syntax in order to allow [=EPUB creators=] to express
-						<a href="#sec-fxl-icb-html">width and height dimensions</a> for use rendering [=fixed-layout
-					documents=].</p>
+						>Safari HTML definition</a> of the <code>viewport meta</code> tag, that was used in earlier
+					versions of EPUB 3, is not an officially recognized standard, this specification defines a basic
+					syntax in order to allow [=EPUB creators=] to express <a href="#sec-fxl-icb-html">width and height
+						dimensions</a> for use rendering [=fixed-layout documents=].</p>
 
-				<p>The syntax of this grammar is also influenced by the processing model for transforming
-						<code>viewport</code>
-					<code>meta</code> tags to <code>@viewport</code> CSS rules, as defined in [[css-device-adapt]].</p>
+				<p>The syntax of this grammar is also influenced by the parsing algorithm for the <code>viewport
+						meta</code> tag, as defined in [[css-viewport-1]].</p>
 
 				<p>The syntax is intentionally left as generic as possible as it is not in this specification's scope to
 					define all the possible properties and values. It only defines the basic requirements for defining a
@@ -10647,8 +10696,9 @@ html.my-document-playing * {
 			<section id="app-viewport-meta-syntax">
 				<h3>Syntax</h3>
 
-				<p>A <code>viewport</code> [^meta^] tag [[html]] MUST have <code>name</code> and <code>content</code>
-					attributes that conform to the following definition:</p>
+				<p>For [=fixed-layout documents=], a <code>viewport</code>
+					<a data-cite="html#the-meta-element"><code>meta</code></a> tag [[html]] MUST have <code>name</code>
+					and <code>content</code> attributes that conform to the following definition:</p>
 
 				<dl>
 					<dt id="viewport-name-attr">name</dt>
@@ -10669,16 +10719,16 @@ html.my-document-playing * {
 									<a href="#viewport.ebnf.def">viewport</a>
 								</td>
 								<td>=</td>
-								<td><a href="#viewport.ebnf.property">property</a>, {<a href="#viewport.ebnf.sep"
-										>sep</a>, <a href="#viewport.ebnf.property">property</a>} ;</td>
+								<td><a href="#viewport.ebnf.property">property</a>, { <a href="#viewport.ebnf.sep"
+										>sep</a>, <a href="#viewport.ebnf.property">property</a> } ;</td>
 							</tr>
 							<tr>
 								<td id="viewport.ebnf.property">
 									<a href="#viewport.ebnf.property">property</a>
 								</td>
 								<td>=</td>
-								<td><a href="viewport.ebnf.name">name</a>, <a href="viewport.ebnf.assign">assign</a>, <a
-										href="viewport.ebnf.value">value</a> ;</td>
+								<td><a href="#viewport.ebnf.name">name</a>, [ <a href="#viewport.ebnf.assign"
+									>assign</a>, <a href="#viewport.ebnf.value">value</a> ] ;</td>
 							</tr>
 							<tr>
 								<td id="viewport.ebnf.name">
@@ -10715,8 +10765,8 @@ html.my-document-playing * {
 									<a href="#viewport.ebnf.assign">assign</a>
 								</td>
 								<td>=</td>
-								<td>[<a href="#viewport.ebnf.space">space</a>], "=", [<a href="#viewport.ebnf.space"
-										>space</a>] ;</td>
+								<td>[ <a href="#viewport.ebnf.space">space</a> ], "=", [ <a href="#viewport.ebnf.space"
+										>space</a> ] ;</td>
 							</tr>
 							<tr>
 								<td id="viewport.ebnf.space">
@@ -10729,29 +10779,28 @@ html.my-document-playing * {
 					</dd>
 				</dl>
 
-				<p>This specification only defines <a href="#viewport.ebnf.value">value</a> requirements for the
-						<code>height</code> and <code>width</code> properties (see <a href="#sec-fxl-content-dimensions"
-					></a>). It imposes no restrictions on other property names and values except that they MUST NOT
-					contain <a href="#viewport.ebnf.sep-char">separator characters</a> or the <a
-						href="#viewport.ebnf.assign">assignment character</a>.</p>
+				<p>The only restriction on property <a href="#viewport.ebnf.name">names</a> and <a
+						href="#viewport.ebnf.value">values</a> is that they MUST NOT contain <a
+						href="#viewport.ebnf.sep-char">separator characters</a> or the <a href="#viewport.ebnf.assign"
+						>assignment character</a>.</p>
 
-				<p>There are no restrictions on any other attributes allowed on the [^meta^] element by the [[html]]
-					grammar.</p>
+				<p>The authoring requirements in this section apply <em>after</em>
+					<a data-cite="xml#AVNormalize">whitespace normalization</a> [[xml]] (i.e., after a reading system
+					strips leading and trailing whitespace and compacts all instances of multiple whitespace within the
+					attribute to single spaces). EPUB creators MAY include any valid [=ascii whitespace=] [[infra]] in
+					the authored tag so long as the result is valid to this definition.</p>
 
-				<div class="note">
-					<p>Although the <code>viewport</code>
-						<code>meta</code> tag allows EPUB creators to use properties other than <code>height</code> and
-							<code>width</code>, such use is strongly discouraged. Setting other properties may have
-						unintended consequences on the rendering of [=fixed-layout documents=].</p>
-				</div>
+				<p>There are no restrictions on any other attributes allowed on the <a data-cite="html#the-meta-element"
+							><code>meta</code></a> element by the [[html]] grammar.</p>
 
 				<div class="note">
-					<p>The authoring requirements in this section apply <em>after</em>
-						<a data-cite="xml#AVNormalize">whitespace normalization</a> [[xml]] (i.e., after a reading
-						system strips leading and trailing whitespace and compacts all instances of multiple whitespace
-						within the attribute to single spaces). EPUB creators can include any valid HTML whitespace
-						characters (e.g., tabs, line feeds) in the authored tag so long as the result is valid to this
-						definition.</p>
+					<p>For more information about specifying the required <code>height</code> and <code>width</code>
+						properties, and their required values, refer to <a href="#sec-fxl-content-dimensions"></a>.</p>
+
+					<p>Although the <code>viewport meta</code> tag allows EPUB creators to use properties other than
+							<code>height</code> and <code>width</code>, and to not include values for these properties,
+						such use is strongly discouraged. Setting other properties may have unintended consequences on
+						the rendering of fixed-layout documents.</p>
 				</div>
 			</section>
 		</section>
@@ -11524,8 +11573,8 @@ EPUB/images/cover.png</pre>
 							specification located at <a href="https://www.w3.org/TR/epub-33/"
 								>https://www.w3.org/TR/epub-33/</a>.</p>
 						<p>The EPUB 3 specification supersedes the Open Packaging Format 2.0.1 specification, which is
-							located at <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm"
-								>http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm</a> and which also uses the <code
+							located at <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm"
+								>https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm</a> and which also uses the <code
 								class="media-type">application/oepbs-package+xml</code> media type.</p>
 					</dd>
 
@@ -11653,8 +11702,8 @@ EPUB/images/cover.png</pre>
 						<p>The EPUB 3 specification supersedes both <a
 								href="https://datatracker.ietf.org/doc/html/rfc4839">RFC 4839</a> and the Open Container
 							Format 2.0.1 specification, which is located at <a
-								href="http://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc"
-									><code>http://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc</code></a>, and which also
+								href="https://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc"
+									><code>https://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc</code></a>, and which also
 							uses the <code>application/epub+zip</code> media type.</p>
 					</dd>
 
@@ -11728,6 +11777,32 @@ EPUB/images/cover.png</pre>
 						Recommendation</a></h3>
 
 				<ul>
+					<li>29-Nov-2022: Clarified that data URLs are not unique publication resources, and not allowed in
+						the package document, but are subject to fallback requirements. See <a
+							href="https://github.com/w3c/epub-specs/issues/2485">issue 2485</a>.</li>
+					<li>29-Nov-2022: Clarified the <code>epub:type</code> attribute is not allowed on the
+							<code>head</code> element and metadata content in XHTML content documents. See <a
+							href="https://github.com/w3c/epub-specs/issues/2486">issue 2486</a>.</li>
+					<li>17-Nov-2022: Updated file paths and names to identify that they are scalar value strings in the
+						OCF abstract container, not just case sensitive. See <a
+							href="https://github.com/w3c/epub-specs/issues/2461">issue 2461</a>.</li>
+					<li>11-Nov-2022: Added caution about reading systems not retaining HTML element-based rendering
+						instructions in navigation document elements. See <a
+							href="https://github.com/w3c/epub-specs/issues/2477">issue 2477</a>.</li>
+					<li>02-Nov-2022: Removed the restriction on deprecated characters in the Tags and Variation
+						Selectors Supplement and replaced with a general note to avoid the use of characters already
+						deprecated by the Unicode standard, as the list changes over time. See <a
+							href="https://github.com/w3c/epub-specs/issues/2469">issue 2469</a>.</li>
+					<li>20-Oct-2022: Removed requirement to encode file names in abstract container in UTF-8 as it is
+						not possible in the abstract and is already covered by a ZIP container requirement. See <a
+							href="https://github.com/w3c/epub-specs/issues/2461">issue 2461</a>.</li>
+					<li>17-Oct-2022: Added recommendation against using spaces in file paths and names. See <a
+							href="https://github.com/w3c/epub-specs/issues/2458">issue 2458</a>.</li>
+					<li>15-Oct-2022: Allow properties without values in <code>viewport meta</code> tag definition. See
+							<a href="https://github.com/w3c/epub-specs/pull/2457">pull request 2457</a>.</li>
+					<li>11-Oct-2022: Added additional requirement that <code>viewport meta</code> height and width not
+						be declared multiple times. See <a href="https://github.com/w3c/epub-specs/issues/2442">issue
+							2442</a>.</li>
 					<li>21-Sept-2022: Made the requirement to declare property prefixes explicit. See <a
 							href="https://github.com/w3c/epub-specs/issues/2438">issue 2438</a>.</li>
 					<li>19-Sept-2022: Removed minor contradictions in the <code>epub:type</code> attribute usage

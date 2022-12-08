@@ -525,22 +525,16 @@
 							render the EPUB publication as the [=EPUB creator=] intends. Examples of publication
 							resources include the [=package document=], [=EPUB content documents=], CSS Style Sheets,
 							audio, video, images, embedded fonts, and scripts.</p>
-						<p>EPUB creators typically list publication resources in the package document [=EPUB manifest |
-							manifest=] and bundle them in the [=EPUB container=], with the following exceptions:</p>
-						<ul>
-							<li>
-								<p>they do not have to list resources encoded as <a href="#sec-data-urls">data URLs</a>
-									in the manifest; and</p>
-							</li>
-							<li>
-								<p>they may locate resources listed in <a href="#sec-resource-locations"></a> outside
-									the EPUB container.</p>
-							</li>
-						</ul>
+						<p>EPUB creators must list publication resources in the package document [=EPUB manifest |
+							manifest=] and typically bundle them all in the [=EPUB container=] (the exception being they
+							may locate resources listed in <a href="#sec-resource-locations"></a> outside the EPUB
+							container).</p>
 						<div class="note">
 							<p>Resources on the web identified in outbound hyperlinks (e.g., referenced from the
 									<code>href</code> attribute of an [[html]] [^a^] element) are not publication
 								resources.</p>
+							<p><a href="#sec-data-urls">Data urls</a> are also not publication resources — they
+								are considered part of the resource they are embedded in.</p>
 						</div>
 					</dd>
 
@@ -569,7 +563,7 @@
 					</dt>
 					<dd>
 						<p>An [=EPUB content document=] that includes scripting or an [=XHTML content document=] that
-							contains [[html]] [=forms=].</p>
+							contains [[html]] [^form^] elements.</p>
 						<p>Refer to <a href="#sec-scripted-content"></a> for more information.</p>
 					</dd>
 
@@ -642,7 +636,7 @@
 					always having an explicit declaration (<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>).</p>
 			</section>
 		</section>
-		<section id="sec-epub-conf" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#02-epub-publication-conformance_epub-publication-conformance.feature_L15,https://w3c.github.io/epub-structural-tests/#02-epub-publication-conformance_epub-publication-conformance.feature_L20,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L150">
+		<section id="sec-epub-conf" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#02-epub-publication-conformance_epub-publication-conformance.feature_L15,https://w3c.github.io/epub-structural-tests/#02-epub-publication-conformance_epub-publication-conformance.feature_L20,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L257">
 			<h2>EPUB publication conformance</h2>
 
 			<p>An [=EPUB publication=]:</p>
@@ -1108,7 +1102,7 @@
 				</div>
 			</section>
 
-			<section id="sec-foreign-resources" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L43">
+			<section id="sec-foreign-resources" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L95,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L100,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L106,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L112,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L118,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L125,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L131,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L136,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L142,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L186,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L191">
 				<h3>Foreign resources</h3>
 
 				<p>A [=foreign resource=], unlike a <a href="#sec-core-media-types">core media type resource</a> is one
@@ -1138,7 +1132,7 @@
 				</div>
 			</section>
 
-			<section id="sec-exempt-resources" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L314,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L705">
+			<section id="sec-exempt-resources" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L153,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L161,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L166,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L179,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L198,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L163">
 				<h3>Exempt resources</h3>
 
 				<p>An [=exempt resource=] shares properties with both [=foreign resources=] and [=core media type
@@ -1227,7 +1221,7 @@
 			<section id="sec-resource-fallbacks">
 				<h4>Resource fallbacks</h4>
 
-				<section id="sec-manifest-fallbacks" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L121,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L127,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L133,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L139,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L146,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L153">
+				<section id="sec-manifest-fallbacks" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L207,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L213,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L219,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L226,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L231,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L236,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L241,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L247">
 					<h5>Manifest fallbacks</h5>
 
 					<p>Manifest fallbacks are a feature of the [=package document=] that create a <dfn class="export">manifest fallback chain</dfn> for a [=publication resource=], allowing [=reading systems=]
@@ -1287,27 +1281,28 @@
 					<p>The following sections provide additional clarifications about the intrinsic fallback
 						requirements of specific elements.</p>
 
-					<section id="sec-fallbacks-audio">
-						<h5>HTML <code>audio</code> fallbacks</h5>
+					<section id="sec-fallbacks-audio" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L258,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L264,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L274">
+						<h5>HTML <code>audio</code> and <code>video</code> fallbacks</h5>
 
 						<p id="confreq-resources-cd-fallback-media">[=EPUB creators=] MUST NOT use embedded
-							[[html]]&nbsp;[=flow content=] within the <a data-cite="html#the-audio-element"><code>audio</code></a> element as an intrinsic fallback for [=foreign resources=].
-							Only child [^source^] elements&nbsp;[[html]] provide intrinsic fallback capabilities.</p>
+							[[html]]&nbsp;[=flow content=] within a <a data-cite="html#the-media-element">media element</a>
+							(i.e, <a data-cite="html#the-audio-element"><code>audio</code></a> or <a data-cite="html#the-vido-element"><code>video</code></a>) as an intrinsic fallback for
+							audio [=foreign resources=]. Only child [^source^] elements&nbsp;[[html]] provide intrinsic
+							fallback capabilities.</p>
 
-						<p>Only older [=reading systems=] that do not recognize the <code>audio</code> element (e.g.,
-							EPUB 2 reading systems) will render the embedded content. When reading systems support the
-								<code>audio</code> element but not the available audio formats, they do not render the
-							embedded content for the user.</p>
+						<p>Only older [=reading systems=] that do not recognize the <code>audio</code> or the
+								<code>video</code> elements (e.g., EPUB 2 reading systems) will render the embedded
+							content. When reading systems support these elements but not the available media formats,
+							they do not render the embedded content for the user.</p>
 
 						<div class="note">
-							<p>As video resources are [=exempt resources=], this requirement does not apply to the
-									<code>video</code> element. EPUB creators may also include flow content in the
-									<code>video</code> element for reading systems that do not support the element,
-								however.</p>
+							<p>The requirement for fallbacks only applies to audio foreign resources referenced from
+									<code>audio</code> and <code>video</code> elements. Fallbacks are not required for
+								video resources; they are [=exempt resources=]. </p>
 						</div>
 					</section>
 
-					<section id="sec-fallbacks-img" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L165,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L171,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L177,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L182,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L188,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L347,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L352,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L357">
+					<section id="sec-fallbacks-img" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L282,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L287,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L292,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L298,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L304,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L310,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L315">
 						<h5>HTML <code>img</code> fallbacks</h5>
 
 						<p id="confreq-resources-cd-fallback-img">Due to the variety of sources that [=EPUB creators=]
@@ -1331,19 +1326,28 @@
 									<code>[^img/srcset^]</code> attributes provided EPUB creators define a <a href="#sec-manifest-fallbacks">manifest fallback</a>.</li>
 						</ul>
 					</section>
+
 					<section>
 						<h5>HTML <code>script</code> element</h5>
 
-						<p>Although the [[html]] [^script^] element lacks intrinsic fallback capabilities, it is not
-							required that [=EPUB creators=] provide fallbacks for <a data-cite="html#data-block">data
-								blocks</a> [[html]]. As the <code>script</code> element does not represent user content,
-							data blocks are not rendered unless manipulated by script.</p>
+						<p>Although data blocks have a separate MIME media type [[rfc2046]] from their containing
+							[=XHTML content document=], it is not possible to provide intrinsic fallbacks as no such
+							mechanisms are specified for the [[html]] [^script^] element. It is also not possible to
+							provide manifest fallbacks because data blocks cannot be defined as standalone files in the
+							EPUB container but are always embedded as inline <code>script</code> elements.</p>
+
+						<p>But, as the <code>script</code> element does not represent user content — <a data-cite="html#data-block">data blocks</a> are not rendered unless manipulated by
+							script, and content rendered by scripts already has <a href="#confreq-cd-scripted-flbk">core
+								media type requirements</a> — requiring fallbacks for the raw data does not serve
+							a useful purpose.</p>
+
+						<p>Consequently, to ensure that [=EPUB creators=] can include data blocks for scripting
+							purposes, they are exempt from fallback requirements.</p>
 
 						<div class="note">
-							<p>The exemption from fallbacks aligns data blocks with the exemption made to <a href="confreq-foreign-no-fallback">allow data files</a> to travel in the [=EPUB
-								container=]. As data blocks are not separate resources from their host [=EPUB content
-								document=], they do not fall under the same exemption.</p>
+							<p>This exemption aligns data blocks with the <a href="#confreq-foreign-no-fallback">exemption for data files</a>.</p>
 						</div>
+
 						<div class="note">
 							<p>[[svg]] does not define data blocks as of publication, but the same exclusion would apply
 								if a future update adds the concept.</p>
@@ -1352,7 +1356,7 @@
 				</section>
 			</section>
 
-			<section id="sec-resource-locations" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L209,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L214,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L219,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L224,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L229,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L234,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L239,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L244,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L250,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L256,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L262,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L268,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L274,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L279,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L284,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L289,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L294,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L300,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L307,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L313,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L321,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L329,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L335,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L341">
+			<section id="sec-resource-locations" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L269,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L343,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L348,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L353,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L359,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L364,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L369,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L375,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L381,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L387,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L393,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L399,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L405,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L410,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L415,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L420,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L425,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L431,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L437,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L443,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L451,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L459,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L465,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L471,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L477">
 				<h4>Resource locations</h4>
 
 				<p>[=EPUB creators=] MAY host the following types of [=publication resources=] outside the [=EPUB
@@ -1423,29 +1427,28 @@
 				</aside>
 			</section>
 
-			<section id="sec-data-urls">
+			<section id="sec-data-urls" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L485,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L490,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L496,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L502,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L508,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L514,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L519,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L524,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L529,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L534">
 				<h3>Data URLs</h3>
 
 				<p>The <a data-cite="rfc2397#"><code>data:</code> URL scheme</a> [[rfc2397]] is used to encode resources
 					directly into a URL string. The advantage of this scheme is that it allows [=EPUB creators=] to
 					embed a resource within another, avoiding the need for an external file.</p>
 
-				<p>EPUB creators MAY use data URLs in [=EPUB publications=] provided their use does not result in a
-					[=top-level content document=] or [=top-level browsing context=] [[html]]. This restriction applies
-					to data URLs used in the following scenarios:</p>
+				<p>EPUB creators MUST NOT use data URLs in the following scenarios where they can result in a
+					[=top-level content document=] or [=top-level browsing context=] [[html]]:</p>
 
 				<ul>
 					<li>
-						<p>in [EPUB manifest | manifest=] [^item^] elements referenced from the [=EPUB spine |
-							spine=];</p>
+						<p>in <code>href</code> attributes in the package document — this applies both to manifest
+							[^item^] elements and metadata [^link^] elements;</p>
 					</li>
 					<li>
-						<p>in the <code>href</code> attribute on [[html]] or [[svg]] <code>a</code> elements (except
-							when inside an [^iframe^] element&nbsp;[[html]]);</p>
+						<p>in the <code>href</code> attribute on [[html]] or [[svg]] <code>a</code> elements, except
+							when inside an [^iframe^] element&nbsp;[[html]];</p>
 					</li>
 					<li>
-						<p>in the <code>href</code> attribute on [[html]] <code>area</code> elements (except when inside
-							an <code>iframe</code> element);</p>
+						<p>in the <code>href</code> attribute on [[html]] <code>area</code> elements, except when inside
+							an <code>iframe</code> element;</p>
 					</li>
 					<li>
 						<p>in calls to [[ecmascript]] <code>window.open</code> or <code>document.open</code>.</p>
@@ -1453,23 +1456,22 @@
 				</ul>
 
 				<div class="note">
+					<p>These restrictions on the use of data URLs are to prevent security issues and also to ensure that
+						[=reading systems=] can determine where to take a user next (i.e., because data URLs cannot be
+						referenced from the [=EPUB spine | spine=]).</p>
+
 					<p>The list of prohibited uses for data URLs is subject to change as the respective standards that
 						allow their use evolve.</p>
 				</div>
 
-				<p>This restriction on their use is to prevent security issues and also to ensure that [=reading
-					systems=] can determine where to take a user next (i.e., because these resources are not be listed
-					in the spine).</p>
-
-				<p>Resources represented as data URLs are not publication resources so are exempt from the requirement
-					for EPUB creators to list them in the manifest.</p>
-
-				<p>EPUB creators MUST encode Data URLs as core media type resources or use them where they can provide a
-					fallback (i.e., data URLs are subject to the <a href="#sec-foreign-resources">foreign resource
-						restrictions</a>).</p>
+				<p>A consequence of embedding is that the data in a data URL is not considered its own unique
+					[=publication resource=] for manifest reporting purposes (i.e., only its containing publication
+					resource gets listed). As this data has its own media type, however, it is still subject to <a href="#sec-foreign-resources">foreign resource restrictions</a>. EPUB creators MUST therefore
+					encode data URLs as [=core media type resources=] or provide a fallback using the intrinsic fallback
+					mechanisms of the host format.</p>
 			</section>
 
-			<section id="sec-file-urls" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L247">
+			<section id="sec-file-urls" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L542,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L548,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L554">
 				<h3>File URLs</h3>
 
 				<p>The <a data-cite="rfc8089#"><code>file:</code> URL scheme</a> is defined in [[rfc8089]] as
@@ -1482,7 +1484,7 @@
 					NOT use file URLs in EPUB publications.</p>
 			</section>
 
-			<section id="sec-xml-constraints">
+			<section id="sec-xml-constraints" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L563,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L568,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L573,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L578,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L584,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L590,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L597,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L603,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L609,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L616,https://w3c.github.io/epub-structural-tests/#03-resources_resources.feature_L622">
 				<h3>XML conformance</h3>
 
 				<p>Any [=publication resource=] that is an XML-based media type [[rfc2046]]:</p>
@@ -1521,6 +1523,32 @@
 		</section>
 		<section id="sec-ocf">
 			<h2>Open Container Format (OCF)</h2>
+
+			<section id="sec-ocf-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>OCF is the required container technology for [=EPUB publications=]. OCF may play a role in the
+					following workflows:</p>
+
+				<ul>
+					<li>During the preparation steps in producing an EPUB publication, OCF may be used as the container
+						format when exchanging in-progress publications between different individuals and/or different
+						organizations.</li>
+					<li>When providing an EPUB publication from publisher or conversion house to the distribution or
+						sales channel, OCF is the recommended container format to be used as the transport format.</li>
+					<li>When delivering the final EPUB publication to an [=EPUB reading system=] or user, OCF is the
+						required format for the container that holds all of the assets that make up the
+						publication.</li>
+				</ul>
+
+				<p>This section defines the rules for structuring the file collection in the abstract: the "abstract
+					container". It also defines the rules for the representation of this abstract container within a ZIP
+					archive: the "physical container". The rules for ZIP physical containers build upon the ZIP
+					technologies used by [[odf]].</p>
+
+				<p>OCF also defines a standard method for <a href="#sec-font-obfuscation">obfuscating embedded fonts</a>
+					for those EPUB publications that require this functionality.</p>
+			</section>
 
 			<section id="sec-container-abstract">
 				<h3>OCF abstract container</h3>
@@ -1618,28 +1646,25 @@
 					</div>
 				</section>
 
-				<section id="sec-container-filenames" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L26,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L31,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L37,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L43">
+				<section id="sec-container-filenames" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L26,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L31,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L37,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L43,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L49,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L54,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L59,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L65,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L71,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L76,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L94,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L100">
 					<h4>File paths and file names</h4>
 
 					<p id="ocf-fn-cs">In the context of the [=OCF abstract container=], [=file paths=] and [=file
-						names=] are case sensitive.</p>
+						names=] are [=scalar value strings=] [[infra]] (i.e., their values are case sensitive).</p>
 
 					<p>In addition, the following restrictions are designed to allow file paths and file names to be
 						used without modification on most operating systems:</p>
 
 					<ul class="conformance-list">
 						<li>
-							<p id="ocf-fn-encoding">file names and paths MUST be UTF-8 [[unicode]] encoded.</p>
-						</li>
-						<li>
-							<p id="ocf-fn-length">file names MUST NOT exceed 255 bytes.</p>
+							<p id="ocf-fn-length">File names MUST NOT exceed 255 bytes.</p>
 						</li>
 						<li>
 							<p id="ocf-pn-length">The file paths for any directory or file within the OCF abstract
 								container MUST NOT exceed 65535 bytes.</p>
 						</li>
 						<li>
-							<p id="ocf-fn-chars">file names MUST NOT use the following [[unicode]] characters, as
+							<p id="ocf-fn-chars">File names MUST NOT use the following [[unicode]] characters, as
 								commonly used operating systems may not support these characters consistently:</p>
 							<ul>
 								<li>
@@ -1705,16 +1730,22 @@
 									<p>Specials (<code>U+FFF0 … U+FFFF</code>)</p>
 								</li>
 								<li>
-									<p>The Deprecated Characters in the Tags and Variation Selectors Supplement
-											(<code>U+E0001</code> and <code>U+E007F</code>)</p>
-								</li>
-								<li>
 									<p>Supplementary Private Use Area-A (<code>U+F0000 … U+FFFFF</code>)</p>
 								</li>
 								<li>
 									<p>Supplementary Private Use Area-B (<code>U+100000 … U+10FFFF</code>)</p>
 								</li>
 							</ul>
+							<div class="note">
+								<p>The Unicode Character Database [[uax44]] also includes a <a href="https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt">list of
+										deprecated characters</a>. EPUB creators are advised to avoid these characters,
+									as well, as it is expected that [=EPUB conformance checkers=] will flag their
+									use.</p>
+							</div>
+						</li>
+						<li>
+							<p id="ocf-fn-space">For compatibility with older [=reading systems=], file names SHOULD NOT
+								contain SPACE (U+0020) characters.</p>
 						</li>
 						<li>
 							<p id="ocf-fn-cn">All file names within the same directory MUST be unique following Unicode
@@ -1738,10 +1769,6 @@
 							characters are supported. Although Unicode support is much better now than in earlier
 							iterations of EPUB, older tools and toolchains may still be encountered (e.g., ZIP tools
 							that only support [[us-ascii]]).</p>
-
-						<p>If EPUB creators need to ensure compatibility with EPUB 2 [=reading systems=] that only
-							accept URIs [[rfc3986]], they should further consider restricting resource names to the
-							ASCII character set [[us-ascii]].</p>
 					</div>
 				</section>
 
@@ -1764,7 +1791,7 @@
 					</ol>
 				</section>
 
-				<section id="sec-container-iri" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L57,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L452,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L465,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L58,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L71,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L260,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L661,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L666,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L672,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L679">
+				<section id="sec-container-iri" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L110,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L117,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L123,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L131,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L137,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L143,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L151,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L157,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L449,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L462,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L69,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L82,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L252,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L615,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L620,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L626,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L633">
 					<h4>URLs in the OCF abstract container</h4>
 
 					<p id="sec-container-iri-root" data-tests="#ocf-url_manifest,#ocf-url_relative,#ocf-url_link-relative">The [=container root
@@ -1992,7 +2019,7 @@
 					<section id="sec-container-metainf-files">
 						<h5>Reserved files</h5>
 
-						<section id="sec-container-metainf-container.xml" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L68,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L75,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L81">
+						<section id="sec-container-metainf-container.xml" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L174,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L181,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L187">
 							<h6>Container file (<code>container.xml</code>)</h6>
 
 							<p>The REQUIRED <code>container.xml</code> file in the <code>META-INF</code> directory
@@ -2085,7 +2112,7 @@
 								</dl>
 							</section>
 
-							<section id="sec-container.xml-rootfile-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L90">
+							<section id="sec-container.xml-rootfile-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L196">
 								<h6>The <code>rootfile</code> element</h6>
 
 								<p>Each <code>rootfile</code> element identifies the location of one [=package
@@ -2269,7 +2296,7 @@
 									<code>encryption.xml</code> file to provide information about the encryption
 								used.</p>
 
-							<section id="sec-encryption.xml-encryption" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L101,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L116">
+							<section id="sec-encryption.xml-encryption" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L207,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L223">
 								<h6>The <code>encryption</code> element</h6>
 
 								<dl class="elemdef" id="elemdef-encryption">
@@ -2417,7 +2444,7 @@
 								</aside>
 							</section>
 
-							<section id="sec-enc-compression" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L125">
+							<section id="sec-enc-compression" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L232">
 								<h6>Order of compression and encryption</h6>
 
 								<p>When stored in an [=OCF ZIP container=], [=EPUB creators=] SHOULD compress streams of
@@ -2568,7 +2595,7 @@
 							<p>The OPTIONAL <code>signatures.xml</code> file in the <code>META-INF</code> directory
 								holds digital signatures for the container and its contents.</p>
 
-							<section id="sec-signatures.xml-signatures" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L137">
+							<section id="sec-signatures.xml-signatures" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L244">
 								<h6>The <code>signatures</code> element</h6>
 
 								<dl class="elemdef" id="elemdef-signatures">
@@ -2752,7 +2779,7 @@
 					</ul>
 				</section>
 
-				<section id="sec-zip-container-zipreqs" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L150,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L155,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L163,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L170,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L177">
+				<section id="sec-zip-container-zipreqs" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L257,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L262,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L270,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L277,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L284,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L290,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L295,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L301,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L306">
 					<h4>ZIP file requirements</h4>
 
 					<p>An [=OCF ZIP container=] uses the ZIP format as specified by [[zip]], but with the following
@@ -2781,7 +2808,7 @@
 								the ZIP format; instead, encryption MUST be done using the features described in <a href="#sec-container-metainf-encryption.xml"></a>.</p>
 						</li>
 						<li>
-							<p id="confreq-zip-utf8">OCF ZIP containers MUST encode File System Names using UTF-8
+							<p id="confreq-zip-utf8">OCF ZIP containers MUST encode file system names using UTF-8
 								[[unicode]].</p>
 						</li>
 					</ul>
@@ -2803,7 +2830,7 @@
 					</ul>
 				</section>
 
-				<section id="sec-zip-container-mime" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L186,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L192,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L198,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L204,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L210,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L216">
+				<section id="sec-zip-container-mime" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L315,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L321,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L327,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L333,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L339,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L345">
 					<h4>OCF ZIP container media type identification</h4>
 
 					<p>[=EPUB creators=] MUST include the <code>mimetype</code> file as the first file in the [=OCF ZIP
@@ -2984,7 +3011,7 @@
 					</ol>
 				</section>
 
-				<section id="obfus-specifying" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L227,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L232,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L238">
+				<section id="obfus-specifying" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L356,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L361,https://w3c.github.io/epub-structural-tests/#04-ocf_ocf.feature_L367">
 					<h4>Specifying obfuscated fonts</h4>
 
 					<p>Although not technically encrypted data, all obfuscated fonts MUST have an entry in the <code class="filename">encryption.xml</code> file accompanying the [=EPUB publication=] (see <a href="#sec-container-metainf-encryption.xml"></a>).</p>
@@ -3091,7 +3118,7 @@
 					<h4>The <code>dir</code> attribute</h4>
 
 					<p data-tests="#pkg-dir_creator-rtl,#pkg-dir_rtl-root-ltr,#pkg-dir_rtl-root-unset,#pkg-dir_unset-root-rtl,#pkg-dir_unset-root-unset,#pkg-dir-auto_root-rtl">Specifies the <a data-cite="bidi#BD5">base direction</a> [[bidi]] of the textual content and
-						attribute values of the carrying element and its descendants</p>
+						attribute values of the carrying element and its descendants.</p>
 
 					<p>Allowed values are:</p>
 
@@ -3121,7 +3148,7 @@
 				</section>
 
 
-				<section id="attrdef-href" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L32,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L458">
+				<section id="attrdef-href" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L32,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L455">
 					<h4>The <code>href</code> attribute</h4>
 
 					<p>A [=valid URL string=]&nbsp;[[url]] that references a resource.</p>
@@ -3430,7 +3457,7 @@
 			<section id="sec-pkg-metadata">
 				<h3>Metadata section</h3>
 
-				<section id="sec-metadata-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#00-minimal_minimal.feature_L12">
+				<section id="sec-metadata-elem">
 					<h4>The <code>metadata</code> element</h4>
 
 					<p>The <code>metadata</code> element encapsulates meta information.</p>
@@ -4303,7 +4330,7 @@
 					</div>
 				</section>
 
-				<section id="sec-link-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L336,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L344,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L349,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L356,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L366,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L371,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L377">
+				<section id="sec-link-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L336,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L342,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L347,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L352,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L359,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L369,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L374,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L380">
 					<h4>The <code>link</code> element</h4>
 
 					<p>The <code>link</code> element associates resources with an [=EPUB publication=], such as metadata
@@ -4391,10 +4418,11 @@
 					</dl>
 
 					<p>The [^metadata^] element MAY contain zero or more <code>link</code> elements, each of which
-						identifies the location of a [=linked resource=] in its REQUIRED <code>href</code>
-						attribute.</p>
+						identifies the location of a [=publication resource=] or a [=linked resource=] in its REQUIRED
+							<code>href</code> attribute.</p>
 
-					<p id="linked-res-manifest">Linked resources are [=publication resources=] only when they are:</p>
+					<p id="linked-res-manifest">Resources referenced from the <code>link</code> element are
+						[=publication resources=] only when they are:</p>
 
 					<ul>
 						<li>
@@ -4402,13 +4430,13 @@
 						</li>
 						<li>
 							<p>included or embedded in an [=EPUB content document=] (e.g., a metadata record serialized
-								as RDFa [[?rdfa-core]] or JSON-LD [[?json-ld11]] embedded in an [[html]]&nbsp;[^script^]
+								as RDFa [[?rdfa-core]] or as JSON-LD [[?json-ld11]] embedded in an [[html]]&nbsp;[^script^]
 								element).</p>
 						</li>
 					</ul>
 
-					<p>In all other cases (e.g., when linking to standalone [[?onix]] or [[?xmp]] records), the linked
-						resources are not [=publication resources=] (i.e., are not subject to <a href="#sec-core-media-types">core media type requirements</a>) and [=EPUB creators=] MUST
+					<p>In all other cases (e.g., when linking to standalone [[?onix]] or [[?xmp]] records), the
+						resources referenced are not [=publication resources=] (i.e., are not subject to <a href="#sec-core-media-types">core media type requirements</a>) and [=EPUB creators=] MUST
 						NOT list them in the <a href="#sec-manifest-elem">manifest</a>.</p>
 
 					<aside class="example" title="Reference to a record embedded in an XHTML content document">
@@ -4578,7 +4606,7 @@ XHTML:
 			<section id="sec-pkg-manifest">
 				<h3>Manifest section</h3>
 
-				<section id="sec-manifest-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L388,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L394,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L401,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L407,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L64,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L71,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L297,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L372,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L449">
+				<section id="sec-manifest-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L391,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L397,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L403,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L409,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L75,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L82,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L284,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L342,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L423">
 					<h4>The <code>manifest</code> element</h4>
 
 					<p>The <code>manifest</code> element provides an exhaustive list of [=publication resources=] used
@@ -4628,7 +4656,7 @@ XHTML:
 					</div>
 				</section>
 
-				<section id="sec-item-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L416,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L434,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L440,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L446,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L452,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L458,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L465,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L471,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L478,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L485,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L553">
+				<section id="sec-item-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L418,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L431,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L437,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L443,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L449,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L455,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L462,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L468,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L474">
 					<h4>The <code>item</code> element</h4>
 
 					<p>The <code>item</code> element represents a [=publication resource=].</p>
@@ -4659,7 +4687,7 @@ XHTML:
 								</li>
 								<li>
 									<p>
-										<a href="#attrdef-href">
+										<a href="#attrdef-item-href">
 											<code>href</code>
 										</a>
 										<code>[required]</code>
@@ -4705,9 +4733,11 @@ XHTML:
 						</dd>
 					</dl>
 
-					<p>Each <code>item</code> element identifies a publication resource by the URL [[url]] in its
-							<code>href</code> attribute. The value MUST be an <a data-lt="absolute-url string">absolute-</a> or <a data-lt="path-relative-scheme-less-url string">path-relative-scheme-less-URL</a> string&nbsp;[[url]]. [=EPUB creators=] MUST ensure each URL is
-						unique within the <code>manifest</code> scope after <a href="#sec-parse-package-urls">parsing</a>.</p>
+					<p id="attrdef-item-href">Each <code>item</code> element identifies a publication resource by the
+						URL [[url]] in its <a href="#attrdef-href"><code>href</code> attribute</a>. The value MUST be an
+							<a data-lt="absolute-url string">absolute-</a> or <a data-lt="path-relative-scheme-less-url string">path-relative-scheme-less-URL</a>
+						string&nbsp;[[url]]. [=EPUB creators=] MUST ensure each URL is unique within the
+							<code>manifest</code> scope after <a href="#sec-parse-package-urls">parsing</a>.</p>
 
 					<p id="attrdef-item-media-type">The publication resource identified by an <code>item</code> element
 						MUST conform to the applicable specification(s) as inferred from the MIME media type [[rfc2046]]
@@ -4731,7 +4761,7 @@ XHTML:
 							[^spine^] element provides the presentation sequence of content documents.</p>
 					</div>
 
-					<section id="sec-item-resource-properties" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L502,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L510,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L517,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L523,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L531,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L538,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L544,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L550,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L556,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L562,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L568,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L574,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L580,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L588,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L594,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L600,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L607,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L613,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L619,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L628,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L639,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L646,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L653">
+					<section id="sec-item-resource-properties" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L489,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L497,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L504,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L510,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L518,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L525,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L531,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L537,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L543,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L549,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L555,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L561,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L567,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L573,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L579,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L587,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L593,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L599,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L605,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L612,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L618,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L624,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L633,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L644,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L651,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L658">
 						<h6>Resource properties</h6>
 
 						<p>The <a href="#attrdef-properties"><code>properties</code> attribute</a> provides information
@@ -5071,7 +5101,7 @@ No Entry</pre>
 
 					<p>Use of the element is <a href="#deprecated">deprecated</a>.</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/301/spec/epub-publications-20140626.html#sec-bindings-elem"><code>bindings</code> element definition</a> in [[epubpublications-301]] for more
+					<p>Refer to the <a href="https://idpf.org/epub/301/spec/epub-publications-20140626.html#sec-bindings-elem"><code>bindings</code> element definition</a> in [[epubpublications-301]] for more
 						information.</p>
 				</section>
 			</section>
@@ -5079,7 +5109,7 @@ No Entry</pre>
 			<section id="sec-pkg-spine">
 				<h3>Spine section</h3>
 
-				<section id="sec-spine-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L700,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L15,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L291">
+				<section id="sec-spine-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L680,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L15,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L278">
 					<h4>The <code>spine</code> element</h4>
 
 					<p>The <code>spine</code> element defines an ordered list of <a href="#sec-itemref-elem">manifest
@@ -5178,7 +5208,7 @@ No Entry</pre>
 						the manifest item that represents the <a href="#sec-opf2-ncx">NCX</a>.</p>
 				</section>
 
-				<section id="sec-itemref-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L711,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L716,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L723">
+				<section id="sec-itemref-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L691,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L696,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L703">
 					<h4>The <code>itemref</code> element</h4>
 
 					<p>The <code>itemref</code> element identifies an [=EPUB content document=] or [=foreign content
@@ -5324,7 +5354,7 @@ No Entry</pre>
 			<section id="sec-pkg-collections">
 				<h3>Collections</h3>
 
-				<section id="sec-collection-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L735,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L740">
+				<section id="sec-collection-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L715,https://w3c.github.io/epub-structural-tests/#05-package-document_package-document.feature_L720">
 					<h4>The <code>collection</code> element</h4>
 
 					<p>The <code>collection</code> element defines a related group of resources.</p>
@@ -5405,8 +5435,8 @@ No Entry</pre>
 
 					<div class="note">
 						<p>The former <abbr title="International Digital Publishing Forum">IDPF</abbr> EPUB 3 Working
-							Group maintained both a <a href="http://idpf.org/epub/registries/roles/">registry of role
-								extensions</a> and a list of <a href="http://idpf.org/epub/extensions/roles/">custom
+							Group maintained both a <a href="https://idpf.org/epub/registries/roles/">registry of role
+								extensions</a> and a list of <a href="https://idpf.org/epub/extensions/roles/">custom
 								extension roles</a>. This Working Group no longer maintains these registries.</p>
 					</div>
 
@@ -5468,11 +5498,11 @@ No Entry</pre>
 				<section id="sec-opf2-meta">
 					<h4>The <code>meta</code> element</h4>
 
-					<p>The <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"><code>meta</code>
+					<p>The <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"><code>meta</code>
 							element</a> [[opf-201]] provides a means of including generic metadata for EPUB 2 [=reading
 						systems=].</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"><code>meta</code> element definition</a> in&nbsp;[[opf-201]] for more information.</p>
+					<p>Refer to the <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.2"><code>meta</code> element definition</a> in&nbsp;[[opf-201]] for more information.</p>
 
 					<div class="note">
 						<p>The EPUB 3 [^meta^] element, which uses different attributes and requires text content,
@@ -5487,11 +5517,11 @@ No Entry</pre>
 				<section id="sec-opf2-guide">
 					<h4>The <code>guide</code> element</h4>
 
-					<p>The <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"><code>guide</code>
+					<p>The <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"><code>guide</code>
 							element</a>&nbsp;[[opf-201]] provides machine-processable navigation to key structures in EPUB 2
 						[=reading systems=].</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"><code>guide</code> element definition</a> in&nbsp;[[opf-201]] for more information.</p>
+					<p>Refer to the <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6"><code>guide</code> element definition</a> in&nbsp;[[opf-201]] for more information.</p>
 
 					<div class="note">
 						<p>The <a href="#sec-nav-landmarks">landmarks nav</a> in the [=EPUB navigation document=]
@@ -5502,10 +5532,10 @@ No Entry</pre>
 				<section id="sec-opf2-ncx">
 					<h4>NCX</h4>
 
-					<p>The <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX</a> [[opf-201]]
+					<p>The <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX</a> [[opf-201]]
 						provides a table of contents for EPUB 2 [=reading systems=].</p>
 
-					<p>Refer to the <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX
+					<p>Refer to the <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.4.1">NCX
 							definition</a> in&nbsp;[[opf-201]] for more information.</p>
 
 					<div class="note">
@@ -5529,7 +5559,7 @@ No Entry</pre>
 						referred to in this specification as an XHTML content document.</p>
 				</section>
 
-				<section id="sec-xhtml-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L21,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L26,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L32,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L562">
+				<section id="sec-xhtml-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L21,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L26,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L32,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L524,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L529">
 					<h4>XHTML requirements</h4>
 
 					<p>An [=XHTML content document=]:</p>
@@ -5569,16 +5599,16 @@ No Entry</pre>
 							are not supported features of EPUB 3.</p>
 					</div>
 
-					<section id="sec-xhtml-structural-semantics">
+					<section id="sec-xhtml-structural-semantics" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L654">
 						<h5>Structural semantics</h5>
 
 						<p>[=EPUB creators=] MAY use the [^/epub:type^] attribute in [=XHTML content documents=] to
 							express <a href="#sec-structural-semantics-intro">structural semantics</a>.</p>
 
-						<p>The attribute MUST only be used on [=palpable content=] [[html]].</p>
+						<p>The attribute MUST NOT be used on the <a data-cite="html#the-head-element"><code>head</code></a> element or [=metadata content=] [[html]].</p>
 					</section>
 
-					<section id="sec-xhtml-rdfa" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L767">
+					<section id="sec-xhtml-rdfa" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L697">
 						<h5>RDFa</h5>
 
 						<p>The [[html-rdfa]] specification defines a set of attributes that [=EPUB creators=] MAY use in
@@ -5605,7 +5635,7 @@ No Entry</pre>
 
 						<p>Use of the element is <a href="#deprecated">deprecated</a>.</p>
 
-						<p>Refer to the <a href="http://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-switch"><code>switch</code> element definition</a> in&nbsp;[[epubcontentdocs-301]] for more
+						<p>Refer to the <a href="https://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-switch"><code>switch</code> element definition</a> in&nbsp;[[epubcontentdocs-301]] for more
 							information.</p>
 					</section>
 
@@ -5618,11 +5648,11 @@ No Entry</pre>
 
 						<p>Use of the element is <a href="#deprecated">deprecated</a>.</p>
 
-						<p>Refer to the <a href="http://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-trigger"><code>epub:trigger</code> element definition</a> in&nbsp;[[epubcontentdocs-301]] for
+						<p>Refer to the <a href="https://idpf.org/epub/301/spec/epub-contentdocs-20140626.html#sec-xhtml-epub-trigger"><code>epub:trigger</code> element definition</a> in&nbsp;[[epubcontentdocs-301]] for
 							more information.</p>
 					</section>
 
-					<section id="sec-xhtml-custom-attributes" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L854,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L859">
+					<section id="sec-xhtml-custom-attributes" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L784,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L789">
 						<h5>Custom attributes</h5>
 
 						<p>[=XHTML content documents=] MAY contain custom attributes, which are <a data-cite="xml-names#NT-Prefix">prefixed</a> [[xml-names]] attributes whose namespace
@@ -5645,7 +5675,7 @@ No Entry</pre>
 					</section>
 				</section>
 
-				<section id="sec-xhtml-deviations" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L893,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L906,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L911,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L932,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L947">
+				<section id="sec-xhtml-deviations" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L817,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L828,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L841,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L846,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L867,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L882">
 					<h4>HTML deviations and constraints</h4>
 
 					<p>This section defines deviations from, and constraints on, the underlying [[html]] document model
@@ -5689,7 +5719,7 @@ No Entry</pre>
 						</div>
 					</section>
 
-					<section id="sec-xhtml-svg" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L969,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L982">
+					<section id="sec-xhtml-svg" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L904,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L917">
 						<h5>Embedded SVG</h5>
 
 						<p>[=XHTML content documents=] support the embedding of <a href="https://www.w3.org/TR/SVG/conform.html#ConformingSVGXMLFragments">SVG document
@@ -5777,7 +5807,7 @@ No Entry</pre>
 					</div>
 				</section>
 
-				<section id="sec-svg-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L982">
+				<section id="sec-svg-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L33,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L41,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L47,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L917">
 					<h4>SVG requirements</h4>
 
 					<p>An [=SVG content document=]:</p>
@@ -5803,7 +5833,7 @@ No Entry</pre>
 					</div>
 				</section>
 
-				<section id="sec-svg-restrictions" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L104,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L114,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L121,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L128,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L141,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L146,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L151">
+				<section id="sec-svg-restrictions" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L129,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L139,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L146,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L153,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L160,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L169,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L174,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-svg.feature_L183">
 					<h4>Restrictions on SVG</h4>
 
 					<p>This specification restricts the content model of [=SVG content documents=] and <a href="#sec-xhtml-svg">SVG embedded in XHTML content documents</a> as follows:</p>
@@ -5826,7 +5856,7 @@ No Entry</pre>
 						</li>
 						<li>
 							<p id="confreq-svg-title" data-cite="svg">If the [[svg]] [^title^] element contains
-								marked-up text, the markup MUST contain only elements declared in the <a data-cite="dom#html-namespace">HTML namespace</a> [[dom]].</p>
+								marked-up text, the markup MUST contain only elements declared in the <a data-cite="infra#html-namespace">HTML namespace</a> [[infra]].</p>
 						</li>
 					</ul>
 					<div class="note">
@@ -5877,7 +5907,7 @@ No Entry</pre>
 						</div>
 					</section>
 
-					<section id="sec-css-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L17,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L24,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L31,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L40,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L46">
+					<section id="sec-css-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L17,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L24,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L31,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L40,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L45,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L51,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-css.feature_L57">
 						<h4>CSS requirements</h4>
 
 						<p>A CSS style sheet:</p>
@@ -5956,8 +5986,8 @@ No Entry</pre>
 						<p>[=EPUB content documents=] MAY contain scripting using the facilities defined for this in the
 							respective underlying specifications ([[html]] and [[svg]]). When an EPUB content document
 							contains scripting, this specification refers to it as a [=scripted content document=]. This
-							label also applies to [=XHTML content documents=] when they contain instances of [[html]]
-							[=forms=].</p>
+							label also applies to [=XHTML content documents=] that contain [[html]] [^form^]
+							elements.</p>
 
 						<p>The <a href="#scripted"><code>scripted</code> property</a> of the [=EPUB manifest |
 							manifest=] <code>item</code> element is used to indicate that an EPUB content document is a
@@ -5972,8 +6002,9 @@ No Entry</pre>
 						</div>
 
 						<p>[=EPUB creators=] should note that [=reading systems=] are required to behave as though a
-							unique [=origin=] [[url]] has been assigned to each [=EPUB publication=]. In practice, this
-							means that it is not possible for scripts to share data between EPUB publications.</p>
+							unique <a data-cite="html#origin">origin</a> [[html]] has been assigned to each [=EPUB
+							publication=]. In practice, this means that it is not possible for scripts to share data
+							between EPUB publications.</p>
 
 						<p>Which <a href="#sec-scripted-context">context</a> a script is used in also determines the
 							rights and restrictions that a reading system places on it (refer to <a data-cite="epub-rs-33#sec-scripted-content">Scripting</a> [[?epub-rs-33]] for more
@@ -6244,7 +6275,7 @@ No Entry</pre>
 						<p id="confreq-nav-a">Each list item of the ordered list represents a heading, structure, or
 							other item of interest. A child <code>a</code> element describes the target that the link
 							points to, while a <code>span</code> element serves as a heading for breaking down lists
-							into distinct groups (for example, an [=EPUB creator=] could segment a large list of
+							into distinct groups (for example, an EPUB creator could segment a large list of
 							illustrations into several lists, one for each chapter).</p>
 					</li>
 					<li>
@@ -6315,9 +6346,23 @@ No Entry</pre>
             …
          &lt;/ol&gt;
       &lt;/li&gt;
+      &lt;li&gt;
+         &lt;a href="appendix.xhtml"&gt;
+            &lt;img src="app1.jpg" alt="An image-based heading"/&gt;
+         &lt;/a&gt;
+      &lt;/li&gt;
    &lt;/ol&gt;
 &lt;/nav&gt;</pre>
 				</aside>
+
+				<div class="caution">
+					<p>Although the headings and links in <code>nav</code> elements allow any [[html]] [=phrasing
+						content=], app-based reading systems often only support simple text labels. Because these apps
+						create their own navigation widgets that are not based on HTML rendering, they often cannot
+						retain embedded images and multimedia, MathML, inline styling and other element- and
+						attribute-based rendering instructions. EPUB creators should avoid using these types of elements
+						where their absence may lead to usability issues.</p>
+				</div>
 
 				<p id="confreq-cd-nav-docprops-spine">As a conforming [=XHTML content document=], EPUB creators MAY
 					include the EPUB navigation document in the [=EPUB spine | spine=].</p>
@@ -6697,8 +6742,8 @@ No Entry</pre>
 									configuration</a> [[uaag20]] for related information.</p>
 						</div>
 
-						<p id="fxl-layout-duplication" data-tests="#lay-fxl-layout-duplication">When the property is set to
-								<code>pre-paginated</code> for a spine item, its content dimensions MUST be set as
+						<p id="fxl-layout-duplication" data-tests="#lay-fxl-layout-duplication">When the property is set
+							to <code>pre-paginated</code> for a spine item, its content dimensions MUST be set as
 							defined in <a href="#sec-fxl-content-dimensions"></a>.</p>
 
 						<p>EPUB creators MUST NOT declare the <code>rendition:layout</code> property more than once.</p>
@@ -6711,8 +6756,8 @@ No Entry</pre>
 								defined to be a [=fixed-layout document=]). Furthermore, media queries
 								[[mediaqueries-3]] are used to apply different style sheets for three different device
 								categories. Note that the media queries only affect the style sheet applied to the
-								document; the size of the content area set in the <code>viewport</code>
-								<code>meta</code> tag is static.</p>
+								document; the size of the content area set in the <code>viewport meta</code> tag is
+								static.</p>
 
 							<p>Package document:</p>
 
@@ -6806,8 +6851,8 @@ No Entry</pre>
 							</dd>
 						</dl>
 
-						<p id="fxl-orientation-duplication" data-tests="#lay-fxl-orientation-duplication">EPUB creators MUST
-							NOT declare the <code>rendition:orientation</code> property more than once.</p>
+						<p id="fxl-orientation-duplication" data-tests="#lay-fxl-orientation-duplication">EPUB creators
+							MUST NOT declare the <code>rendition:orientation</code> property more than once.</p>
 
 						<p>They also MUST NOT declare the property using the <a href="#attrdef-refines"><code>refines</code> attribute</a>. Refer to <a href="#orientation-overrides"></a>
 							for setting the property for individual [=EPUB content documents=].</p>
@@ -6856,7 +6901,7 @@ No Entry</pre>
 						</section>
 					</section>
 
-					<section id="spread" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L117,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L122,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L129,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L136">
+					<section id="spread" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L117,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L122,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L129,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L136,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L143,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L178">
 						<h5>Synthetic spreads</h5>
 
 						<p>The <code>rendition:spread</code> property specifies the intended [=reading system=]
@@ -6908,9 +6953,8 @@ No Entry</pre>
 
 						<div class="note">
 							<p>When synthetic spreads are used in the context of [=XHTML content document | XHTML=] and
-								[=SVG content documents=], the dimensions given via the <a href="#sec-fxl-icb-html"><code>viewport</code>
-									<code>meta</code> element</a> and <a href="#sec-fxl-icb-svg"><code>viewBox</code>
-									attribute</a> represents the size of one page in the spread, respectively.</p>
+								[=SVG content documents=], the dimensions given via the <a href="#sec-fxl-icb-html"><code>viewport meta</code> element</a> and <a href="#sec-fxl-icb-svg"><code>viewBox</code> attribute</a> represents the size of one page in the
+								spread, respectively.</p>
 						</div>
 
 						<div class="note">
@@ -7083,7 +7127,7 @@ No Entry</pre>
 							</details>
 						</aside>
 
-						<section id="spread-overrides" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L145,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L150">
+						<section id="spread-overrides" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L151,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L156">
 							<h6>Synthetic spread overrides</h6>
 
 							<p id="property-spread-local">[=EPUB creators=] MAY specify the following properties locally
@@ -7109,7 +7153,7 @@ No Entry</pre>
 								<dt id="spread-portrait">rendition:spread-portrait</dt>
 								<dd>
 									<p>The <code>rendition:spread-portrait</code> property is <a href="#deprecated">deprecated</a>.</p>
-									<p></p>Refer to the <a href="http://idpf.org/epub/301/spec/epub-publications-20140626.html#spread-portrait"><code>spread-portrait</code> property definition</a>
+									<p></p>Refer to the <a href="https://idpf.org/epub/301/spec/epub-publications-20140626.html#spread-portrait"><code>spread-portrait</code> property definition</a>
 									in&nbsp;[[epubpublications-301]] for more information.</dd>
 							</dl>
 
@@ -7117,7 +7161,7 @@ No Entry</pre>
 						</section>
 					</section>
 
-					<section id="page-spread" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L172,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L177">
+					<section id="page-spread" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L166,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L171">
 						<h5>Spread placement</h5>
 
 						<p>When a [=reading system=] renders a [=synthetic spread=], the default behavior is to populate
@@ -7161,8 +7205,10 @@ No Entry</pre>
 							and omit the properties on spine items where one-up or two-up presentation is equally
 							acceptable.</p>
 
-						<p>EPUB creators MUST NOT declare more than one <code>page-spread-*</code> property on any given
-							spine item.</p>
+						<p>EPUB creators MUST NOT declare more than one <code>rendition:page-spread-*</code> property,
+							and/or their unprefixed equivalents, on any given spine item (e.g., it is valid to specify
+							both "<code>rendition:page-spread-left page-spread-left</code>" in case reading systems only
+							support one of properties).</p>
 
 						<div class="note" id="note-page-spread-aliases">
 							<p>The <code>rendition:page-spread-left</code> and <code>rendition:page-spread-right</code>
@@ -7267,7 +7313,7 @@ No Entry</pre>
 						</aside>
 					</section>
 
-					<section id="viewport">
+					<section id="viewport" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L187">
 						<h5>Viewport dimensions (deprecated)</h5>
 
 						<p>The <code>rendition:viewport</code> property allows [=EPUB creators=] to express the CSS
@@ -7277,11 +7323,11 @@ No Entry</pre>
 
 						<p>Use of the property is <a href="#deprecated">deprecated</a>.</p>
 
-						<p>Refer to the <a href="http://idpf.org/epub/301/spec/epub-publications-20140626.html#fxl-property-viewport"><code>rendition:viewport</code> property definition</a> in&nbsp;[[epubpublications-301]]
+						<p>Refer to the <a href="https://idpf.org/epub/301/spec/epub-publications-20140626.html#fxl-property-viewport"><code>rendition:viewport</code> property definition</a> in&nbsp;[[epubpublications-301]]
 							for more information.</p>
 					</section>
 
-					<section id="sec-fxl-content-dimensions" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L478,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L210,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L216,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L226,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L232,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L238">
+					<section id="sec-fxl-content-dimensions" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L452,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L210,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L215,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L220,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L225,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L230,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L236,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L242,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L248,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L254,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L260,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L270,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L276,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L282">
 						<h4>Content document dimensions</h4>
 
 						<p>This section defines rules for the expression and interpretation of dimensional properties of
@@ -7291,12 +7337,12 @@ No Entry</pre>
 								containing block</a> [[css2]] in the manner applicable to their format:</p>
 
 						<dl class="conformance-list" id="sec-fxl-html-svg-dimensions">
-							<dt id="sec-fxl-icb-html" data-tests="#lay-fxl-xhtml-icb,#lay-fxl-xhtml-icb_multi">Expressing in
-								XHTML</dt>
+							<dt id="sec-fxl-icb-html" data-tests="#lay-fxl-xhtml-icb,#lay-fxl-xhtml-icb_multi">Expressing in XHTML</dt>
 							<dd>
 								<p>For XHTML [=fixed-layout documents=], the <a href="https://www.w3.org/TR/CSS2/visudet.html#containing-block-details">initial
 										containing block</a> [[css2]] is obtained from the REQUIRED <code>height</code>
-									and <code>width</code> definitions in a <a href="#app-viewport-meta"><code>viewport</code> meta tag</a>, where:</p>
+									and <code>width</code> definitions in a <a href="#app-viewport-meta"><code>viewport
+											meta</code> tag</a>, where:</p>
 								<ul>
 									<li>the <code>height</code>
 										<a href="#viewport.ebnf.property">property</a> MUST have as its <a href="#viewport.ebnf.value">value</a> a positive number or the keyword
@@ -7306,6 +7352,9 @@ No Entry</pre>
 								</ul>
 								<p>The <code>device-width</code> and <code>device-height</code> values refer to the 100%
 									of the width and height, respectively, of the reading system's [=viewport=].</p>
+								<p>EPUB creators MUST NOT specify duplicate <code>height</code> or <code>width</code>
+									definitions either within a single <code>viewport meta</code> tag or by specifying
+									multiple <code>viewport meta</code> tags.</p>
 								<aside class="example" title="Specifying the initial containing block in a viewport meta tag">
 									<pre>&lt;html …&gt;
    &lt;head&gt;
@@ -7352,7 +7401,7 @@ No Entry</pre>
 					publications=] (e.g., how to handle the flow of content in the [=viewport=]). This section defines
 					properties that allow [=EPUB creators=] to control presentation aspects of reflowable content.</p>
 
-				<section id="flow" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L249,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L254,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L261,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L268">
+				<section id="flow" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L293,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L298,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L305,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L312">
 					<h4>The <code>rendition:flow</code> property</h4>
 
 					<p>The <code>rendition:flow</code> property specifies the [=EPUB creator=] preference for how
@@ -7470,7 +7519,7 @@ No Entry</pre>
 							schematic view of a tablet.</p>
 					</details>
 
-					<section id="flow-overrides" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L277,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L282">
+					<section id="flow-overrides" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L321,https://w3c.github.io/epub-structural-tests/#08-layout_layout.feature_L326">
 						<h5>Spine overrides</h5>
 
 						<p id="layout-property-flow-local">[=EPUB creators=] MAY specify the following properties
@@ -7579,7 +7628,7 @@ No Entry</pre>
 			<section id="sec-overlay-docs">
 				<h3>Media overlay documents</h3>
 
-				<section id="sec-overlay-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L21,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L26,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L31">
+				<section id="sec-overlay-req" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L21,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L26,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L31,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L37">
 					<h4>Media overlay document requirements</h4>
 
 					<p>A [=media overlay document=]:</p>
@@ -7675,7 +7724,7 @@ No Entry</pre>
 						</dl>
 					</section>
 
-					<section id="sec-smil-head-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L42">
+					<section id="sec-smil-head-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L47">
 						<h5>The <code>head</code> element</h5>
 
 						<p>The <code>head</code> element is the container for metadata in the [=media overlay
@@ -7746,7 +7795,7 @@ No Entry</pre>
 							the <code>metadata</code> element is provided for custom metadata requirements.</p>
 					</section>
 
-					<section id="sec-smil-body-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L93">
+					<section id="sec-smil-body-elem">
 						<h5>The <code>body</code> element</h5>
 
 						<p>The <code>body</code> element is the starting point for the presentation contained in the
@@ -7820,7 +7869,7 @@ No Entry</pre>
 						</dl>
 					</section>
 
-					<section id="sec-smil-seq-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L59,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L67">
+					<section id="sec-smil-seq-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L64">
 						<h5>The <code>seq</code> element</h5>
 
 						<p>The <code>seq</code> element is a sequential time container for media objects and/or child
@@ -7895,7 +7944,7 @@ No Entry</pre>
 						</dl>
 					</section>
 
-					<section id="sec-smil-par-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L76,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L83">
+					<section id="sec-smil-par-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L75,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L82">
 						<h5>The <code>par</code> element</h5>
 
 						<p>The <code>par</code> element is a parallel time container for media objects.</p>
@@ -7955,7 +8004,7 @@ No Entry</pre>
 						</dl>
 					</section>
 
-					<section id="sec-smil-text-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L93">
+					<section id="sec-smil-text-elem">
 						<h5>The <code>text</code> element</h5>
 
 						<p>The <code>text</code> element references an element in an [=EPUB content document=]. A
@@ -8019,7 +8068,7 @@ No Entry</pre>
 							unpredictable results.</p>
 					</section>
 
-					<section id="sec-smil-audio-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L102,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L107,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L112,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L117,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L123,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L129,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L135">
+					<section id="sec-smil-audio-elem" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L95,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L101,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L106,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L111,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L116,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L122,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L128,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L134">
 						<h5>The <code>audio</code> element</h5>
 
 						<p>The <code>audio</code> element represents a clip of audio media.</p>
@@ -8368,7 +8417,7 @@ No Entry</pre>
 						</aside>
 					</section>
 
-					<section id="sec-media-overlays-fragids">
+					<section id="sec-media-overlays-fragids" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L153,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L158,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L164,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L170,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L175">
 						<h5>Referencing document fragments</h5>
 
 						<p>Both the <code>epub:textref</code> attribute and the [^text^] element's <code>src</code>
@@ -8472,7 +8521,7 @@ No Entry</pre>
 					</aside>
 				</section>
 
-				<section id="sec-docs-assoc-style" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L178,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L185">
+				<section id="sec-docs-assoc-style" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L206,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L213,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L224,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L230,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L236,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L243,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L250,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L257">
 					<h4>Associating style information</h4>
 
 					<p>[=EPUB creators=] MAY express visual rendering information for the currently playing [=EPUB
@@ -8569,7 +8618,7 @@ html.my-document-playing * {
 				<section id="sec-docs-package">
 					<h4>Media overlays packaging</h4>
 
-					<section id="sec-package-including" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L197,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L203,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L209,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L215,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L222">
+					<section id="sec-package-including" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L270,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L276,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L282,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L288,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L295">
 						<h5>Including media overlays</h5>
 
 						<p>If an [=EPUB content document=] is wholly or partially referenced by a [=media overlay
@@ -8604,7 +8653,7 @@ html.my-document-playing * {
 						</aside>
 					</section>
 
-					<section id="sec-mo-package-metadata" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L232,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L239">
+					<section id="sec-mo-package-metadata" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L305,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L312,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L319,https://w3c.github.io/epub-structural-tests/#09-media-overlays_media-overlays.feature_L325">
 						<h5>Overlays package metadata</h5>
 
 						<p id="total-duration">[=EPUB creators=] MUST specify the duration of the entire [=EPUB
@@ -9264,7 +9313,7 @@ html.my-document-playing * {
 				</div>
 			</section>
 		</section>
-		<section id="app-identifiers-allowed" class="appendix" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#B-external-identifiers_external-identifiers.feature_L23">
+		<section id="app-identifiers-allowed" class="appendix" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#B-external-identifiers_external-identifiers.feature_L13,https://w3c.github.io/epub-structural-tests/#B-external-identifiers_external-identifiers.feature_L23">
 			<h2>Allowed external identifiers</h2>
 
 			<p>The following table lists the <a aria-label="public identifiers" data-cite="xml#dt-pubid">public </a> and
@@ -9570,7 +9619,7 @@ html.my-document-playing * {
 
 						<pre>&lt;meta property="dcterms:modified"&gt;2011-01-01T12:00:00Z&lt;/meta&gt;</pre>
 
-						<p>After <a data-cite="epub-rs-33#sec-property-datatype">processing</a> [[epub-rs-33]], this
+						<p>After <a data-cite="epub-rs-33#sec-property-values">processing</a> [[epub-rs-33]], this
 							property would expand to the following URL:</p>
 
 						<pre class="nohighlight">http://purl.org/dc/terms/modified</pre>
@@ -9612,7 +9661,7 @@ html.my-document-playing * {
 					</div>
 				</section>
 
-				<section id="sec-prefix-attr" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L735,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L758,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L17,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L22,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L28,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L36">
+				<section id="sec-prefix-attr" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L664,https://w3c.github.io/epub-structural-tests/#06-content-document_content-document-xhtml.feature_L688,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L17,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L22,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L28,https://w3c.github.io/epub-structural-tests/#D-vocabularies_vocabulary-association.feature_L34">
 					<h4>The <code>prefix</code> attribute</h4>
 
 					<p>The <code>prefix</code> attribute defines prefix mappings for use in <a href="#sec-property-datatype"><var>property</var> values</a>.</p>
@@ -10251,21 +10300,18 @@ html.my-document-playing * {
 			</section>
 		</section>
 		<section id="app-viewport-meta" class="appendix">
-			<h2>The <code>viewport</code>
-				<code>meta</code> tag</h2>
+			<h2>The <code>viewport meta</code> tag</h2>
 
 			<section id="app-viewport-meta-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>As the <a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html#//apple_ref/doc/uid/TP40008193-SW6">Safari HTML definition</a> of the <code>viewport</code>
-					<code>meta</code> tag, that was used in earlier versions of EPUB&nbsp;3, is not an officially recognized
-					standard, this specification defines a basic syntax in order to allow [=EPUB creators=] to express
-						<a href="#sec-fxl-icb-html">width and height dimensions</a> for use rendering [=fixed-layout
-					documents=].</p>
+				<p>As the <a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html#//apple_ref/doc/uid/TP40008193-SW6">Safari HTML definition</a> of the <code>viewport meta</code> tag, that was used in earlier
+					versions of EPUB&nbsp;3, is not an officially recognized standard, this specification defines a basic
+					syntax in order to allow [=EPUB creators=] to express <a href="#sec-fxl-icb-html">width and height
+						dimensions</a> for use rendering [=fixed-layout documents=].</p>
 
-				<p>The syntax of this grammar is also influenced by the processing model for transforming
-						<code>viewport</code>
-					<code>meta</code> tags to <code>@viewport</code> CSS rules, as defined in [[css-device-adapt]].</p>
+				<p>The syntax of this grammar is also influenced by the parsing algorithm for the <code>viewport
+						meta</code> tag, as defined in [[css-viewport-1]].</p>
 
 				<p>The syntax is intentionally left as generic as possible as it is not in this specification's scope to
 					define all the possible properties and values. It only defines the basic requirements for defining a
@@ -10275,8 +10321,9 @@ html.my-document-playing * {
 			<section id="app-viewport-meta-syntax">
 				<h3>Syntax</h3>
 
-				<p>A <code>viewport</code> [^meta^] tag [[html]] MUST have <code>name</code> and <code>content</code>
-					attributes that conform to the following definition:</p>
+				<p>For [=fixed-layout documents=], a <code>viewport</code>
+					<a data-cite="html#the-meta-element"><code>meta</code></a> tag [[html]] MUST have <code>name</code>
+					and <code>content</code> attributes that conform to the following definition:</p>
 
 				<dl>
 					<dt id="viewport-name-attr">name</dt>
@@ -10295,14 +10342,14 @@ html.my-document-playing * {
 									<a href="#viewport.ebnf.def">viewport</a>
 								</td>
 								<td>=</td>
-								<td><a href="#viewport.ebnf.property">property</a>, {<a href="#viewport.ebnf.sep">sep</a>, <a href="#viewport.ebnf.property">property</a>} ;</td>
+								<td><a href="#viewport.ebnf.property">property</a>, { <a href="#viewport.ebnf.sep">sep</a>, <a href="#viewport.ebnf.property">property</a> } ;</td>
 							</tr>
 							<tr>
 								<td id="viewport.ebnf.property">
 									<a href="#viewport.ebnf.property">property</a>
 								</td>
 								<td>=</td>
-								<td><a href="viewport.ebnf.name">name</a>, <a href="viewport.ebnf.assign">assign</a>, <a href="viewport.ebnf.value">value</a> ;</td>
+								<td><a href="#viewport.ebnf.name">name</a>, [ <a href="#viewport.ebnf.assign">assign</a>, <a href="#viewport.ebnf.value">value</a> ] ;</td>
 							</tr>
 							<tr>
 								<td id="viewport.ebnf.name">
@@ -10338,7 +10385,7 @@ html.my-document-playing * {
 									<a href="#viewport.ebnf.assign">assign</a>
 								</td>
 								<td>=</td>
-								<td>[<a href="#viewport.ebnf.space">space</a>], "=", [<a href="#viewport.ebnf.space">space</a>] ;</td>
+								<td>[ <a href="#viewport.ebnf.space">space</a> ], "=", [ <a href="#viewport.ebnf.space">space</a> ] ;</td>
 							</tr>
 							<tr>
 								<td id="viewport.ebnf.space">
@@ -10351,27 +10398,24 @@ html.my-document-playing * {
 					</dd>
 				</dl>
 
-				<p>This specification only defines <a href="#viewport.ebnf.value">value</a> requirements for the
-						<code>height</code> and <code>width</code> properties (see <a href="#sec-fxl-content-dimensions"></a>). It imposes no restrictions on other property names and values except that they MUST NOT
-					contain <a href="#viewport.ebnf.sep-char">separator characters</a> or the <a href="#viewport.ebnf.assign">assignment character</a>.</p>
+				<p>The only restriction on property <a href="#viewport.ebnf.name">names</a> and <a href="#viewport.ebnf.value">values</a> is that they MUST NOT contain <a href="#viewport.ebnf.sep-char">separator characters</a> or the <a href="#viewport.ebnf.assign">assignment character</a>.</p>
 
-				<p>There are no restrictions on any other attributes allowed on the [^meta^] element by the [[html]]
-					grammar.</p>
+				<p>The authoring requirements in this section apply <em>after</em>
+					<a data-cite="xml#AVNormalize">whitespace normalization</a>&nbsp;[[xml]] (i.e., after a reading system
+					strips leading and trailing whitespace and compacts all instances of multiple whitespace within the
+					attribute to single spaces). EPUB creators MAY include any valid [=ascii whitespace=] [[infra]] in
+					the authored tag so long as the result is valid to this definition.</p>
 
-				<div class="note">
-					<p>Although the <code>viewport</code>
-						<code>meta</code> tag allows EPUB creators to use properties other than <code>height</code> and
-							<code>width</code>, such use is strongly discouraged. Setting other properties may have
-						unintended consequences on the rendering of [=fixed-layout documents=].</p>
-				</div>
+				<p>There are no restrictions on any other attributes allowed on the <a data-cite="html#the-meta-element"><code>meta</code></a> element by the [[html]] grammar.</p>
 
 				<div class="note">
-					<p>The authoring requirements in this section apply <em>after</em>
-						<a data-cite="xml#AVNormalize">whitespace normalization</a>&nbsp;[[xml]] (i.e., after a reading
-						system strips leading and trailing whitespace and compacts all instances of multiple whitespace
-						within the attribute to single spaces). EPUB creators can include any valid HTML whitespace
-						characters (e.g., tabs, line feeds) in the authored tag so long as the result is valid to this
-						definition.</p>
+					<p>For more information about specifying the required <code>height</code> and <code>width</code>
+						properties, and their required values, refer to <a href="#sec-fxl-content-dimensions"></a>.</p>
+
+					<p>Although the <code>viewport meta</code> tag allows EPUB creators to use properties other than
+							<code>height</code> and <code>width</code>, and to not include values for these properties,
+						such use is strongly discouraged. Setting other properties may have unintended consequences on
+						the rendering of fixed-layout documents.</p>
 				</div>
 			</section>
 		</section>
@@ -11131,7 +11175,7 @@ EPUB/images/cover.png</pre>
 						<p>This media type registration is for the EPUB package document, as described by the EPUB 3
 							specification located at <a href="https://www.w3.org/TR/epub-33/">https://www.w3.org/TR/epub-33/</a>.</p>
 						<p>The EPUB 3 specification supersedes the Open Packaging Format 2.0.1 specification, which is
-							located at <a href="http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm">http://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm</a> and which also uses the <code class="media-type">application/oepbs-package+xml</code> media type.</p>
+							located at <a href="https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm">https://idpf.org/epub/20/spec/OPF_2.0.1_draft.htm</a> and which also uses the <code class="media-type">application/oepbs-package+xml</code> media type.</p>
 					</dd>
 
 					<dt>Applications which use this media type:</dt>
@@ -11251,7 +11295,7 @@ EPUB/images/cover.png</pre>
 						<p>This media type registration is for the EPUB Open Container Format (OCF), as described by the
 							EPUB 3 specification located at <a href="https://www.w3.org/TR/epub-33/"><code>https://www.w3.org/TR/epub-33/</code></a>.</p>
 						<p>The EPUB 3 specification supersedes both <a href="https://datatracker.ietf.org/doc/html/rfc4839">RFC 4839</a> and the Open Container
-							Format 2.0.1 specification, which is located at <a href="http://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc"><code>http://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc</code></a>, and which also
+							Format 2.0.1 specification, which is located at <a href="https://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc"><code>https://idpf.org/epub/20/spec/OCF_2.0.1_draft.doc</code></a>, and which also
 							uses the <code>application/epub+zip</code> media type.</p>
 					</dd>
 
@@ -11321,6 +11365,25 @@ EPUB/images/cover.png</pre>
 						Recommendation</a></h3>
 
 				<ul>
+					<li>29-Nov-2022: Clarified that data URLs are not unique publication resources, and not allowed in
+						the package document, but are subject to fallback requirements. See <a href="https://github.com/w3c/epub-specs/issues/2485">issue 2485</a>.</li>
+					<li>29-Nov-2022: Clarified the <code>epub:type</code> attribute is not allowed on the
+							<code>head</code> element and metadata content in XHTML content documents. See <a href="https://github.com/w3c/epub-specs/issues/2486">issue 2486</a>.</li>
+					<li>17-Nov-2022: Updated file paths and names to identify that they are scalar value strings in the
+						OCF abstract container, not just case sensitive. See <a href="https://github.com/w3c/epub-specs/issues/2461">issue 2461</a>.</li>
+					<li>11-Nov-2022: Added caution about reading systems not retaining HTML element-based rendering
+						instructions in navigation document elements. See <a href="https://github.com/w3c/epub-specs/issues/2477">issue 2477</a>.</li>
+					<li>02-Nov-2022: Removed the restriction on deprecated characters in the Tags and Variation
+						Selectors Supplement and replaced with a general note to avoid the use of characters already
+						deprecated by the Unicode standard, as the list changes over time. See <a href="https://github.com/w3c/epub-specs/issues/2469">issue 2469</a>.</li>
+					<li>20-Oct-2022: Removed requirement to encode file names in abstract container in UTF-8 as it is
+						not possible in the abstract and is already covered by a ZIP container requirement. See <a href="https://github.com/w3c/epub-specs/issues/2461">issue 2461</a>.</li>
+					<li>17-Oct-2022: Added recommendation against using spaces in file paths and names. See <a href="https://github.com/w3c/epub-specs/issues/2458">issue 2458</a>.</li>
+					<li>15-Oct-2022: Allow properties without values in <code>viewport meta</code> tag definition. See
+							<a href="https://github.com/w3c/epub-specs/pull/2457">pull request 2457</a>.</li>
+					<li>11-Oct-2022: Added additional requirement that <code>viewport meta</code> height and width not
+						be declared multiple times. See <a href="https://github.com/w3c/epub-specs/issues/2442">issue
+							2442</a>.</li>
 					<li>21-Sept-2022: Made the requirement to declare property prefixes explicit. See <a href="https://github.com/w3c/epub-specs/issues/2438">issue 2438</a>.</li>
 					<li>19-Sept-2022: Removed minor contradictions in the <code>epub:type</code> attribute usage
 						definitions. See <a href="https://github.com/w3c/epub-specs/issues/2434">issue 2434</a>.</li>

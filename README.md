@@ -31,7 +31,7 @@ anywhere in the repository.
 
 By default, the tool reads the content of the specifications' HTML files by accessing them directly on github. The tool can also be run with two more options:
 
-- `-d` or `--download`: the original (i.e.,, unchanged) specification files are _also_ stored locally in the `epub33-orig` directory. 
+- `-d` or `--download`: the original (i.e., unchanged) specification files are _also_ stored locally in the `epub33-orig` directory. 
 - `-l` or `--local`: instead of accessing github, the tool uses the specification files in the `epub33-orig` directory.
 
 ## Directory content
