@@ -1,6 +1,6 @@
 export namespace Constants {
     export const SPEC_URL        = 'https://w3c.github.io/epub-specs/epub33/core/' ;
-    export const FEATURE_DIR_URL = 'https://github.com/w3c/epubcheck/tree/main/src/test/resources/epub3' ;
+    export const FEATURE_DIR_URL = 'https://github.com/w3c/epubcheck/blob/w3c/epub-33-cr-report/src/test/resources/epub3/' ;
     export const TEST_REPORT_URL = 'https://w3c.github.io/epub-structural-tests/' ;
 
     /** Location for the resulting spec */
