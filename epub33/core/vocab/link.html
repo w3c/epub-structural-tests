@@ -13,44 +13,7 @@
 		<p>The following values can be used in the <code>link</code> element <a href="#attrdef-link-rel"><code>rel</code> attribute</a> to establish the relationship of the resource referenced in
 			the <a href="#attrdef-href"><code>href</code> attribute</a>.</p>
 		
-		<section id="sec-acquire" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L18">
-			<h5>acquire</h5>
-			
-			<table class="tabledef" id="acquire">
-				<tbody>
-					<tr>
-						<th>Name:</th>
-						<td>
-							<code>acquire</code>
-						</td>
-					</tr>
-					<tr>
-						<th>Description:</th>
-						<td>The <code>acquire</code> keyword is used with <a href="https://idpf.org/epub/previews/">EPUB Previews</a> to identify where the
-							full version of the [=EPUB publication=] can be acquired.</td>
-					</tr>
-					<tr>
-						<th>Cardinality:</th>
-						<td>
-							<code>Zero or more</code>
-						</td>
-					</tr>
-					<tr>
-						<th>Extends:</th>
-						<td>Only applies to the EPUB publication or collection. MUST NOT be used when the <a href="#attrdef-refines"><code>refines</code> attribute</a> is present.</td>
-					</tr>
-					<tr>
-						<th>Example:</th>
-						<td>
-							<code>&lt;link rel="acquire" href="http://example.org/book/9781448103706"
-								media-type="text/html"/&gt;</code>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-		
-		<section id="sec-alternate" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L26,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L31">
+		<section id="sec-alternate" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L29,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L34">
 			<h5>alternate</h5>
 			
 			<table class="tabledef" id="alternate">
@@ -131,7 +94,7 @@
 				property definition</a> in&nbsp;[[!epubpublications-30]] for more information.</p>
 		</section>
 		
-		<section id="sec-record" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L66,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L76">
+		<section id="sec-record" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L69,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L75">
 			<h5>record</h5>
 			
 			<table class="tabledef" id="record">
@@ -175,7 +138,7 @@
 			</table>
 		</section>
 		
-		<section id="sec-voicing" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L86,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L91,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L98,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L104">
+		<section id="sec-voicing" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L85,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L90,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L97,https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L103">
 			<h5>voicing</h5>
 			
 			<table class="tabledef" id="voicing">
@@ -231,15 +194,14 @@
 		<section id="sec-xmp-record">
 			<h5>xmp-record (deprecated)</h5>
 			
-			<p id="xmp-record">Use of the <code>xmp-record</code> keyword is <a href="#deprecated">deprecated</a>. It
-				is replaced by the <a href="#record"><code>record</code></a> keyword with the <a href="#attrdef-properties">properties attribute</a> value <a href="#xmp"><code>xmp</code></a>.</p>
+			<p id="xmp-record">Use of the <code>xmp-record</code> keyword is <a href="#deprecated">deprecated</a>.</p>
 			
 			<p>Refer to the <a href="https://idpf.org/epub/30/spec/epub30-publications-20111011.html#xmp-record"><code>xmp-record</code>
 				property definition</a> in&nbsp;[[!epubpublications-30]] for more information.</p>
 		</section>
 	</section>
 	
-	<section id="sec-link-properties">
+	<section id="sec-link-properties" data-epubcheck="true" data-tests="https://w3c.github.io/epub-structural-tests/#D-vocabularies_metadata-link.feature_L123">
 		<h4>Link properties</h4>
 		
 		<p>The following values can be used in the [^link^] element's
@@ -268,33 +230,6 @@
 						<td>
 							<code>&lt;link rel="record" href="pub/meta/nor-wood-onix.xml"
 								media-type="application/xml" properties="onix"/&gt;</code>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-		
-		<section id="sec-xmp">
-			<h5>xmp</h5>
-			
-			<table class="tabledef" id="xmp">
-				<tbody>
-					<tr>
-						<th>Name:</th>
-						<td>
-							<code>xmp</code>
-						</td>
-					</tr>
-					<tr>
-						<th>Description:</th>
-						<td>The <code>xmp</code> property indicates the referenced resource is an XMP record
-							[[!xmp]].</td>
-					</tr>
-					<tr>
-						<th>Example:</th>
-						<td>
-							<code>&lt;link rel="record" href="pub/meta/nor-wood-xmp.xml"
-								media-type="application/xml" properties="xmp"/&gt;</code>
 						</td>
 					</tr>
 				</tbody>

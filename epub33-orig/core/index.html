@@ -268,8 +268,7 @@
 			<section id="sec-terminology">
 				<h3>Terminology</h3>
 
-				<p>This specification defines the following terms specific to EPUB 3. They appear capitalized wherever
-					used.</p>
+				<p>This specification defines the following terms specific to EPUB 3.</p>
 
 				<div class="note">
 					<p>Only the first instance of a term in a section links to its definition.</p>
@@ -1013,7 +1012,7 @@
 						</tr>
 						<tr>
 							<td id="cmt-ogg-opus" data-tests="#pub-cmt-opus">
-								<code>audio/opus</code>
+								<code>audio/ogg; codecs=opus</code>
 							</td>
 							<td> [[rfc7845]] </td>
 							<td>OPUS audio using OGG container</td>
@@ -1676,6 +1675,9 @@
 
 					<p>The file name <code>mimetype</code> in the root directory is reserved for use by [=OCF ZIP
 						containers=], as explained in <a href="#sec-container-zip"></a>.</p>
+
+					<p>Files in the <code>META-INF</code> directory and the <code>mimetype</code> file are not
+						[=publication resources=] so MUST NOT be listed in the [=EPUB manifest|manifest=].</p>
 
 					<p>[=EPUB creators=] MAY locate all other files within the OCF abstract container in any location
 						descendant from the root directory, provided they are not within the <code>META-INF</code>
@@ -3204,7 +3206,15 @@
 					elements).</p>
 
 				<section id="attrdef-dir">
-					<h4>The <code>dir</code> attribute</h4>
+					<h4>The <code>dir</code> attribute (under-implemented)</h4>
+
+					<div class="note">
+						<p>The <code>dir</code> attribute is marked <a href="#under-implemented">under-implemented</a>
+							as [=reading systems=] often only support a single default directionality for text display.
+							[=EPUB creators=] are still strongly encouraged to set the proper directionality of text
+							values in the [=package document=] to ensure proper rendering once this situation
+							improves.</p>
+					</div>
 
 					<p
 						data-tests="#pkg-dir_creator-rtl,#pkg-dir_rtl-root-ltr,#pkg-dir_rtl-root-unset,#pkg-dir_unset-root-rtl,#pkg-dir_unset-root-unset,#pkg-dir-auto_root-rtl"
@@ -3220,8 +3230,8 @@
 							[[bidi]].</li>
 					</ul>
 
-					<p data-tests="#pkg-dir-auto_root-rtl,#pkg-dir-auto_root-unset">[=Reading systems=] will assume the
-						value <code>auto</code> when [=EPUB creators=] omit the attribute or use an invalid value.</p>
+					<p data-tests="#pkg-dir-auto_root-rtl,#pkg-dir-auto_root-unset">Reading systems will assume the
+						value <code>auto</code> when EPUB creators omit the attribute or use an invalid value.</p>
 
 					<div class="note">
 						<p>The base direction specified in the <code>dir</code> attribute does not affect the ordering
@@ -3302,9 +3312,9 @@
       …
       &lt;link
           rel="record"
-          href="http://example.org/meta/12389347?format=xmp"
+          href="http://example.org/meta/12389347?format=onix"
           media-type="application/xml"
-          properties="xmp"/>
+          properties="onix"/>
       …
    &lt;/metadata>
    …
@@ -4572,10 +4582,10 @@
 						</li>
 					</ul>
 
-					<p>In all other cases (e.g., when linking to standalone [[?onix]] or [[?xmp]] records), the
-						resources referenced are not [=publication resources=] (i.e., are not subject to <a
-							href="#sec-core-media-types">core media type requirements</a>) and [=EPUB creators=] MUST
-						NOT list them in the <a href="#sec-manifest-elem">manifest</a>.</p>
+					<p>In all other cases (e.g., when linking to standalone [[?onix]] records), the resources referenced
+						are not [=publication resources=] (i.e., are not subject to <a href="#sec-core-media-types">core
+							media type requirements</a>) and [=EPUB creators=] MUST NOT list them in the <a
+							href="#sec-manifest-elem">manifest</a>.</p>
 
 					<aside class="example" title="Reference to a record embedded in an XHTML content document">
 						<p>In this example, the metadata record is embedded in a <code>script</code> element. Note that
@@ -4650,15 +4660,15 @@ XHTML:
 							<code>properties</code> attribute.</p>
 
 					<aside class="example" title="Identifying a record type via a property">
-						<p>In this example, the <code>properties</code> attribute identifies the link is to a XMP
+						<p>In this example, the <code>properties</code> attribute identifies the link is to an ONIX
 							record.</p>
 
 						<pre>&lt;metadata …>
    …
    &lt;link rel="record"
-       href="http://example.org/meta/12389347?format=xmp"
+       href="http://example.org/meta/12389347?format=onix"
        media-type="application/xml"
-       properties="xmp"/>
+       properties="onix"/>
    …
 &lt;/metadata></pre>
 					</aside>
@@ -4692,18 +4702,10 @@ XHTML:
 					</aside>
 
 					<p id="sec-linked-records" data-tests="#pkg-linked-records">EPUB creators MAY provide one or more <a
-							href="#record">linked metadata records</a> to enhance the information available to reading
-						systems, but reading systems may ignore these records.</p>
+							href="#record">linked metadata records</a>.</p>
 
-					<p id="sec-linked-records-priority"
-						data-tests="#pkg-linked-records_link-priority,#pkg-linked-records_link-order">When a reading
-						system <a data-cite="epub-rs-33#sec-linked-records">processes linked records</a> [[epub-rs-33]],
-						the document order of <code>link</code> elements is used to determine which has the highest
-						priority in the case of conflicts (i.e., first in document order has the highest priority).</p>
-
-					<aside class="example" title="Specifying metadata precedence">
-						<p>In this example, the first remote record has the highest precedence, the local record has the
-							next highest, and the metadata in the <code>metadata</code> element the lowest.</p>
+					<aside class="example" title="Specifying linked records">
+						<p>In this example, linked ONIX and JSON-LD records are included in the EPUB container.</p>
 
 						<pre>&lt;metadata …>
    &lt;link rel="record"
@@ -4714,10 +4716,6 @@ XHTML:
    &lt;link rel="record"
        href="meta/meta.jsonld"
        media-type="application/ld+json" />
-    
-    &lt;dc:title>The Sound and The Fury&lt;/dc:title>
-    &lt;dc:identifier>urn:isbn:9780101010101&lt;/dc:identifier>
-    &lt;dc:language>en-us&lt;/dc:language>
     …
 &lt;/metadata></pre>
 					</aside>
@@ -4787,17 +4785,24 @@ XHTML:
 						</dd>
 					</dl>
 
-					<p id="confreq-rendition-manifest">[=EPUB creators=] MUST list all publication resources in the
-							<code>manifest</code>, regardless of whether they are [=container resources=] or [=remote
-						resources=]. Moreover, the <code>manifest</code> MUST only list publication resources.</p>
+					<p id="confreq-rendition-manifest">With the exception of the [=package document=], the
+							<code>manifest</code> MUST list all publication resources regardless of whether they are
+						[=container resources=] or [=remote resources=].</p>
 
-					<p>Note that the <code>manifest</code> is not self-referencing: EPUB creators MUST NOT specify an
-							<code>item</code> element that refers to the [=package document=] itself.</p>
+					<p>As the package document is already identified by the <a
+							href="#sec-container-metainf-container.xml"><code>container.xml</code> file</a>, the
+							<code>manifest</code> MUST NOT specify an <code>item</code> element for it (i.e., a
+						self-reference serves no purpose).</p>
 
 					<div class="note">
-						<p>Failure to provide a complete manifest of resources may lead to rendering issues. [=Reading
-							systems=] might not unzip such resources or could prevent access to them for security
-							reasons.</p>
+						<p>The manifest is only for listing publication resources. [=Linked resources=] and <a
+								href="#sec-container-file-and-dir-structure">the special files for processing the OCF
+								Container</a> (i.e., files in the <code>META-INF</code> directory, and the
+								<code>mimetype</code> file) are restricted from inclusion.</p>
+
+						<p>Failure to provide a complete manifest of publication resources may lead to rendering issues.
+							[=Reading systems=] might not unzip such resources or could prevent access to them for
+							security reasons.</p>
 					</div>
 				</section>
 
@@ -7077,7 +7082,7 @@ No Entry</pre>
 							</dd>
 						</dl>
 
-						<p id="fxl-orientation-duplication" data-tests="#lay-fxl-orientation-duplication">EPUB creators
+						<p id="fxl-orientation-duplication">EPUB creators
 							MUST NOT declare the <code>rendition:orientation</code> property more than once.</p>
 
 						<p>They also MUST NOT declare the property using the <a href="#attrdef-refines"
@@ -7624,9 +7629,12 @@ No Entry</pre>
 								</ul>
 								<p>The <code>device-width</code> and <code>device-height</code> values refer to the 100%
 									of the width and height, respectively, of the reading system's [=viewport=].</p>
-								<p>EPUB creators MUST NOT specify duplicate <code>height</code> or <code>width</code>
-									definitions either within a single <code>viewport meta</code> tag or by specifying
-									multiple <code>viewport meta</code> tags.</p>
+								<p>The <code>height</code> and <code>width</code> definitions MUST be specified in the
+									first <code>viewport meta</code> tag in document order in the [[html]] <a
+										data-cite="html#the-head-element"><code>head</code></a> element. Reading systems
+									will ignore subsequent <code>viewport meta</code> tags.</p>
+								<p>EPUB creators MUST NOT specify more than one <code>height</code> or
+										<code>width</code> definition within a <code>viewport meta</code> tag.</p>
 								<aside class="example"
 									title="Specifying the initial containing block in a viewport meta tag">
 									<pre>&lt;html …>
@@ -11777,6 +11785,23 @@ EPUB/images/cover.png</pre>
 						Recommendation</a></h3>
 
 				<ul>
+					<li>11-Jan-2023: Marked the <code>dir</code> attribute under-implemented due to lack of support in
+						reading systems. See <a href="https://github.com/w3c/epub-specs/pull/2515">pull request
+						2515</a>.</li>
+					<li>09-Jan-2023: Fixed incorrect OPUS media type. See <a
+							href="https://github.com/w3c/epub-specs/issues/2516">issue 2516</a>.</li>
+					<li>05-Jan-2023: Removed the precedence rules for linked records as reading systems do not support
+						their processing. See <a href="https://github.com/w3c/epub-specs/pull/2512">pull request
+							2512</a>.</li>
+					<li>16-Dec-2022: Clarified that the special files for processing the OCF container are not listed in
+						the manifest, so the restriction that the manifest only list publication resources is not
+						needed. See <a href="https://github.com/w3c/epub-specs/pull/2506">pull request 2506</a>.</li>
+					<li>12-Dec-2022: Clarified that fixed layout height and width declarations must be in the first
+							<code>viewport meta</code> tag. See <a href="https://github.com/w3c/epub-specs/pull/2503"
+							>pull request 2503</a>.</li>
+					<li>08-Dec-2022: Removed the <code>acquire</code> and <code>xmp</code> properties after finding no
+						evidence these are used by publishers or reading systems. See <a
+							href="https://github.com/w3c/epub-specs/issues/2489">issue 2489</a>.</li>
 					<li>29-Nov-2022: Clarified that data URLs are not unique publication resources, and not allowed in
 						the package document, but are subject to fallback requirements. See <a
 							href="https://github.com/w3c/epub-specs/issues/2485">issue 2485</a>.</li>
