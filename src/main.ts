@@ -76,7 +76,7 @@ async function main(): Promise<void> {
     const program = new Command();
     program
         .name('harvest epubcheck tests')
-        .description('Harvesting EPUB 3.3 specific test information to produce a test report for the EPUB 3.3 CR phase')
+        .description('Harvesting EPUB 3.4 specific test information to produce a test report for the EPUB 3.4 CR phase')
         .usage('[options]')
         .option('-l, --local', 'Pick up the specification files locally instead of fetching them from github')
         .option('-d, --download','When picking up the specification files from github, store them locally')
