@@ -1,41 +1,41 @@
 export namespace Constants {
-    export const SPEC_URL        = 'https://w3c.github.io/epub-specs/epub33/core/' ;
+    export const SPEC_URL        = 'https://w3c.github.io/epub-specs/epub34/authoring/' ;
     export const FEATURE_DIR_URL = 'https://github.com/w3c/epubcheck/blob/w3c/epub-33-cr-report/src/test/resources/epub3/' ;
     export const TEST_REPORT_URL = 'https://w3c.github.io/epub-structural-tests/' ;
 
     /** Location for the resulting spec */
-    export const SPEC_DIR: string = 'epub33/core'
+    export const SPEC_DIR: string = 'epub34/authoring'
 
     /** Location for the vocabulary specs */
-    export const VOCAB_DIR: string = 'epub33/core/vocab'
+    export const VOCAB_DIR: string = 'epub34/authoring/vocab'
 
     /** Location for the original spec */
-    export const SPEC_DIR_ORIG = 'epub33-orig/core'
+    export const SPEC_DIR_ORIG = 'epub34-orig/authoring'
     
     /** Location for the original vocabulary specs */
-    export const VOCAB_DIR_ORIG: string = 'epub33-orig/core/vocab'
+    export const VOCAB_DIR_ORIG: string = 'epub34-orig/authoring/vocab'
 
 
     /** Location for the specification source */
     export const SPECS: string[] = [
-        'epub33-orig/core/index.html',
-        'epub33-orig/core/vocab/item-properties.html',
-        'epub33-orig/core/vocab/itemref-properties.html',
-        'epub33-orig/core/vocab/link.html',
-        'epub33-orig/core/vocab/meta-property.html',
-        'epub33-orig/core/vocab/rendering.html',
-        'epub33-orig/core/vocab/overlays.html',
+        'epub34-orig/authoring/index.html',
+        'epub34-orig/authoring/vocab/item-properties.html',
+        'epub34-orig/authoring/vocab/itemref-properties.html',
+        'epub34-orig/authoring/vocab/link.html',
+        'epub34-orig/authoring/vocab/meta-property.html',
+        'epub34-orig/authoring/vocab/rendering.html',
+        'epub34-orig/authoring/vocab/overlays.html',
     ];
 
     /** Location online for the specification source */
     export const SPECS_ONLINE: string[] = [
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/index.html',
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/item-properties.html',
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/itemref-properties.html',
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/link.html',
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/meta-property.html',
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/rendering.html',
-        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub33/core/vocab/overlays.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/index.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/vocab/item-properties.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/vocab/itemref-properties.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/vocab/link.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/vocab/meta-property.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/vocab/rendering.html',
+        'https://raw.githubusercontent.com/w3c/epub-specs/main/epub34/authoring/vocab/overlays.html',
     ];
 
     /** Location for the HTML fragment on implementation lists */
